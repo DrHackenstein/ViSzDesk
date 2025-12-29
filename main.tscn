@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://bv1xgmgys2pqk"]
+
+[ext_resource type="Script" uid="uid://bdpvyheqdodjx" path="res://loader/config_loader.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dprjfdqjtlub5" path="res://loader/content_loader.gd" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://4la3yawwu4ya" path="res://content/wallpaper.jpg" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://d1nst51xas082" path="res://scripts/bootup.gd" id="4_7mycd"]
+[ext_resource type="Texture2D" uid="uid://drs3hj7licdxu" path="res://images/progress_spinner.png" id="5_272bh"]
+[ext_resource type="AudioStream" uid="uid://cl78imv65ps3k" path="res://sounds/booting.wav" id="6_5vw27"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Config" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_ig7tw")
+
+[node name="Content" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_0xm2m")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("3_h2yge")
+
+[node name="Bootup" type="Popup" parent="." node_paths=PackedStringArray("background", "progress_spinner", "text", "audio_player")]
+transparent_bg = true
+oversampling_override = 1.0
+mode = 3
+size = Vector2i(1920, 1080)
+visible = true
+always_on_top = true
+script = ExtResource("4_7mycd")
+background = NodePath("Background")
+progress_spinner = NodePath("Spinner")
+text = NodePath("Booting Text")
+audio_player = NodePath("Audio")
+
+[node name="Background" type="ColorRect" parent="Bootup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Spinner" type="TextureProgressBar" parent="Bootup"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -290.0
+offset_right = 256.0
+offset_bottom = 222.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(256, 256)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+fill_mode = 4
+radial_fill_degrees = 74.9
+texture_progress = ExtResource("5_272bh")
+
+[node name="Booting Text" type="Label" parent="Bootup"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = 160.0
+offset_right = 98.0
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Booting..."
+horizontal_alignment = 1
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Bootup"]
+stream = ExtResource("6_5vw27")

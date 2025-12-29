@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dj07wdnhxbl8l"
+
+[deps]
+
+files=["res://builds/Windows/content/spreadsheet.Text.translation", "res://builds/Windows/content/spreadsheet.UID.translation", "res://builds/Windows/content/spreadsheet.Window_ID.translation", "res://builds/Windows/content/spreadsheet.Follow.translation", "res://builds/Windows/content/spreadsheet.Button.translation", "res://builds/Windows/content/spreadsheet.OK.translation", "res://builds/Windows/content/spreadsheet.Scenario_ID.translation", "res://builds/Windows/content/spreadsheet.Scenario.translation", "res://builds/Windows/content/spreadsheet.HAS TRIGGER.translation", "res://builds/Windows/content/spreadsheet.WINDOW ID ERRORS.translation"]
+
+source_file="res://builds/Windows/content/spreadsheet.csv"
+dest_files=["res://builds/Windows/content/spreadsheet.Text.translation", "res://builds/Windows/content/spreadsheet.UID.translation", "res://builds/Windows/content/spreadsheet.Window_ID.translation", "res://builds/Windows/content/spreadsheet.Follow.translation", "res://builds/Windows/content/spreadsheet.Button.translation", "res://builds/Windows/content/spreadsheet.OK.translation", "res://builds/Windows/content/spreadsheet.Scenario_ID.translation", "res://builds/Windows/content/spreadsheet.Scenario.translation", "res://builds/Windows/content/spreadsheet.HAS TRIGGER.translation", "res://builds/Windows/content/spreadsheet.WINDOW ID ERRORS.translation"]
+
+[params]
+
+compress=true
+delimiter=0
