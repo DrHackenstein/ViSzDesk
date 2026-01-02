@@ -10,7 +10,7 @@ var progress_spinner_animation : Tween
 func _ready() -> void:
 	self.popup_window = false
 	
-	if %Config.boot_show:
+	if %Config.boot_show and not OS.has_feature("editor"):
 		background.color = Color.BLACK
 		setup_spinner()
 		setup_audio()

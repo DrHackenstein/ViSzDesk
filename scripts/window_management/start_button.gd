@@ -10,5 +10,5 @@ func open_menu():
 		menu.hide()
 	else:
 		menu.show()
-		
+	
 	release_focus()

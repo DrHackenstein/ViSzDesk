@@ -26,7 +26,10 @@ var content_spreadsheet_default = "spreadsheet.csv"
 var content_wallpaper_id = "wallpaper"
 var content_wallpaper = "wallpaper.jpg"
 var content_wallpaper_default = "wallpaper.jpg"
-var content_configs = [[content_spreadsheet_id,"content_spreadsheet"], [content_wallpaper_id,"content_wallpaper"]]
+var content_credits_id = "credits"
+var content_credits = "credits.txt"
+var content_credits_default = "credits.txt"
+var content_configs = [[content_spreadsheet_id,"content_spreadsheet"], [content_wallpaper_id,"content_wallpaper"], [content_credits_id, "content_credits"]]
 
 var modules_section = "modules"
 var modules_chat_id = "chat"
@@ -34,7 +37,6 @@ var modules_chat = true
 var modules_moderation_id = "moderation"
 var modules_moderation = true
 var modules_configs = [[modules_chat_id, "modules_chat"], [modules_moderation_id, "modules_moderation"]]
-
 
 func _ready() -> void:
 	if not OS.has_feature("editor"):
