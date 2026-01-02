@@ -5,6 +5,8 @@ extends Popup
 @export var text : Label
 @export var audio_player : AudioStreamPlayer2D
 
+var progress_spinner_animation : Tween
+
 func _ready() -> void:
 	self.popup_window = false
 	
@@ -23,8 +25,8 @@ func _ready() -> void:
 		load_desktop()
 	
 func setup_spinner():
-	var tween: Tween = get_tree().create_tween().set_loops()
-	tween.tween_property(progress_spinner, "radial_initial_angle", 360.0, 1.5).as_relative()
+	progress_spinner_animation = get_tree().create_tween().set_loops()
+	progress_spinner_animation.tween_property(progress_spinner, "radial_initial_angle", 360.0, 1.5).as_relative()
 
 func show_spinner():
 	text.show()
@@ -43,6 +45,8 @@ func setup_audio():
 func close():
 	text.hide()
 	progress_spinner.hide()
+	progress_spinner_animation.stop()
+		
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(background, "color", Color.TRANSPARENT, 0.3)
 	await get_tree().create_timer(1).timeout
