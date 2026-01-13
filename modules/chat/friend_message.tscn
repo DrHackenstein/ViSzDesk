@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://da5vqdhlj1l7y"]
+
+[node name="Incoming Message" type="MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 10
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.33560684, 0.81628156, 0.55421805, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Hey, this is an incoming chat message! I scales to it's content! 
+
+Neat, huh?"
+fit_content = true
+scroll_active = false

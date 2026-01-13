@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bns2sxdjkfvlr"
+
+[deps]
+
+files=["res://builds/Windows/content/content.Text.translation", "res://builds/Windows/content/content.UID.translation", "res://builds/Windows/content/content.Window_ID.translation", "res://builds/Windows/content/content.Follow.translation", "res://builds/Windows/content/content.Button.translation", "res://builds/Windows/content/content.OK.translation", "res://builds/Windows/content/content.Scenario_ID.translation", "res://builds/Windows/content/content.Scenario.translation", "res://builds/Windows/content/content.HAS TRIGGER.translation", "res://builds/Windows/content/content.WINDOW ID ERRORS.translation"]
+
+source_file="res://builds/Windows/content/content.csv"
+dest_files=["res://builds/Windows/content/content.Text.translation", "res://builds/Windows/content/content.UID.translation", "res://builds/Windows/content/content.Window_ID.translation", "res://builds/Windows/content/content.Follow.translation", "res://builds/Windows/content/content.Button.translation", "res://builds/Windows/content/content.OK.translation", "res://builds/Windows/content/content.Scenario_ID.translation", "res://builds/Windows/content/content.Scenario.translation", "res://builds/Windows/content/content.HAS TRIGGER.translation", "res://builds/Windows/content/content.WINDOW ID ERRORS.translation"]
+
+[params]
+
+compress=true
+delimiter=0

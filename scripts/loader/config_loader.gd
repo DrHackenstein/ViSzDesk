@@ -20,16 +20,21 @@ var boot_idle_time = 6
 var boot_configs = [[boot_show_id, "boot_show"],[boot_spinner_delay_id, "boot_spinner_delay"], [boot_audio_id, "boot_audio"], [boot_idle_time_id, "boot_idle_time"] ]
 
 var content_section = "content"
-var content_spreadsheet_id = "spreadsheet"
-var content_spreadsheet = "spreadsheet.csv"
-var content_spreadsheet_default = "spreadsheet.csv"
+var content_spreadsheet_id = "content"
+var content_spreadsheet = "content.csv"
+var content_spreadsheet_default = "content.csv"
+var content_characters_id = "characters"
+var content_characters = "characters.csv"
+var content_characters_default = "characters.csv"
 var content_wallpaper_id = "wallpaper"
 var content_wallpaper = "wallpaper.jpg"
 var content_wallpaper_default = "wallpaper.jpg"
 var content_credits_id = "credits"
 var content_credits = "credits.txt"
 var content_credits_default = "credits.txt"
-var content_configs = [[content_spreadsheet_id,"content_spreadsheet"], [content_wallpaper_id,"content_wallpaper"], [content_credits_id, "content_credits"]]
+var content_time_id = "clock_start_time"
+var content_time = "22:01"
+var content_configs = [[content_spreadsheet_id,"content_spreadsheet"],[content_characters_id,"content_characters"], [content_wallpaper_id,"content_wallpaper"], [content_credits_id, "content_credits"], [content_time_id,"content_time"]]
 
 var modules_section = "modules"
 var modules_chat_id = "chat"

@@ -1,9 +1,11 @@
-extends Window
+extends AppWindow
 
 @export var text : RichTextLabel
 
-func _ready() -> void:
+func ready():
+	load_credits()
 	
+func load_credits():
 	# Try to load credits.txt, if there is none create default and use that
 	if not FileAccess.file_exists(%Config.content_path + "/" + %Config.content_credits):
 		print("Loading Error: Couldn't find credits at " + %Config.content_path + "/" + %Config.content_credits + ". Created default credits there instead.")
