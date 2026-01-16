@@ -2,9 +2,20 @@ extends Node
 
 var headers = []
 var content = [[]]
+var start_id = null
+
+# Data Columns
+var id_index = 0
+var app_index = 1
+var char_index = 2
+var parameters_index = 3
+var delay_index = 4
+var content_index = 5
+var triggers_index = 6
 
 func _ready():
 	load_content_file()
+	load_first()
 
 func load_content_file():
 	# If content spreadhseet is missing, overwrite with default
@@ -23,7 +34,7 @@ func load_content_file():
 	
 	# Reset Variables
 	headers = []
-	content = [[]]
+	content = {}
 	
 	var data
 	
@@ -33,18 +44,69 @@ func load_content_file():
 		data = file.get_csv_line()
 		
 		# Catch empty lines
-		if data == null:
+		if data == null or data.size() < 6:
 			print("Couldn't read line! (Size:" + str(data.size()) +")")
 			print(data.join(""))
 			return
 		
 		# Read Headers
 		if headers.is_empty():
-			for field in data:
-				headers.append(field) 
+			read_headers(data)
 			continue
 		
-		#Read Content
-		content.append(data.duplicate())
+		# Get Start Line
+		if start_id == null:
+			start_id = data[0]
+		
+		# Read Content
+		read_line(data)
 		
 	file.close()
+
+func read_headers( data : Array ):
+	var index = 0
+	for field in data:
+		var header = field.remove_chars(" ").to_upper()
+		match header:
+			"ID":
+				id_index = index
+			"APP":
+				app_index = index
+			"CID":
+				char_index = index
+			"PARAMETERS": 
+				parameters_index = index
+			"DELAY": 
+				delay_index = index
+			"CONTENT": 
+				content_index = index
+			"TRIGGERS": 
+				triggers_index = index
+		
+		headers.append(field)
+		index += 1
+
+func read_line( data : Array ):
+	var line = ContentLine.new()
+	
+	line.id = data[id_index]
+	line.app = data[app_index]
+	line.character = data[char_index]
+	line.parameters = data[parameters_index]
+	line.delay = data[delay_index]
+	line.content = data[content_index]
+	line.triggers = data[triggers_index]
+	
+	content.set(line.id, line)
+
+func load_first():
+	process_content_line(start_id)
+	
+func process_content_line( id : String):
+	var line = content[id]
+	var app = line.app.remove_chars(" ").to_lower()
+	match line.app:
+		"chat":
+			%Chat.trigger_content(line)
+		"mod":
+			%Mod.trigger_content(line)

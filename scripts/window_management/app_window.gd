@@ -31,3 +31,6 @@ func on_focus_gained():
 func on_focus_lost():
 	print("Focus Lost: " + name)
 	#%WindowManager.lose_focus(self)
+
+func trigger_content( line : ContentLine ):
+	pass

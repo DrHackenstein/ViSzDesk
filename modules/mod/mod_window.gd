@@ -5,3 +5,7 @@ func ready():
 		pass
 	else:
 		button.hide()
+		
+
+func trigger_content( line : ContentLine ):
+	pass

@@ -18,7 +18,6 @@ func ready():
 	else:
 		load_module()
 		load_characters()
-		load_content()
 
 func load_module():
 	friend_button = load("res://modules/chat/friend_button.tscn")
@@ -38,11 +37,8 @@ func load_character( character : Character ):
 	var container = messagesContainer.duplicate()
 	messagesContainerContainer.add_child(container)
 	friend.setup(character, container)
-	
-	#TEST
-	var msg = friend_message.instantiate()
-	msg.text.text = character.character_name + ": HI!"
-	container.add_child(msg)
 
-func load_content():
-	pass
+func trigger_content( line : ContentLine ):
+	var msg = friend_message.instantiate()
+	msg.text.text = line.character + ": HI!"
+	#container.add_child(msg)
