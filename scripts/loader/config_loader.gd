@@ -4,6 +4,8 @@ var config = ConfigFile.new()
 
 # Config path
 var config_path = "res://config.cfg"
+var readme_path = "res://README.txt"
+var readme_path_default = "res://README.txt"
 var content_path = "res://content"
 var content_path_default = "res://content"
 
@@ -48,13 +50,23 @@ func _ready() -> void:
 		get_config_path()
 		
 	load_config()
+	generate_readme()
 
 	# Create content folder, if it doesn't already exist
 	if not DirAccess.dir_exists_absolute(content_path):
 		DirAccess.make_dir_absolute(content_path)
 
+func generate_readme():
+	# Try to load credits.txt, if there is none create default and use that
+	if not FileAccess.file_exists(readme_path):
+		var file = FileAccess.open(readme_path_default, FileAccess.READ)
+		var new = FileAccess.open(readme_path, FileAccess.WRITE)
+		new.store_string(file.get_as_text())
+		new.close()
+		
 func get_config_path():
 	config_path = OS.get_executable_path().get_base_dir() + "/config.cfg"
+	readme_path = OS.get_executable_path().get_base_dir() + "/README.txt"
 	content_path = OS.get_executable_path().get_base_dir() + "/content"
 
 func load_config():

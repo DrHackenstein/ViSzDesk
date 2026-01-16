@@ -2,14 +2,14 @@
 
 importer="csv_translation"
 type="Translation"
-uid="uid://c3it8kf35qd0n"
+uid="uid://drexcn160rivf"
 
 [deps]
 
-files=["res://builds/Windows/content/characters.Name.translation", "res://builds/Windows/content/characters.Picture.translation"]
+files=["res://builds/Windows/content/characters.NAME.translation", "res://builds/Windows/content/characters.PIC.translation"]
 
 source_file="res://builds/Windows/content/characters.csv"
-dest_files=["res://builds/Windows/content/characters.Name.translation", "res://builds/Windows/content/characters.Picture.translation"]
+dest_files=["res://builds/Windows/content/characters.NAME.translation", "res://builds/Windows/content/characters.PIC.translation"]
 
 [params]
 

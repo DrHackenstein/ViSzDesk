@@ -2,14 +2,14 @@
 
 importer="csv_translation"
 type="Translation"
-uid="uid://bns2sxdjkfvlr"
+uid="uid://ororgc7r17hk"
 
 [deps]
 
-files=["res://builds/Windows/content/content.Text.translation", "res://builds/Windows/content/content.UID.translation", "res://builds/Windows/content/content.Window_ID.translation", "res://builds/Windows/content/content.Follow.translation", "res://builds/Windows/content/content.Button.translation", "res://builds/Windows/content/content.OK.translation", "res://builds/Windows/content/content.Scenario_ID.translation", "res://builds/Windows/content/content.Scenario.translation", "res://builds/Windows/content/content.HAS TRIGGER.translation", "res://builds/Windows/content/content.WINDOW ID ERRORS.translation"]
+files=["res://builds/Windows/content/content.APP.translation", "res://builds/Windows/content/content.CID.translation", "res://builds/Windows/content/content.PARAMETERS.translation", "res://builds/Windows/content/content.DELAY.translation", "res://builds/Windows/content/content.CONTENT.translation", "res://builds/Windows/content/content.TRIGGERS.translation"]
 
 source_file="res://builds/Windows/content/content.csv"
-dest_files=["res://builds/Windows/content/content.Text.translation", "res://builds/Windows/content/content.UID.translation", "res://builds/Windows/content/content.Window_ID.translation", "res://builds/Windows/content/content.Follow.translation", "res://builds/Windows/content/content.Button.translation", "res://builds/Windows/content/content.OK.translation", "res://builds/Windows/content/content.Scenario_ID.translation", "res://builds/Windows/content/content.Scenario.translation", "res://builds/Windows/content/content.HAS TRIGGER.translation", "res://builds/Windows/content/content.WINDOW ID ERRORS.translation"]
+dest_files=["res://builds/Windows/content/content.APP.translation", "res://builds/Windows/content/content.CID.translation", "res://builds/Windows/content/content.PARAMETERS.translation", "res://builds/Windows/content/content.DELAY.translation", "res://builds/Windows/content/content.CONTENT.translation", "res://builds/Windows/content/content.TRIGGERS.translation"]
 
 [params]
 
