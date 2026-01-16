@@ -3,14 +3,15 @@
 [ext_resource type="Script" uid="uid://gfp3bem6tjpc" path="res://modules/chat/chat_window.gd" id="1_sbyjp"]
 [ext_resource type="Texture2D" uid="uid://ccnhoqdvny2et" path="res://images/icon_send.png" id="3_y5n4s"]
 
-[node name="ChatWindow" type="Window" node_paths=PackedStringArray("friendsContainer", "messagesContainer", "responsesContainer")]
+[node name="ChatWindow" type="Window" node_paths=PackedStringArray("friendsContainer", "messagesContainerContainer", "messagesContainer", "responsesContainer")]
 oversampling_override = 1.0
 title = "Chat"
 position = Vector2i(100, 100)
 size = Vector2i(500, 600)
 script = ExtResource("1_sbyjp")
 friendsContainer = NodePath("Container/MarginContainer/FriendsContainer")
-messagesContainer = NodePath("Container/Chat/Friends Messages/MessagesContainer")
+messagesContainerContainer = NodePath("Container/Chat/Messages Container Container")
+messagesContainer = NodePath("Container/Chat/Messages Container Container/MessagesContainer")
 responsesContainer = NodePath("Container/Chat/Player Responses/HBoxContainer/MarginContainer2/ResponsesContainer")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -29,6 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Container"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
 [node name="Background" type="ColorRect" parent="Container/MarginContainer"]
@@ -44,16 +46,16 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Friends Messages" type="MarginContainer" parent="Container/Chat"]
+[node name="Messages Container Container" type="MarginContainer" parent="Container/Chat"]
 layout_mode = 2
 
-[node name="Background" type="ColorRect" parent="Container/Chat/Friends Messages"]
+[node name="Background" type="ColorRect" parent="Container/Chat/Messages Container Container"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.9340804, 0.9340805, 0.93408036, 1)
 
-[node name="MessagesContainer" type="VBoxContainer" parent="Container/Chat/Friends Messages"]
+[node name="MessagesContainer" type="VBoxContainer" parent="Container/Chat/Messages Container Container"]
 custom_minimum_size = Vector2(0, 450)
 layout_mode = 2
 alignment = 2

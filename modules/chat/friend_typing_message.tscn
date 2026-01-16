@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c2cu80vkipfkn"]
 
-[node name="Incoming Message" type="MarginContainer"]
+[node name="TypingIndicator" type="MarginContainer"]
 custom_minimum_size = Vector2(200, 0)
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10

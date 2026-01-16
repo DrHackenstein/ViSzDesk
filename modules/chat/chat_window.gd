@@ -1,6 +1,7 @@
 extends AppWindow
 
 @export var friendsContainer : Node
+@export var messagesContainerContainer : Node
 @export var messagesContainer : Node
 @export var responsesContainer : Node
  
@@ -14,9 +15,10 @@ func ready():
 	if not %Config.modules_chat:
 		button.hide()
 		return
-	load_module()
-	load_characters()
-	load_content()
+	else:
+		load_module()
+		load_characters()
+		load_content()
 
 func load_module():
 	friend_button = load("res://modules/chat/friend_button.tscn")
@@ -27,10 +29,20 @@ func load_module():
 	
 func load_characters():
 	for character in %Characters.characters:
-		print("Loading " + character.character_name)
-		var friend = friend_button.instantiate()
-		friend.setup(character)
-		friendsContainer.add_child(friend)
+		#print("Loading " + character.character_name)
+		load_character(character)
+
+func load_character( character : Character ):
+	var friend = friend_button.instantiate()
+	friendsContainer.add_child(friend)
+	var container = messagesContainer.duplicate()
+	messagesContainerContainer.add_child(container)
+	friend.setup(character, container)
 	
+	#TEST
+	var msg = friend_message.instantiate()
+	msg.text.text = character.character_name + ": HI!"
+	container.add_child(msg)
+
 func load_content():
 	pass

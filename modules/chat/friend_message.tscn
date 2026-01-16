@@ -1,11 +1,15 @@
-[gd_scene format=3 uid="uid://da5vqdhlj1l7y"]
+[gd_scene load_steps=2 format=3 uid="uid://da5vqdhlj1l7y"]
 
-[node name="Incoming Message" type="MarginContainer"]
+[ext_resource type="Script" uid="uid://dqw2f0vcnh63s" path="res://modules/chat/chat_message.gd" id="1_r3c5q"]
+
+[node name="FriendMessage" type="MarginContainer" node_paths=PackedStringArray("text")]
 custom_minimum_size = Vector2(200, 0)
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 10
+script = ExtResource("1_r3c5q")
+text = NodePath("MarginContainer/RichTextLabel")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 2
