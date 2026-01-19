@@ -34,7 +34,7 @@ Im Folgenden werden die Spalten und ihre Bedeutung für alle Apps erklärt:
 	Über die Parameter lässt sich die Darstellung, bzw. Ausführung der Inhalte je nach App anpassen. In diese Zellen werden oft mehrere, durch Komma getrennte Parameter angegeben. Die Reihenfolge und genaue Schreibweise der Parameter spielen dabei eine Rolle!
 
 		Chat-App: 
-			Parameter 1: Bestimmt ob es sich um eine Nachricht von dem Charakter ("message", "msg" oder "m") oder um einen Antwort ("response", "rsp" oder "r") hält. Wenn Parameter angegeben wird, wird davon ausgegangen, dass es sich um eine Nachricht von dem Charakter handelt.
+			Parameter 1: Bestimmt ob es sich um eine Nachricht von dem Charakter ("message", "msg" oder "m") oder um einen Antwort ("response", "rsp" oder "r") hält. Wenn kein Parameter angegeben wird, wird davon ausgegangen, dass es sich um eine Nachricht von dem Charakter handelt.
 			Beispiele: "message", "", "response", "rsp", "r"
 			
 		Mod-App:

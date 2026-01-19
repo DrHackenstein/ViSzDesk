@@ -1,18 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://2sf0amxbbl2v"]
 
 [ext_resource type="Script" uid="uid://gfp3bem6tjpc" path="res://modules/chat/chat_window.gd" id="1_sbyjp"]
-[ext_resource type="Texture2D" uid="uid://ccnhoqdvny2et" path="res://images/icon_send.png" id="3_y5n4s"]
+[ext_resource type="Script" uid="uid://b4qa2iuq2stv5" path="res://modules/chat/chat_container.gd" id="2_y7uvm"]
 
-[node name="Chat" type="Window" node_paths=PackedStringArray("friendsContainer", "messagesContainerContainer", "messagesContainer", "responsesContainer")]
+[node name="Chat" type="Window" node_paths=PackedStringArray("friendsContainer")]
 oversampling_override = 1.0
 title = "Chat"
 position = Vector2i(100, 100)
 size = Vector2i(500, 600)
 script = ExtResource("1_sbyjp")
 friendsContainer = NodePath("Container/MarginContainer/FriendsContainer")
-messagesContainerContainer = NodePath("Container/Chat/Messages Container Container")
-messagesContainer = NodePath("Container/Chat/Messages Container Container/MessagesContainer")
-responsesContainer = NodePath("Container/Chat/Player Responses/HBoxContainer/MarginContainer2/ResponsesContainer")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -42,55 +39,39 @@ color = Color(0.84764946, 0.8416522, 0.8416511, 1)
 [node name="FriendsContainer" type="VBoxContainer" parent="Container/MarginContainer"]
 layout_mode = 2
 
-[node name="Chat" type="VBoxContainer" parent="Container"]
+[node name="ChatContainer" type="VBoxContainer" parent="Container"]
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("2_y7uvm")
 
-[node name="Messages Container Container" type="MarginContainer" parent="Container/Chat"]
+[node name="Messages" type="MarginContainer" parent="Container/ChatContainer"]
 layout_mode = 2
 
-[node name="Background" type="ColorRect" parent="Container/Chat/Messages Container Container"]
+[node name="Background" type="ColorRect" parent="Container/ChatContainer/Messages"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.9340804, 0.9340805, 0.93408036, 1)
 
-[node name="MessagesContainer" type="VBoxContainer" parent="Container/Chat/Messages Container Container"]
+[node name="MessagesContainer" type="VBoxContainer" parent="Container/ChatContainer/Messages"]
 custom_minimum_size = Vector2(0, 450)
 layout_mode = 2
 alignment = 2
 
-[node name="Player Responses" type="MarginContainer" parent="Container/Chat"]
+[node name="Responses" type="MarginContainer" parent="Container/ChatContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Background" type="ColorRect" parent="Container/Chat/Player Responses"]
+[node name="Background" type="ColorRect" parent="Container/ChatContainer/Responses"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.84764946, 0.8416522, 0.8416511, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Container/Chat/Player Responses"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MarginContainer2" type="MarginContainer" parent="Container/Chat/Player Responses/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Container/ChatContainer/Responses"]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ResponsesContainer" type="VBoxContainer" parent="Container/Chat/Player Responses/HBoxContainer/MarginContainer2"]
+[node name="ResponsesContainer" type="VBoxContainer" parent="Container/ChatContainer/Responses/MarginContainer"]
 layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Container/Chat/Player Responses/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CenterContainer" type="CenterContainer" parent="Container/Chat/Player Responses/HBoxContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Container/Chat/Player Responses/HBoxContainer/MarginContainer/CenterContainer"]
-custom_minimum_size = Vector2(50, 40)
-layout_mode = 2
-texture = ExtResource("3_y5n4s")
-expand_mode = 3

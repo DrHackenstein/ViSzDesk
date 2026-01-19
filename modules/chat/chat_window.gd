@@ -1,9 +1,9 @@
 extends AppWindow
+class_name ChatWindow
 
 @export var friendsContainer : Node
-@export var messagesContainerContainer : Node
-@export var messagesContainer : Node
-@export var responsesContainer : Node
+@export var container : Node
+@export var chatContainer : Node
  
 var friend_button
 var friend_message
@@ -11,13 +11,14 @@ var friend_typing_message
 var player_message
 var player_response
 
+var friends = {}
+
 func ready():
 	if not %Config.modules_chat:
 		button.hide()
 		return
 	else:
 		load_module()
-		load_characters()
 
 func load_module():
 	friend_button = load("res://modules/chat/friend_button.tscn")
@@ -25,20 +26,25 @@ func load_module():
 	friend_typing_message = load("res://modules/chat/friend_typing_message.tscn")
 	player_message = load("res://modules/chat/player_message.tscn")
 	player_response = load("res://modules/chat/player_response.tscn")
-	
-func load_characters():
-	for character in %Characters.characters:
-		#print("Loading " + character.character_name)
-		load_character(character)
-
-func load_character( character : Character ):
-	var friend = friend_button.instantiate()
-	friendsContainer.add_child(friend)
-	var container = messagesContainer.duplicate()
-	messagesContainerContainer.add_child(container)
-	friend.setup(character, container)
 
 func trigger_content( line : ContentLine ):
-	var msg = friend_message.instantiate()
-	msg.text.text = line.character + ": HI!"
-	#container.add_child(msg)
+	# Add new friend
+	if not friends.has(line.character_id):
+		add_friend(line.get_character())
+	
+	# Hand of line to friend button
+	friends.get(line.character_id).add_line(line)
+
+func add_friend( character : Character ):
+	# Create new friend button
+	var button = friend_button.instantiate()
+	friendsContainer.add_child(button)
+	
+	# Create new message container
+	var new = chatContainer.duplicate()
+	new.hide()
+	container.add_child(new)
+	
+	# Setup friend button and add to friends
+	button.setup(character, new, self)
+	friends.set(character.character_id, button)

@@ -1,7 +1,7 @@
 extends Node
 
 var default_character_pic = "default_character.png"
-var characters = []
+var characters = {}
 
 func _ready():
 	print("Loading characters")
@@ -23,7 +23,7 @@ func load_content_file():
 		return
 	
 	# Reset Variables
-	characters = []
+	characters.clear()
 	
 	var line = -1
 	var data
@@ -65,6 +65,18 @@ func load_content_file():
 			else:
 				char.character_image = Image.load_from_file(%Config.content_path + "/" + data[2])
 			
-			characters.append(char)
+			characters.set(char.character_id, char)
 	
 	file.close()
+
+func get_character( id : String ) -> Character:
+	if characters.has(id):
+		return characters[id]
+	else:
+		print("Couldn't find character id \"" + id + "\" added placeholder Character instead")
+		var char = Character.new()
+		char.character_id = id
+		char.character_name = id
+		char.character_image = load(%Config.content_path_default + "/" + default_character_pic).get_image()
+		characters.set(char.character_id, char)
+		return char

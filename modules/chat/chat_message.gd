@@ -1,3 +1,4 @@
 extends MarginContainer
+class_name ChatMessage
 
-@export var text : RichTextLabel
+@export var label : RichTextLabel

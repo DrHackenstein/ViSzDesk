@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dqw2f0vcnh63s" path="res://modules/chat/chat_message.gd" id="1_ds7pf"]
 
-[node name="PlayerMessage" type="MarginContainer" node_paths=PackedStringArray("text")]
+[node name="PlayerMessage" type="MarginContainer" node_paths=PackedStringArray("label")]
 custom_minimum_size = Vector2(200, 0)
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 script = ExtResource("1_ds7pf")
-text = NodePath("MarginContainer/RichTextLabel")
+label = NodePath("MarginContainer/RichTextLabel")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 2

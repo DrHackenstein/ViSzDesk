@@ -46,7 +46,6 @@ func load_content_file():
 		# Catch empty lines
 		if data == null or data.size() < 6:
 			print("Couldn't read line! (Size:" + str(data.size()) +")")
-			print(data.join(""))
 			return
 		
 		# Read Headers
@@ -91,11 +90,11 @@ func read_line( data : Array ):
 	
 	line.id = data[id_index]
 	line.app = data[app_index]
-	line.character = data[char_index]
-	line.parameters = data[parameters_index]
+	line.character_id = data[char_index]
+	line.parameters = data[parameters_index].split(",")
 	line.delay = data[delay_index]
 	line.content = data[content_index]
-	line.triggers = data[triggers_index]
+	line.triggers = data[triggers_index].split(",")
 	
 	content.set(line.id, line)
 
@@ -103,7 +102,16 @@ func load_first():
 	process_content_line(start_id)
 	
 func process_content_line( id : String):
-	var line = content[id]
+	# Get line
+	var line = content.get(id)
+	if line == null:
+		print("Couldn't process content line with id: " + id)
+		return
+	
+	# Handle Delay
+	await get_tree().create_timer(line.delay).timeout
+	
+	## Pass on to App
 	var app = line.app.remove_chars(" ").to_lower()
 	match line.app:
 		"chat":

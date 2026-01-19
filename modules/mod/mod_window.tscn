@@ -1,0 +1,119 @@
+[gd_scene load_steps=3 format=3 uid="uid://crxdyhmexgxid"]
+
+[ext_resource type="Script" uid="uid://5ev64pphlrvg" path="res://modules/mod/mod_window.gd" id="1_cp01s"]
+[ext_resource type="Texture2D" uid="uid://bjc2d0uifn7tt" path="res://content/default_character.png" id="2_dhi6q"]
+
+[node name="Mod" type="Window" node_paths=PackedStringArray("empty_container", "content_container", "avatar", "content", "delete_button", "allow_button")]
+oversampling_override = 1.0
+title = "Mod"
+position = Vector2i(100, 100)
+size = Vector2i(500, 600)
+script = ExtResource("1_cp01s")
+empty_container = NodePath("MarginContainer/VBoxContainer/Empty")
+content_container = NodePath("MarginContainer/VBoxContainer/Content")
+avatar = NodePath("MarginContainer/VBoxContainer/Content/HBoxContainer/MarginContainer/Avatar")
+content = NodePath("MarginContainer/VBoxContainer/Content/HBoxContainer/MarginContainer2/Content")
+delete_button = NodePath("MarginContainer/VBoxContainer/Controls/MarginContainer2/HBoxContainer/DeleteButton")
+allow_button = NodePath("MarginContainer/VBoxContainer/Controls/MarginContainer2/HBoxContainer/AllowButton")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 495.0
+offset_bottom = 595.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Empty" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 150
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Empty"]
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "No Posts"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Content" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 150
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Avatar" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("2_dhi6q")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="Content" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Content/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Hey, this is an incoming chat message! I scales to it's content! 
+
+Neat, huh?"
+fit_content = true
+scroll_active = false
+
+[node name="Controls" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/Controls"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Controls/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="DeleteButton" type="Button" parent="MarginContainer/VBoxContainer/Controls/MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "Delete"
+
+[node name="AllowButton" type="Button" parent="MarginContainer/VBoxContainer/Controls/MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "No Violation"
