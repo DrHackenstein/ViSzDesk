@@ -56,7 +56,7 @@ func add_message():
 	# Add message
 	var msg = chat.friend_message.instantiate()
 	chatContainer.messageContainer.add_child(msg)
-	msg.label.text = current.content
+	msg.setup(current.content)
 	
 	# Handle Triggers
 	handle_triggers(current)
@@ -70,7 +70,7 @@ func add_response():
 func add_player_message( line : ContentLine ):
 	var msg = chat.player_message.instantiate()
 	chatContainer.messageContainer.add_child(msg)
-	msg.label.text = line.content
+	msg.setup(line.content)
 	
 	# Handle Triggers
 	handle_triggers(line)

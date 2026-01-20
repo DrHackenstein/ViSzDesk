@@ -7,36 +7,67 @@ extends AppWindow
 @export var delete_button : Button
 @export var allow_button : Button
 
-var current : ContentLine
-var trigger
-var allowed : bool
+var backlog = []
+var current : ContentLine = null
 
 func ready():
+	# Hide if App is disabled in config
 	if not Config.modules_moderation:
 		button.hide()
 		return
 	
-	delete_button.button_up.connect(handle_delete)
+	# Setup buttons
 	allow_button.button_up.connect(handle_allow)
+	allow_button.disabled = true
+	delete_button.button_up.connect(handle_delete)
+	delete_button.disabled = true
 
 func trigger_content( line : ContentLine ):
-	current = line
+	backlog.append(line)
+	if current == null:
+		show_next_post()
+
+func show_next_post():
+	# Catch empty backlog or already open post
+	if backlog.size() == 0 or not current == null:
+		return
+		
+	# Show Post
+	current = backlog.pop_front()
 	avatar.texture = ImageTexture.create_from_image(current.get_character().character_image)
 	content.text = current.content
 	empty_container.hide()
 	content_container.show()
 	
+	# Enable Buttons
+	allow_button.disabled = false
+	delete_button.disabled = false
+	
+	# Trigger additional content
+	if current.triggers.size() > 2:
+		for i in current.triggers.slice(2,-1):
+				Content.process_content_line(current.triggers[i])
+	
 func handle_allow():
-	allowed = true
-	handle_mod()
+	handle_mod(0)
 
 func handle_delete():
-	allowed = false
-	handle_mod()
+	handle_mod(1)
+
+func handle_mod( moderated : int ):
+	# Cache triggers
+	var trigger = current.triggers.get(moderated)
 	
-func handle_mod():
+	# Disable everything
+	current = null
 	empty_container.show()
 	content_container.hide()
-	for i in current.triggers.size():
-		if (i == 0 and allowed) or (i == 1 and not allowed) or (i > 1):
-			Content.process_content_line(current.triggers[i])
+	allow_button.disabled = true
+	delete_button.disabled = true
+	
+	# Load next backlog item first
+	if backlog.size() > 0:
+		show_next_post()
+	
+	# Then process triggers
+	Content.process_content_line(trigger)

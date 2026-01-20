@@ -45,10 +45,11 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_y7uvm")
-messageContainer = NodePath("Messages/MessagesContainer")
-responseContainer = NodePath("Responses/MarginContainer/ResponsesContainer")
+messageContainer = NodePath("Messages/ScrollContainer/MessagesContainer")
+responseContainer = NodePath("Responses/MarginContainer/ScrollContainer/ResponsesContainer")
 
 [node name="Messages" type="MarginContainer" parent="Container/ChatContainer"]
+custom_minimum_size = Vector2(0, 450)
 layout_mode = 2
 
 [node name="Background" type="ColorRect" parent="Container/ChatContainer/Messages"]
@@ -57,12 +58,18 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.9340804, 0.9340805, 0.93408036, 1)
 
-[node name="MessagesContainer" type="VBoxContainer" parent="Container/ChatContainer/Messages"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Container/ChatContainer/Messages"]
+layout_mode = 2
+
+[node name="MessagesContainer" type="VBoxContainer" parent="Container/ChatContainer/Messages/ScrollContainer"]
 custom_minimum_size = Vector2(0, 450)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 2
 
 [node name="Responses" type="MarginContainer" parent="Container/ChatContainer"]
+clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -77,5 +84,10 @@ custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ResponsesContainer" type="VBoxContainer" parent="Container/ChatContainer/Responses/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Container/ChatContainer/Responses/MarginContainer"]
 layout_mode = 2
+
+[node name="ResponsesContainer" type="VBoxContainer" parent="Container/ChatContainer/Responses/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

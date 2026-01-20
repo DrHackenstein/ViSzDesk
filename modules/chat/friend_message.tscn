@@ -4,6 +4,7 @@
 
 [node name="FriendMessage" type="MarginContainer" node_paths=PackedStringArray("label")]
 custom_minimum_size = Vector2(200, 0)
+size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 50

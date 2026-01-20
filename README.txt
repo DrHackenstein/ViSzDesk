@@ -22,7 +22,7 @@ Im Folgenden werden die Spalten und ihre Bedeutung für alle Apps erklärt:
 	Die ID ist eine eindeutige Identifikations-Zeichenfolge über die, die jeweiligen Inhalte angesteuert werden können.
 
 	APP
-	Hier wird definiert welche APP den Inhalt verarbeiten soll. Wenn keine passende APP gefunden wird, wird der Inhalt ignoriert.
+	Hier wird definiert welche APP den Inhalt verarbeiten soll. Wenn keine passende APP gefunden wird, wird der Inhalt ignoriert und nur die angegebenen Trigger ausgelöst.
 	Die verschiedenen Apps werden wie folgt angesteuert:
 		Chat-App: chat 
 		Moderations-App: mod
@@ -55,7 +55,7 @@ Im Folgenden werden die Spalten und ihre Bedeutung für alle Apps erklärt:
 			Beispiele: "2", "1,2,3", "", "-"
 		
 		Mod-App:
-			Die ersten beiden Stellen der Liste verhalten sich in der Mod-App anders als im Chat. Sie definieren die Reaktionen auf den "Zulassen"- bzw. "Moderieren"-Button. Alle darauf folgenden IDs werden ausgelöst unabhängig davon wie moderiert wurde. Wenn auf die jeweilige Moderation keine Reaktion erfolgen soll kann der Listen-Platz leer bleiben oder mit "-" freigehalten werden.
+			Die ersten beiden Stellen der Liste verhalten sich in der Mod-App anders als im Chat. Sie definieren die Reaktionen auf den "Zulassen"- bzw. "Moderieren"-Button. Alle darauf folgenden IDs werden ausgelöst sobald der Post angezeigt wird, also noch bevor moderiert wurde. Wenn auf die jeweilige Moderation keine Reaktion erfolgen soll kann der Listen-Platz leer bleiben oder mit "-" freigehalten werden.
 			Beispiele: "1,2", "1,2,5", "", "-,-,4", ",,4"
 
 

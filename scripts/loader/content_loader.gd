@@ -114,7 +114,7 @@ func process_content_line( id : String):
 		return
 	
 	# Handle Delay
-	#await get_tree().create_timer(line.delay).timeout
+	await get_tree().create_timer(line.delay).timeout
 	
 	## Pass on to App
 	var app = line.app.remove_chars(" ").to_lower()
@@ -123,4 +123,6 @@ func process_content_line( id : String):
 			get_node("/root/Main/%Chat").trigger_content(line)
 		"mod":
 			get_node("/root/Main/%Mod").trigger_content(line)
-		
+		_:
+			for trigger in line.triggers:
+				process_content_line(trigger)
