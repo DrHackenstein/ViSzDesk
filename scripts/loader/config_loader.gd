@@ -36,7 +36,9 @@ var content_credits = "credits.txt"
 var content_credits_default = "credits.txt"
 var content_time_id = "clock_start_time"
 var content_time = "22:01"
-var content_configs = [[content_spreadsheet_id,"content_spreadsheet"],[content_characters_id,"content_characters"], [content_wallpaper_id,"content_wallpaper"], [content_credits_id, "content_credits"], [content_time_id,"content_time"]]
+var content_debug_id = "debug_mode"
+var content_debug = false
+var content_configs = [[content_spreadsheet_id,"content_spreadsheet"],[content_characters_id,"content_characters"], [content_wallpaper_id,"content_wallpaper"], [content_credits_id, "content_credits"], [content_time_id,"content_time"], [content_debug_id,"content_debug"]]
 
 var modules_section = "modules"
 var modules_chat_id = "chat"

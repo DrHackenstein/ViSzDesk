@@ -125,4 +125,5 @@ func process_content_line( id : String):
 			get_node("/root/Main/%Mod").trigger_content(line)
 		_:
 			for trigger in line.triggers:
-				process_content_line(trigger)
+				if not trigger == null:
+					process_content_line(trigger)

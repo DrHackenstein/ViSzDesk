@@ -11,7 +11,11 @@ func setup( line : ContentLine, friend : FriendButton ):
 	current = line
 	friendButton = friend
 	
-	label.text = current.content
+	if Config.content_debug:
+		label.text = line.id + ": " + line.content + " (Trigger: " + ",".join(line.triggers) +")"
+	else:
+		label.text = line.content
+	
 	button.button_up.connect(select_response)
 	
 func select_response():

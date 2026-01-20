@@ -46,17 +46,19 @@ func is_response() -> bool:
 
 func add_message():
 	print("Add message " + current.id + " to " + friend_name.text)
+	
 	# Handle typing delay
-	var wait_time = current.content.split(" ").size() * randf_range(0.25, 0.5)
-	var typing = chat.friend_typing_message.instantiate()
-	chatContainer.messageContainer.add_child(typing)
-	await get_tree().create_timer(wait_time).timeout
-	typing.queue_free()
+	if not Config.content_debug:
+		var wait_time = current.content.split(" ").size() * randf_range(0.25, 0.5)
+		var typing = chat.friend_typing_message.instantiate()
+		chatContainer.messageContainer.add_child(typing)
+		await get_tree().create_timer(wait_time).timeout
+		typing.queue_free()
 	
 	# Add message
 	var msg = chat.friend_message.instantiate()
 	chatContainer.messageContainer.add_child(msg)
-	msg.setup(current.content)
+	msg.setup(current)
 	
 	# Handle Triggers
 	handle_triggers(current)
@@ -70,12 +72,13 @@ func add_response():
 func add_player_message( line : ContentLine ):
 	var msg = chat.player_message.instantiate()
 	chatContainer.messageContainer.add_child(msg)
-	msg.setup(line.content)
+	msg.setup(line)
 	
 	# Handle Triggers
 	handle_triggers(line)
 
 func handle_triggers( line : ContentLine ):
 	for id in line.triggers:
-		print("Chat line " + current.id + "(" +friend_name.text+ ") tiggers line " + id)
-		Content.process_content_line(id)
+		if not id == null:
+			print("Chat line " + current.id + "(" +friend_name.text+ ") tiggers line " + id)
+			Content.process_content_line(id)

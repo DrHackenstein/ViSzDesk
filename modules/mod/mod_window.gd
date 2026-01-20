@@ -35,7 +35,12 @@ func show_next_post():
 	# Show Post
 	current = backlog.pop_front()
 	avatar.texture = ImageTexture.create_from_image(current.get_character().character_image)
-	content.text = current.content
+	
+	if Config.content_debug:
+		content.text = current.id + ": " + current.content + " (Trigger: " + ",".join(current.triggers) +")"
+	else:
+		content.text = current.content
+	
 	empty_container.hide()
 	content_container.show()
 	
@@ -43,10 +48,12 @@ func show_next_post():
 	allow_button.disabled = false
 	delete_button.disabled = false
 	
+	
 	# Trigger additional content
 	if current.triggers.size() > 2:
-		for i in current.triggers.slice(2,-1):
-				Content.process_content_line(current.triggers[i])
+		for trigger in current.triggers.slice(2,current.triggers.size()):
+			if not trigger == null:
+				Content.process_content_line(trigger)
 	
 func handle_allow():
 	handle_mod(0)
@@ -69,5 +76,6 @@ func handle_mod( moderated : int ):
 	if backlog.size() > 0:
 		show_next_post()
 	
-	# Then process triggers
-	Content.process_content_line(trigger)
+	# Then process button trigger
+	if not trigger == null:
+		Content.process_content_line(trigger)

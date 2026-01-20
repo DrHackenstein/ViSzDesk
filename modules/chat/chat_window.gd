@@ -14,11 +14,12 @@ var player_response
 var friends = {}
 
 func ready():
+	# Hide if App is disabled in config
 	if not Config.modules_chat:
 		button.hide()
 		return
-	else:
-		load_module()
+	
+	load_module()
 
 func load_module():
 	friend_button = preload("res://modules/chat/friend_button.tscn")

@@ -3,8 +3,12 @@ class_name ChatMessage
 
 @export var label : RichTextLabel
 
-func setup(msg : String):
-	label.text = msg
+func setup( line : ContentLine ):
+	if Config.content_debug:
+		label.text = line.id + ": " + line.content + " (Trigger: " + ",".join(line.triggers) +")"
+	else:
+		label.text = line.content
+	
 	scrolldown()
 	
 func scrolldown():
