@@ -3,13 +3,15 @@
 [ext_resource type="Script" uid="uid://gfp3bem6tjpc" path="res://modules/chat/chat_window.gd" id="1_sbyjp"]
 [ext_resource type="Script" uid="uid://b4qa2iuq2stv5" path="res://modules/chat/chat_container.gd" id="2_y7uvm"]
 
-[node name="Chat" type="Window" node_paths=PackedStringArray("friendsContainer")]
+[node name="Chat" type="Window" node_paths=PackedStringArray("friendsContainer", "container", "chatContainer")]
 oversampling_override = 1.0
 title = "Chat"
 position = Vector2i(100, 100)
 size = Vector2i(500, 600)
 script = ExtResource("1_sbyjp")
 friendsContainer = NodePath("Container/MarginContainer/FriendsContainer")
+container = NodePath("Container")
+chatContainer = NodePath("Container/ChatContainer")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -39,10 +41,12 @@ color = Color(0.84764946, 0.8416522, 0.8416511, 1)
 [node name="FriendsContainer" type="VBoxContainer" parent="Container/MarginContainer"]
 layout_mode = 2
 
-[node name="ChatContainer" type="VBoxContainer" parent="Container"]
+[node name="ChatContainer" type="VBoxContainer" parent="Container" node_paths=PackedStringArray("messageContainer", "responseContainer")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_y7uvm")
+messageContainer = NodePath("Messages/MessagesContainer")
+responseContainer = NodePath("Responses/MarginContainer/ResponsesContainer")
 
 [node name="Messages" type="MarginContainer" parent="Container/ChatContainer"]
 layout_mode = 2

@@ -10,7 +10,7 @@ var text
 func _ready():
 	timer.timeout.connect(add_minute)
 	
-	var start_values = %Config.content_time.split(":")
+	var start_values = Config.content_time.split(":")
 	#start_values = Save_Controller.load_time(hour, minute)
 	hour = int(start_values[0])
 	minute = int(start_values[1])

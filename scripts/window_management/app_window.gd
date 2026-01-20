@@ -19,18 +19,18 @@ func hide_dialog():
 func on_visibility_change():
 	if visible:
 		print("Visibility Gained: " + name)
-		%WindowManager.add(self)
+		WindowManager.add(self)
 	else:
 		print("Visibility Lost: " + name)
-		%WindowManager.remove(self)
+		WindowManager.remove(self)
 
 func on_focus_gained():
 	print("Focus Gained: " + name)
-	%WindowManager.gain_focus(self)
+	WindowManager.gain_focus(self)
 	
 func on_focus_lost():
 	print("Focus Lost: " + name)
-	#%WindowManager.lose_focus(self)
+	#WindowManager.lose_focus(self)
 
 func trigger_content( line : ContentLine ):
-	pass
+	print("AppWindow.trigger_content was called with " + line.id + ". App " + line.app + " needs to implement this function!")

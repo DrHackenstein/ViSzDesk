@@ -2,3 +2,5 @@
 .godot/
 /android/
 *.translation
+content/.~lock.szenario.csv\#
+*.tmp

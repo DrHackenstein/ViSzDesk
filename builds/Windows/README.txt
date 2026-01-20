@@ -13,7 +13,10 @@ Im Folgenden werden die Konfigurations-Dateien erklärt.
 
 
 // CONTENT.CSV \\
-Über die content.csv werden die Inhalte der Szenarien und deren Verknüpfungen definiert. Jede Zeile definiert einen Inhalt. Die genaue Funktion der Zellen der verschiedenen Spalten ist für alle Apps generell identisch aufgebaut. Die PARAMETERS und TRIGGERS Spalten haben jedoch je nach App etwas unterschiedliche Funktionen. Groß- und Kleinschreibung und Leerzeichen wird bei der Erkennung von IDs hierbei generell ignoriert. Im Folgenden werden die Spalten und ihre Bedeutung für alle Apps erklärt.
+Über die content.csv werden die Inhalte der Szenarien und deren Verknüpfungen definiert. Jede Zeile definiert einen Inhalt. Die genaue Funktion der Zellen der verschiedenen Spalten ist für alle Apps generell identisch aufgebaut. Die PARAMETERS und TRIGGERS Spalten haben jedoch je nach App etwas unterschiedliche Funktionen. Groß- und Kleinschreibung und Leerzeichen wird bei der Erkennung von IDs hierbei generell ignoriert. 
+Achtung: Die erste Zeile wird stets als Start des Szenarios geladen und direkt gestartet.
+
+Im Folgenden werden die Spalten und ihre Bedeutung für alle Apps erklärt:
 
 	ID
 	Die ID ist eine eindeutige Identifikations-Zeichenfolge über die, die jeweiligen Inhalte angesteuert werden können.
@@ -31,7 +34,7 @@ Im Folgenden werden die Konfigurations-Dateien erklärt.
 	Über die Parameter lässt sich die Darstellung, bzw. Ausführung der Inhalte je nach App anpassen. In diese Zellen werden oft mehrere, durch Komma getrennte Parameter angegeben. Die Reihenfolge und genaue Schreibweise der Parameter spielen dabei eine Rolle!
 
 		Chat-App: 
-			Parameter 1: Bestimmt ob es sich um eine Nachricht von dem Charakter ("message", "msg" oder "m") oder um einen Antwort ("response", "rsp" oder "r") hält. Wenn Parameter angegeben wird, wird davon ausgegangen, dass es sich um eine Nachricht von dem Charakter handelt.
+			Parameter 1: Bestimmt ob es sich um eine Nachricht von dem Charakter ("message", "msg" oder "m") oder um einen Antwort ("response", "rsp" oder "r") hält. Wenn kein Parameter angegeben wird, wird davon ausgegangen, dass es sich um eine Nachricht von dem Charakter handelt.
 			Beispiele: "message", "", "response", "rsp", "r"
 			
 		Mod-App:

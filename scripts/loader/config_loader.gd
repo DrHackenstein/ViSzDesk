@@ -23,8 +23,8 @@ var boot_configs = [[boot_show_id, "boot_show"],[boot_spinner_delay_id, "boot_sp
 
 var content_section = "content"
 var content_spreadsheet_id = "content"
-var content_spreadsheet = "content.csv"
-var content_spreadsheet_default = "content.csv"
+var content_spreadsheet = "szenario.csv"
+var content_spreadsheet_default = "szenario.csv"
 var content_characters_id = "characters"
 var content_characters = "characters.csv"
 var content_characters_default = "characters.csv"

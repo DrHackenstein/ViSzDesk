@@ -1,7 +1,7 @@
 extends Node
 
 var headers = []
-var content = [[]]
+var content = {}
 var start_id = null
 
 # Data Columns
@@ -15,38 +15,42 @@ var triggers_index = 6
 
 func _ready():
 	load_content_file()
-	load_first()
+	self.call_deferred("load_first")
 
 func load_content_file():
 	# If content spreadhseet is missing, overwrite with default
-	if not FileAccess.file_exists(%Config.content_path + "/" + %Config.content_spreadsheet):
-		print("Loading Error: Couldn't find content spreadsheet at " + %Config.content_path + "/" + %Config.content_spreadsheet + "!\nCreating default spreadsheet there.")
-		var default = FileAccess.open(%Config.content_path_default + "/" + %Config.content_spreadsheet_default, FileAccess.READ)
-		var new = FileAccess.open(%Config.content_path + "/" + %Config.content_spreadsheet, FileAccess.WRITE)
+	if not FileAccess.file_exists(Config.content_path + "/" + Config.content_spreadsheet):
+		push_warning("Loading Error: Couldn't find content spreadsheet at " + Config.content_path + "/" + Config.content_spreadsheet + "!\nCreating default spreadsheet there.")
+		var default = FileAccess.open(Config.content_path_default + "/" + Config.content_spreadsheet_default, FileAccess.READ)
+		var new = FileAccess.open(Config.content_path + "/" + Config.content_spreadsheet, FileAccess.WRITE)
 		new.store_string(default.get_as_text())
 		new.close()
 	
-	var file = FileAccess.open(%Config.content_path + "/" + %Config.content_spreadsheet, FileAccess.READ)
+	var file = FileAccess.open(Config.content_path + "/" + Config.content_spreadsheet, FileAccess.READ)
 	
 	if file == null:
-		print("Couldn't load csv!")
+		push_error("Loading Error: Couldn't read " + Config.content_path + "/" + Config.content_spreadsheet)
 		return
+	else:
+		print("Loading " + Config.content_path + "/" + Config.content_spreadsheet + " ...")
 	
 	# Reset Variables
-	headers = []
-	content = {}
+	headers.clear()
+	content.clear()
 	
 	var data
+	var line = -1
 	
 	while !file.eof_reached():
 		
 		# Load Line
 		data = file.get_csv_line()
+		line += 1
 		
 		# Catch empty lines
-		if data == null or data.size() < 6:
-			print("Couldn't read line! (Size:" + str(data.size()) +")")
-			return
+		if data == null or data.size() < 7:
+			print("Couldn't read line " + str(line) + ": ".join(data) + " (Size:" + str(data.size()) +")")
+			continue
 		
 		# Read Headers
 		if headers.is_empty():
@@ -88,17 +92,18 @@ func read_headers( data : Array ):
 func read_line( data : Array ):
 	var line = ContentLine.new()
 	
-	line.id = data[id_index]
-	line.app = data[app_index]
-	line.character_id = data[char_index]
-	line.parameters = data[parameters_index].split(",")
-	line.delay = data[delay_index]
+	line.id = data[id_index].remove_chars(" ")
+	line.app = data[app_index].remove_chars(" ")
+	line.character_id = data[char_index].remove_chars(" ")
+	line.parameters = data[parameters_index].remove_chars(" ").split(",")
+	line.delay = int(data[delay_index].remove_chars(" "))
 	line.content = data[content_index]
-	line.triggers = data[triggers_index].split(",")
+	line.triggers = data[triggers_index].remove_chars(" ").split(",")
 	
 	content.set(line.id, line)
 
 func load_first():
+	print("Start Szenario with " + start_id)
 	process_content_line(start_id)
 	
 func process_content_line( id : String):
@@ -109,12 +114,13 @@ func process_content_line( id : String):
 		return
 	
 	# Handle Delay
-	await get_tree().create_timer(line.delay).timeout
+	#await get_tree().create_timer(line.delay).timeout
 	
 	## Pass on to App
 	var app = line.app.remove_chars(" ").to_lower()
-	match line.app:
+	match app:
 		"chat":
-			%Chat.trigger_content(line)
+			get_node("/root/Main/%Chat").trigger_content(line)
 		"mod":
-			%Mod.trigger_content(line)
+			get_node("/root/Main/%Mod").trigger_content(line)
+		

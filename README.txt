@@ -12,8 +12,8 @@ Im Folgenden werden die Konfigurations-Dateien erklärt.
 
 
 
-// CONTENT.CSV \\
-Über die content.csv werden die Inhalte der Szenarien und deren Verknüpfungen definiert. Jede Zeile definiert einen Inhalt. Die genaue Funktion der Zellen der verschiedenen Spalten ist für alle Apps generell identisch aufgebaut. Die PARAMETERS und TRIGGERS Spalten haben jedoch je nach App etwas unterschiedliche Funktionen. Groß- und Kleinschreibung und Leerzeichen wird bei der Erkennung von IDs hierbei generell ignoriert. 
+// SZENARIO.CSV \\
+Über die szenario.csv werden die Inhalte der Szenarien und deren Verknüpfungen definiert. Jede Zeile definiert einen Inhalt. Die genaue Funktion der Zellen der verschiedenen Spalten ist für alle Apps generell identisch aufgebaut. Die PARAMETERS und TRIGGERS Spalten haben jedoch je nach App etwas unterschiedliche Funktionen. Groß- und Kleinschreibung und Leerzeichen wird bei der Erkennung von IDs hierbei generell ignoriert. 
 Achtung: Die erste Zeile wird stets als Start des Szenarios geladen und direkt gestartet.
 
 Im Folgenden werden die Spalten und ihre Bedeutung für alle Apps erklärt:

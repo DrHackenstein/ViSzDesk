@@ -31,18 +31,21 @@ func add_line( line : ContentLine ):
 	current = line
 	if is_message():
 		add_message()
-	if is_response():
+	elif is_response():
 		add_response()
 	else:
 		print("Couldn't process chat message " + line.id + ". Unkown parameter: " + line.parameters.get(0) )
 
 func is_message() -> bool:
-	return current.parameters.get(0) == "" or "m" or "msg" or "message"
+	var p = current.parameters.get(0)
+	return p == "" or p == "m" or p == "msg" or p == "message"
 
 func is_response() -> bool:
-	return current.parameters.get(0) == "r" or "rsp" or "response"
+	var p = current.parameters.get(0)
+	return p == "r" or p == "rsp" or p == "response"
 
 func add_message():
+	print("Add message " + current.id + " to " + friend_name.text)
 	# Handle typing delay
 	var wait_time = current.content.split(" ").size() * randf_range(0.25, 0.5)
 	var typing = chat.friend_typing_message.instantiate()
@@ -59,9 +62,10 @@ func add_message():
 	handle_triggers(current)
 	
 func add_response():
+	print("Add response " + current.id + " to " + friend_name.text)
 	var rsp = chat.player_response.instantiate()
 	chatContainer.responseContainer.add_child(rsp)
-	rsp.setup(current)
+	rsp.setup(current, self)
 	
 func add_player_message( line : ContentLine ):
 	var msg = chat.player_message.instantiate()
@@ -73,4 +77,5 @@ func add_player_message( line : ContentLine ):
 
 func handle_triggers( line : ContentLine ):
 	for id in line.triggers:
-		%Content.process_content_line(id)
+		print("Chat line " + current.id + "(" +friend_name.text+ ") tiggers line " + id)
+		Content.process_content_line(id)

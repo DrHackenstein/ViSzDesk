@@ -14,20 +14,21 @@ var player_response
 var friends = {}
 
 func ready():
-	if not %Config.modules_chat:
+	if not Config.modules_chat:
 		button.hide()
 		return
 	else:
 		load_module()
 
 func load_module():
-	friend_button = load("res://modules/chat/friend_button.tscn")
-	friend_message = load("res://modules/chat/friend_message.tscn")
-	friend_typing_message = load("res://modules/chat/friend_typing_message.tscn")
-	player_message = load("res://modules/chat/player_message.tscn")
-	player_response = load("res://modules/chat/player_response.tscn")
+	friend_button = preload("res://modules/chat/friend_button.tscn")
+	friend_message = preload("res://modules/chat/friend_message.tscn")
+	friend_typing_message = preload("res://modules/chat/friend_typing_message.tscn")
+	player_message = preload("res://modules/chat/player_message.tscn")
+	player_response = preload("res://modules/chat/player_response.tscn")
 
 func trigger_content( line : ContentLine ):
+	print("Trigger chat line " + line.id)
 	# Add new friend
 	if not friends.has(line.character_id):
 		add_friend(line.get_character())
@@ -36,9 +37,10 @@ func trigger_content( line : ContentLine ):
 	friends.get(line.character_id).add_line(line)
 
 func add_friend( character : Character ):
+	print("Add new friend " + character.character_id)
 	# Create new friend button
-	var button = friend_button.instantiate()
-	friendsContainer.add_child(button)
+	var friendButton = friend_button.instantiate()
+	friendsContainer.add_child(friendButton)
 	
 	# Create new message container
 	var new = chatContainer.duplicate()
@@ -46,5 +48,5 @@ func add_friend( character : Character ):
 	container.add_child(new)
 	
 	# Setup friend button and add to friends
-	button.setup(character, new, self)
-	friends.set(character.character_id, button)
+	friendButton.setup(character, new, self)
+	friends.set(character.character_id, friendButton)

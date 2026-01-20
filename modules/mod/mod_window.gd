@@ -12,7 +12,7 @@ var trigger
 var allowed : bool
 
 func ready():
-	if not %Config.modules_moderation:
+	if not Config.modules_moderation:
 		button.hide()
 		return
 	
@@ -39,4 +39,4 @@ func handle_mod():
 	content_container.hide()
 	for i in current.triggers.size():
 		if (i == 0 and allowed) or (i == 1 and not allowed) or (i > 1):
-			%Content.process_content_line(current.triggers[i])
+			Content.process_content_line(current.triggers[i])

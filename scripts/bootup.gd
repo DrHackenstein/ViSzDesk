@@ -10,15 +10,15 @@ var progress_spinner_animation : Tween
 func _ready() -> void:
 	self.popup_window = false
 	
-	if %Config.boot_show and not OS.has_feature("editor"):
+	if Config.boot_show and not OS.has_feature("editor"):
 		background.color = Color.BLACK
 		setup_spinner()
 		setup_audio()
 		
-		await get_tree().create_timer(%Config.boot_spinner_delay).timeout
+		await get_tree().create_timer(Config.boot_spinner_delay).timeout
 		show_spinner()
 		
-		await get_tree().create_timer(%Config.boot_idle_time).timeout
+		await get_tree().create_timer(Config.boot_idle_time).timeout
 		close()
 		
 	else:
@@ -33,8 +33,8 @@ func show_spinner():
 	progress_spinner.show()
 
 func setup_audio():
-	var duration = %Config.boot_spinner_delay + %Config.boot_idle_time
-	if %Config.boot_audio and duration > 0:
+	var duration = Config.boot_spinner_delay + Config.boot_idle_time
+	if Config.boot_audio and duration > 0:
 		audio_player.play()
 		await get_tree().create_timer(duration - 1).timeout
 		var tween_out: Tween = get_tree().create_tween()

@@ -25,7 +25,7 @@ func _ready():
 func open_menu():
 	print("Open: " + name)
 	if( menu.is_visible() ):
-		if %WindowManager.has_focus(menu):
+		if WindowManager.has_focus(menu):
 			menu.hide()
 		else:
 			menu.grab_focus()
@@ -40,9 +40,9 @@ func focus():
 func unfocus():
 	set_button_style_focused(false)
 
-func set_button_style_focused(focus : bool):
+func set_button_style_focused(focused : bool):
 	#print(name, " SET BUTTON FOCUS STYLE ", focus)
-	if(focus):
+	if(focused):
 		add_theme_stylebox_override("normal", focus_style)
 	else:
 		remove_theme_stylebox_override("normal")
@@ -50,8 +50,8 @@ func set_button_style_focused(focus : bool):
 func notify():
 	set_notification(true)
 
-func set_notification(notify : bool):
-	if notify:
+func set_notification(notifyed : bool):
+	if notifyed:
 		start_blinking()
 		set_button_icon(icon_notification)
 	else:
