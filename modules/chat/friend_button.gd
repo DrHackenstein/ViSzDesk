@@ -29,6 +29,16 @@ func setup( character : Character, container : Node, chatWindow : ChatWindow ):
 
 func add_line( line : ContentLine ):
 	current = line
+	
+	# Handle override
+	if is_override():
+		handle_override()
+	
+	# Handle empty content
+	if current.content == "":
+		handle_triggers(current)
+		return
+	
 	if is_message():
 		add_message()
 	elif is_response():
@@ -37,12 +47,23 @@ func add_line( line : ContentLine ):
 		print("Couldn't process chat message " + line.id + ". Unkown parameter: " + line.parameters.get(0) )
 
 func is_message() -> bool:
-	var p = current.parameters.get(0)
-	return p == "" or p == "m" or p == "msg" or p == "message"
+	return current.parameters.size() == 0 or current.parameters.has("m") or current.parameters.has("msg") or current.parameters.has("message")
 
 func is_response() -> bool:
-	var p = current.parameters.get(0)
-	return p == "r" or p == "rsp" or p == "response"
+	return current.parameters.has("r") or current.parameters.has("rsp") or current.parameters.has("response")
+
+func is_override() -> bool:
+	return current.parameters.has("o") or current.parameters.has("ovr") or current.parameters.has("ovrd") or current.parameters.has("override")
+
+func handle_override():
+	if is_message():
+		var messages = chatContainer.messageContainer.get_children()
+		for msg in messages:
+			msg.queue_free()
+	elif is_response():
+		var responses = chatContainer.responseContainer.get_children()
+		for rsp in responses:
+			rsp.queue_free()
 
 func add_message():
 	print("Add message " + current.id + " to " + friend_name.text)
@@ -81,4 +102,4 @@ func handle_triggers( line : ContentLine ):
 	for id in line.triggers:
 		if not id == null:
 			print("Chat line " + current.id + "(" +friend_name.text+ ") tiggers line " + id)
-			Content.process_content_line(id)
+			Content.process_content_line(id, line.id)

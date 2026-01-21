@@ -49,7 +49,7 @@ func load_content_file():
 		
 		# Catch empty lines
 		if data == null or data.size() < 7:
-			print("Couldn't read line " + str(line) + ": ".join(data) + " (Size:" + str(data.size()) +")")
+			push_warning("Couldn't read line " + str(line) + ": ".join(data) + " (Size:" + str(data.size()) +")")
 			continue
 		
 		# Read Headers
@@ -59,10 +59,10 @@ func load_content_file():
 		
 		# Get Start Line
 		if start_id == null:
-			start_id = data[0]
+			start_id = data[id_index]
 		
 		# Read Content
-		read_line(data)
+		read_line(data, line)
 		
 	file.close()
 
@@ -89,8 +89,18 @@ func read_headers( data : Array ):
 		headers.append(field)
 		index += 1
 
-func read_line( data : Array ):
+func read_line( data : Array, lineNumber : int ):
 	var line = ContentLine.new()
+	
+	# Ignore empty ID lines
+	if data[id_index] == "":
+		push_warning("Scenario line " + str(lineNumber) + " has no id. Line was ignored.")
+		return
+	
+	# Ignore duplicate ID lines
+	if content.has(data[id_index]):
+		push_warning("Scenario line " + str(lineNumber) + " id (" + line.id + ") already exists. Line was ignored.")
+		return
 	
 	line.id = data[id_index].remove_chars(" ")
 	line.app = data[app_index].remove_chars(" ")
@@ -104,14 +114,16 @@ func read_line( data : Array ):
 
 func load_first():
 	print("Start Szenario with " + start_id)
-	process_content_line(start_id)
+	process_content_line(start_id, "")
 	
-func process_content_line( id : String):
+func process_content_line( id : String, parent : String ):
 	# Get line
 	var line = content.get(id)
 	if line == null:
 		print("Couldn't process content line with id: " + id)
 		return
+	else:
+		line.parent = parent
 	
 	# Handle Delay
 	await get_tree().create_timer(line.delay).timeout
@@ -126,4 +138,4 @@ func process_content_line( id : String):
 		_:
 			for trigger in line.triggers:
 				if not trigger == null:
-					process_content_line(trigger)
+					process_content_line(trigger, id)

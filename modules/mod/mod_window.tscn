@@ -7,7 +7,7 @@
 oversampling_override = 1.0
 title = "Mod"
 position = Vector2i(100, 100)
-size = Vector2i(500, 600)
+size = Vector2i(500, 500)
 script = ExtResource("1_cp01s")
 empty_container = NodePath("MarginContainer/VBoxContainer/Empty")
 content_container = NodePath("MarginContainer/VBoxContainer/Content")
@@ -42,6 +42,7 @@ layout_mode = 2
 
 [node name="Empty" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 150
 theme_override_constants/margin_right = 5
@@ -59,6 +60,7 @@ horizontal_alignment = 1
 [node name="Content" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 150
 theme_override_constants/margin_right = 5

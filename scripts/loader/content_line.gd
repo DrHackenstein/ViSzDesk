@@ -8,6 +8,7 @@ var parameters : Array
 var delay : int
 var content : String
 var triggers : Array
+var parent : String
 
 func get_character() -> Character:
 	return Characters.get_character(character_id)

@@ -23,7 +23,12 @@ func ready():
 	delete_button.disabled = true
 
 func trigger_content( line : ContentLine ):
+	if is_override(line):
+		backlog.clear()
+		reset()
+	
 	backlog.append(line)
+	
 	if current == null:
 		show_next_post()
 
@@ -45,16 +50,22 @@ func show_next_post():
 	content_container.show()
 	
 	# Enable Buttons
-	allow_button.disabled = false
-	delete_button.disabled = false
-	
+	if not is_inactive():
+		allow_button.disabled = false
+		delete_button.disabled = false
 	
 	# Trigger additional content
 	if current.triggers.size() > 2:
 		for trigger in current.triggers.slice(2,current.triggers.size()):
 			if not trigger == null:
-				Content.process_content_line(trigger)
-	
+				Content.process_content_line(trigger, current.id)
+
+func is_inactive():
+	return current.parameters.has("i") or current.parameters.has("in") or current.parameters.has("inactive")
+
+func is_override(line : ContentLine) -> bool:
+	return line.parameters.has("o") or line.parameters.has("ovr") or line.parameters.has("ovrd") or line.parameters.has("override")
+
 func handle_allow():
 	handle_mod(0)
 
@@ -62,15 +73,12 @@ func handle_delete():
 	handle_mod(1)
 
 func handle_mod( moderated : int ):
-	# Cache triggers
+	# Cache trigger & id
 	var trigger = current.triggers.get(moderated)
+	var id = current.id
 	
-	# Disable everything
-	current = null
-	empty_container.show()
-	content_container.hide()
-	allow_button.disabled = true
-	delete_button.disabled = true
+	# Reset everything
+	reset()
 	
 	# Load next backlog item first
 	if backlog.size() > 0:
@@ -78,4 +86,11 @@ func handle_mod( moderated : int ):
 	
 	# Then process button trigger
 	if not trigger == null:
-		Content.process_content_line(trigger)
+		Content.process_content_line(trigger, id)
+
+func reset():
+	current = null
+	empty_container.show()
+	content_container.hide()
+	allow_button.disabled = true
+	delete_button.disabled = true

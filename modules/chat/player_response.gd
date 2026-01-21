@@ -19,8 +19,10 @@ func setup( line : ContentLine, friend : FriendButton ):
 	button.button_up.connect(select_response)
 	
 func select_response():
+	# Clear alternative responses with same parent
 	var nodes = get_parent().get_children()
 	for node in nodes:
-		node.queue_free()
+		if not node.current == null and node.current.parent == current.parent:
+			node.queue_free()
 	
 	friendButton.add_player_message(current)

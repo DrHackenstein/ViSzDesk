@@ -49,19 +49,15 @@ t16,Chat,Basti,msg,,yess.. in Deutschland ist das eine STRAFTAT.. darf also nich
 t17,Chat,Basti,rsp,,Das ist Holocaustleugnung. In Deutschland ist das eine Straftat,t18
 t18,Chat,Basti,msg,,"genau!! Mega du kennst dich ja voll aus. Hab echt den richtigen hier angeschleppt, haha^^",t19
 t19,Chat,Basti,rsp,,Danke 🙂,t20
-t20,Chat,Basti,msg,,jetzt hast du zwei option… einfach löschen oder den User bannen,"t21,t24"
-t21,Chat,Basti,rsp,,Dann würde ich erstmal nur den Post löschen,t22
-t22,Chat,Basti,msg,,"jo, beim ersten verstoß ist das genau richtig. Wenn der mehrfach postet, muss du auch mal bannen",t23
+t20,Chat,Basti,msg,,jetzt musst du handeln,t21
+t21,Chat,Basti,rsp,,Dann würde ich den Post löschen,t22
+t22,Chat,Basti,msg,,"jo, genau richtig",t23
 t23,Chat,Basti,rsp,,"Verstanden, danke!",t27
-t24,Chat,Basti,rsp,,"User bannen, oder? Das geht gar nicht.",t25
-t25,Chat,Basti,msg,,"najaaaa.. beim ersten Verstoß musst du nich sooo streng sein. Wenn er mehrfach postet, kannst du bannen",t26
-t26,Chat,Basti,rsp,,"Okay, verstehe.",t27
-t27,Chat,Basti,msg,,gut….. hast du gemacht?,
-t28,Chat,Basti,rsp,,"Oh Mist, hab versehentlich auf ""Kein Verstoß"" geklickt",t29
+t28,Chat,Basti,"rsp,ovr",,"Oh Mist, hab versehentlich auf ""Kein Verstoß"" geklickt",t29
 t29,Chat,Basti,msg,,"oha, da musst du aufpassen. aber no prob, ich fixe das kurz",t30
 t30,Chat,Basti,msg,,uuuund gelöscht,t31
 t31,Chat,Basti,msg,,nächstes mal aber besser aufpassen!,t40
-t32,Chat,Basti,rsp,,Habe den Post gelöscht,t33
+t32,Chat,Basti,"rsp,ovr",,Habe den Post gelöscht,t33
 t33,Chat,Basti,msg,,absolut richtig aus meiner sicht! du bist ja schon Profi!? 😁,t34
 t34,Chat,Basti,rsp,,"Haha, danke!",t40
 t39,Chat,Basti,rsp,,Gut 🙂,t40
@@ -71,7 +67,7 @@ t42,Chat,Basti,msg,,noch bissi MMR grinden,"t43,t44"
 t43,Chat,Basti,rsp,,"Okay, have fun!",t45
 t44,Chat,Basti,rsp,,"Warteee! Was ist, wenn ich Hilfe brauche?",t45
 t45,Chat,Basti,msg,,"wenn du noch fragen hast, schreib mir einfach ^^ bin ja hier","t46,t47"
-t46,Chat,Basti,rsp,,Super! Danke dir!,d1
+t46,Chat,Basti,rsp,,Super! Danke dir!,"d1,m1a,m1b,m1c"
 t47,Chat,Basti,rsp,,Ich melde mich!,"d1,m1a,m1b,m1c"
 m1a,Mod,Checker24,0,,"Mein Bruder hat schon wieder meinen PS5-Controller mitgenommen. Wenn er nachhause kommt, bring ich ihn 100 pro um!",
 m1b,Mod,Bruno88,1,,"SIEG HEIL! (is nur Spaß, chillt mal)",
