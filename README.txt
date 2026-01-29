@@ -10,6 +10,9 @@ Im Folgenden werden die Konfigurations-Dateien erklärt.
 // CONFIG.CFG \\
 Über die config.cfg können generelle Einstellungen getätigt werden, wie einzelne Apps an und aus geschaltet werden. Die neu generierte config.cfg enthält alle möglichen Einstellungsmöglichkeiten mit ihren Standard-Werten. Sie sind größtenteils selbsterklärend.
 
+	Textfiles
+	TBD
+
 
 
 // SZENARIO.CSV \\

@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwp7bgwdl0llw"]
+
+[ext_resource type="Script" uid="uid://pyrg05m6q4uc" path="res://window_management/text_window.gd" id="1_nvgjn"]
+
+[node name="TextWindow" type="Window" node_paths=PackedStringArray("text")]
+oversampling_override = 1.0
+title = "Credits"
+position = Vector2i(100, 100)
+size = Vector2i(500, 600)
+script = ExtResource("1_nvgjn")
+text = NodePath("RichTextLabel")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Credits:
+
+Jan Lachnit
+Benjamin Strobel
+Sarah Burrini
+
+Music by Hannes \"Crabman\" Flor
+
+Sound Effects from freesound.org:
+Computer Start by Sempoo
+Message Pop Sound by ImAFoley
+New Message by melliug"
+selection_enabled = true
