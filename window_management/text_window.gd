@@ -2,15 +2,13 @@ extends AppWindow
 
 @export var text : RichTextLabel
 
-func ready():
-	load_credits()
+var taskbar_button : Button
 
-func load_credits():
-	# Try to load credits.txt, if there is none create default and use that
-	if not FileAccess.file_exists(Config.content_path + "/" + Config.content_textfiles):
-		print("Loading Error: Couldn't find credits at " + Config.content_path + "/" + Config.content_textfiles + ". Created default credits there instead.")
-		var file = FileAccess.open(Config.content_path + "/" + Config.content_textfiles, FileAccess.WRITE)
-		file.store_string(text.text)
-		file.close()
-	else:
-		text.text = FileAccess.open(Config.content_path + "/" + Config.content_textfiles, FileAccess.READ).get_as_text()
+func setup( content : String, taskbar : Button, filename : String ):
+	text.text = content
+	taskbar_button = taskbar
+	title = filename
+
+func hide_dialog():
+	taskbar_button.hide()
+	hide()

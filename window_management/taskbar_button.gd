@@ -23,7 +23,6 @@ func _ready():
 	timer.timeout.connect(blink_button)
 
 func open_menu():
-	print("Open: " + name)
 	if( menu.is_visible() ):
 		if WindowManager.has_focus(menu):
 			menu.hide()

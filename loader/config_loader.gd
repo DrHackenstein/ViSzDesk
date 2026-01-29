@@ -52,7 +52,6 @@ func _ready() -> void:
 		get_config_path()
 		
 	load_config()
-	load_textfiles()
 	generate_readme()
 
 	# Create content folder, if it doesn't already exist
@@ -66,23 +65,6 @@ func generate_readme():
 		var new = FileAccess.open(readme_path, FileAccess.WRITE)
 		new.store_string(file.get_as_text())
 		new.close()
-		
-func load_textfiles():
-	# Get filenames
-	var files = content_textfiles.split(",")
-	
-	for filename in files:
-		if FileAccess.file_exists(content_path + "/" + filename):
-			var file = FileAccess.open(content_path + "/" + filename, FileAccess.READ)
-		else:
-			push_warning("Loading Error: Couldn't find textfile " + filename + " in " + content_path + "/")
-	
-	# Load credits.txt?
-	#if not FileAccess.file_exists(content_path + "/" + content_textfiles_default):
-		#var file = FileAccess.open(readme_path_default, FileAccess.READ)
-		#var new = FileAccess.open(readme_path, FileAccess.WRITE)
-		#new.store_string(file.get_as_text())
-		#new.close()
 		
 func get_config_path():
 	config_path = OS.get_executable_path().get_base_dir() + "/config.cfg"
