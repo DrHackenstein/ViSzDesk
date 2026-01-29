@@ -8,24 +8,30 @@ Im Folgenden werden die Konfigurations-Dateien erklärt.
 
 
 // CONFIG.CFG \\
-Über die config.cfg können generelle Einstellungen getätigt werden, wie einzelne Apps an und aus geschaltet werden. Die neu generierte config.cfg enthält alle möglichen Einstellungsmöglichkeiten mit ihren Standard-Werten. Sie sind selbsterklärend.
+Über die config.cfg können generelle Einstellungen getätigt werden, wie einzelne Apps an und aus geschaltet werden. Die neu generierte config.cfg enthält alle möglichen Einstellungsmöglichkeiten mit ihren Standard-Werten. Sie sind größtenteils selbsterklärend.
+
+	Textfiles
+	TBD
 
 
 
-// CONTENT.CSV \\
-Über die content.csv werden die Inhalte der Szenarien und deren Verknüpfungen definiert. Jede Zeile definiert einen Inhalt. Die genaue Funktion der Zellen der verschiedenen Spalten ist für alle Apps generell identisch aufgebaut. Die PARAMETERS und TRIGGERS Spalten haben jedoch je nach App etwas unterschiedliche Funktionen. Groß- und Kleinschreibung und Leerzeichen wird bei der Erkennung von IDs hierbei generell ignoriert. 
+// SZENARIO.CSV \\
+Über die szenario.csv werden die Inhalte der Szenarien und deren Verknüpfungen definiert. Jede Zeile definiert einen Inhalt. Die genaue Funktion der Zellen der verschiedenen Spalten ist für alle Apps generell identisch aufgebaut. Die PARAMETERS und TRIGGERS Spalten haben jedoch je nach App etwas unterschiedliche Funktionen. Groß- und Kleinschreibung und Leerzeichen wird bei der Erkennung von IDs hierbei generell ignoriert. 
 Achtung: Die erste Zeile wird stets als Start des Szenarios geladen und direkt gestartet.
 
 Im Folgenden werden die Spalten und ihre Bedeutung für alle Apps erklärt:
 
 	ID
-	Die ID ist eine eindeutige Identifikations-Zeichenfolge über die, die jeweiligen Inhalte angesteuert werden können.
+	Die ID ist eine eindeutige Identifikations-Zeichenfolge über die, die jeweiligen Inhalte angesteuert werden können. Wenn die ID-Zelle leer ist oder bereits eine Zeile mit der selben ID eingelesen wurde, wird die Zeile nicht eingelesen. Es wird dazu eine Warnung in die Debug-Konsole ausgegeben.
 
 	APP
-	Hier wird definiert welche APP den Inhalt verarbeiten soll. Wenn keine passende APP gefunden wird, wird der Inhalt ignoriert.
-	Die verschiedenen Apps werden wie folgt angesteuert:
-		Chat-App: chat 
-		Moderations-App: mod
+	Hier wird definiert welche APP den Inhalt verarbeiten soll. Wenn keine passende APP gefunden wird, wird der Inhalt ignoriert und nur die angegebenen Trigger ausgelöst. Im Folgenden werden die implementierten Apps und wie diese angesteuert werden erklärt:
+		
+		Chat-App (App-ID: "chat")
+		TBD
+		
+		Moderations-App (App-ID: "mod")
+		TBD (Backlog)
 	
 	CID
 	Über die CID wird der jeweilige Charakter definiert zu dem der Inhalt gehört. Wenn kein passender Charakter in der characters.csv gefunden wird, wird stattdessen die CID und ggf. ein Standard-Bild angezeigt. Achtung: Auch wenn es sich um eine Spieler*innen-Antwort auf eine Chat-Nachricht handelt, muss die CID des Charakters, auf den geantwortet werden soll, angegeben werden.
@@ -34,18 +40,28 @@ Im Folgenden werden die Spalten und ihre Bedeutung für alle Apps erklärt:
 	Über die Parameter lässt sich die Darstellung, bzw. Ausführung der Inhalte je nach App anpassen. In diese Zellen werden oft mehrere, durch Komma getrennte Parameter angegeben. Die Reihenfolge und genaue Schreibweise der Parameter spielen dabei eine Rolle!
 
 		Chat-App: 
-			Parameter 1: Bestimmt ob es sich um eine Nachricht von dem Charakter ("message", "msg" oder "m") oder um einen Antwort ("response", "rsp" oder "r") hält. Wenn kein Parameter angegeben wird, wird davon ausgegangen, dass es sich um eine Nachricht von dem Charakter handelt.
+			1. Nachrichten-Typ: Bestimmt den Nachrichten-Typ, also ob es sich um eine Nachricht von dem Charakter ("message", "msg" oder "m") oder um einen Antwort ("response", "rsp" oder "r") hält. Wenn kein Parameter angegeben wird, wird davon ausgegangen, dass es sich um eine Nachricht von dem Charakter handelt.
 			Beispiele: "message", "", "response", "rsp", "r"
 			
+			2. Override: Bestimmt ob vorherige Antwortmöglichkeiten oder Nachrichten überschrieben werden sollen. Wenn "o", "ovr", "ovrd" oder "override" angegeben wird, werden beim Nachrichten-Typ "Antwort" alle bestehenden Antwortmöglichkeiten und beim Nachrichten-Typ "Nachricht" alle bestehenden Nachrichten aus dem Chat entfernt. Danach wird ggf. die aktuelle Antwort bzw. Nachricht geladen.
+			Beispiele: "r,o", "rsp,ovrd", "response,override"
+			
 		Mod-App:
-			Parameter 1: Bestimmt wie mit dem Inhalt idealerweise umgegangen werden sollte. Dabei steht "0" für zulassen und "1" für moderieren. Wenn keine Angabe gemacht wird, wird davon ausgegangen, dass der Inhalt zugelassen werden kann.
+			1. Moderation: Bestimmt wie mit dem Inhalt idealerweise umgegangen werden sollte. Dabei steht "0" für zulassen und "1" für moderieren. Wenn keine Angabe gemacht wird, wird davon ausgegangen, dass der Inhalt zugelassen werden kann.
+			Beispiele: "", "0", "1"
+			
+			2. Override: Bestimmt ob vorherige Mod-Inhalte überschrieben werden sollen. Wenn "o", "ovr", "ovrd" oder "override" angegeben wird, werden alle bestehenden Posts, inklusive denen im Backlog, entfernt. Danach wird ggf. der neue Inhalt angezeigt.
+			Beispiele: "0,o", "1,ovrd", ",override"
+			
+			3. Inaktive Buttons: Bestimmt ob die Buttons zum Moderieren des Inhalt inaktiv bleiben sollen. Wenn "i", "in" oder "inaktiv" angegeben wird, werden die Buttons zum moderieren nicht aktiv geschaltet, wenn er geladen wird. Das bedeutet jedoch auch, dass die Spieler*in keine Möglichkeit hat den Inhalt zu moderieren, um den nächsten zu sehen. Die Mod-App wird damit praktisch inaktiv geschaltet bis ein neuer Mod-Inhalt mit "Override" ausgelöst wird, der den aktuellen Inhalt (und den Backlog) überschreibt.
+			Beispiele: "0,i", "1,in", ",inactive"
 		
 	DELAY
 	Definiert eine Verzögerung des jeweiligen Inhalts in Sekunden. D.h. wenn der Inhalt ausgelöst wird, wird die angegebene Anzahl Sekunden gewartet, bis er ausgeführt wird. Weitere Verzögerungen, wie die Eingabe-Verzögerung der Chat-App, kommen hierbei noch dazu. Wenn die Zeile leer ist, wird auch nicht verzögert.
 
 	CONTENT
-	Der jeweilige Inhalt der in der App angezeigt werden soll. In der Regel ein Text-String (Beispiel: "Hallo, i bims!"). Es können aber auch Bilder, Videos und Audio-Dateien aus dem "content"-Ordner geladen, wenn statt einem Text der Pfad zur jeweiligen Datei in eckigen Klammern eingetragen wird (Beispiel: "[bild.png]", "[audio/lied1.mp3]")
-	Unterstützte Formate sind: TBD
+	Der jeweilige Inhalt der in der App angezeigt werden soll. In der Regel ein Text-String (Beispiel: "Hallo, i bims!"). Es können aber auch Bilder, Videos und Audio-Dateien aus dem "content"-Ordner geladen, wenn statt einem Text der Pfad zur jeweiligen Datei in eckigen Klammern eingetragen wird (Beispiel: "[bild.png]", "[audio/lied1.mp3]")	Unterstützte werden die Formate TBD.
+	Wenn die Content-Zelle leer gelassen wird, werden nur die entsprechenden Parameter und Trigger abgearbeitet aber Inhalt in der jeweiligen App angezeigt.
 	
 	TRIGGERS
 	Über die Trigger werden mögliche Folge-Inhalte als Komma-getrennte Liste definiert. Wenn die Zeile leer ist oder "-" eingetragen ist, werden keine Folge-Inhalte ausgelöst.
@@ -55,7 +71,7 @@ Im Folgenden werden die Spalten und ihre Bedeutung für alle Apps erklärt:
 			Beispiele: "2", "1,2,3", "", "-"
 		
 		Mod-App:
-			Die ersten beiden Stellen der Liste verhalten sich in der Mod-App anders als im Chat. Sie definieren die Reaktionen auf den "Zulassen"- bzw. "Moderieren"-Button. Alle darauf folgenden IDs werden ausgelöst unabhängig davon wie moderiert wurde. Wenn auf die jeweilige Moderation keine Reaktion erfolgen soll kann der Listen-Platz leer bleiben oder mit "-" freigehalten werden.
+			Die ersten beiden Stellen der Liste verhalten sich in der Mod-App anders als im Chat. Sie definieren die Reaktionen auf den "Zulassen"- bzw. "Moderieren"-Button. Alle darauf folgenden IDs werden ausgelöst sobald der Post angezeigt wird, also noch bevor moderiert wurde. Wenn auf die jeweilige Moderation keine Reaktion erfolgen soll kann der Listen-Platz leer bleiben oder mit "-" freigehalten werden.
 			Beispiele: "1,2", "1,2,5", "", "-,-,4", ",,4"
 
 
@@ -70,7 +86,7 @@ In der characters.csv werden die Charaktere für die verschiedenen Apps definier
 	Definiert den Namen der in den Apps für den Charakter angezeigt werden soll. Wenn das Feld leer ist, wird stattdessen die CID in den Apps angezeigt.
 	
 	PIC
-	Hier kann eine Bild-Datei im "content"-Ordner für den Charakter definiert werden. Dieses wird dann ggf. in der App geladen und als Avatar-Bild angezeigt. Wenn das Feld leer ist oder die Datei nicht gefunden oder geladen werden kann, wird stattdessen der Standard-Avatar angezeigt.
+	Hier kann eine Bild-Datei im "content"-Ordner für den Charakter definiert werden. Es muss sich dabei um eine Bild im png-Format handeln. Dieses wird dann ggf. in der App geladen und als Avatar-Bild angezeigt. Wenn das Feld leer ist oder die Datei nicht gefunden oder geladen werden kann, wird stattdessen der Standard-Avatar angezeigt.
 
 
 

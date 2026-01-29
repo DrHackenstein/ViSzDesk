@@ -58,16 +58,16 @@ func load_content_file():
 			character.character_name = data[name_index]
 			
 			# Try to load image, if there is none use default
-			var image : CompressedTexture2D
+			var image : Image
 			if not FileAccess.file_exists(Config.content_path + "/" + data[pic_index]):
 				if not FileAccess.file_exists(Config.content_path + "/" + default_character_pic):
 					print("Loading Error: Couldn't find character pic " + Config.content_path + "/" + data[pic_index] + ". Created default pic to use instead.")
 					image = load(Config.content_path_default + "/" + default_character_pic)
-					image.get_image().save_png(Config.content_path + "/" + default_character_pic)
+					image.save_png(Config.content_path + "/" + default_character_pic)
 				else:
 					print("Loading Error: Couldn't find character pic " + Config.content_path + "/" + data[pic_index] + ". Using default pic instead.")
 					image = load(Config.content_path_default + "/" + default_character_pic)
-				character.character_image = image.get_image()
+				character.character_image = image
 			else:
 				character.character_image = Image.load_from_file(Config.content_path + "/" + data[pic_index])
 			
@@ -98,6 +98,6 @@ func get_character( id : String ) -> Character:
 		var character = Character.new()
 		character.character_id = id
 		character.character_name = id
-		character.character_image = load(Config.content_path_default + "/" + default_character_pic).get_image()
+		character.character_image = load(Config.content_path_default + "/" + default_character_pic)
 		characters.set(character.character_id, character)
 		return character

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://73xrqo3aeijn"
-path="res://.godot/imported/wallpaper.jpg-d28a96d9dec212bea5f25fdbe705b99a.ctex"
+uid="uid://c3un8hhv3iytb"
+path="res://.godot/imported/Char_006.png-5b0ba383536cb1064ded5eab89e97c7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://builds/Windows/content/wallpaper.jpg"
-dest_files=["res://.godot/imported/wallpaper.jpg-d28a96d9dec212bea5f25fdbe705b99a.ctex"]
+source_file="res://images/Profilbilder/Char_006.png"
+dest_files=["res://.godot/imported/Char_006.png-5b0ba383536cb1064ded5eab89e97c7e.ctex"]
 
 [params]
 

@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbh8sha01wren"]
+[gd_scene format=3 uid="uid://bbh8sha01wren"]
 
 [ext_resource type="Script" uid="uid://cbhsek03bxql3" path="res://modules/chat/friend_button.gd" id="1_sk6xv"]
-[ext_resource type="Texture2D" uid="uid://hjrkm6yab7is" path="res://images/icon_character.png" id="1_tcjj2"]
+[ext_resource type="Texture2D" uid="uid://bjc2d0uifn7tt" path="res://content/default_character.png" id="2_sk6xv"]
 
-[node name="Friend" type="Button" node_paths=PackedStringArray("friend_name", "friend_pic")]
+[node name="Friend" type="Button" unique_id=1675839934 node_paths=PackedStringArray("friend_name", "friend_pic")]
 custom_minimum_size = Vector2(150, 50)
 anchors_preset = 10
 anchor_right = 1.0
@@ -13,25 +13,25 @@ script = ExtResource("1_sk6xv")
 friend_name = NodePath("MarginContainer/Friend/Name")
 friend_pic = NodePath("MarginContainer/Friend/Picture")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1044158701]
 layout_mode = 0
 offset_right = 150.0
 offset_bottom = 50.0
 
-[node name="Background" type="ColorRect" parent="MarginContainer"]
+[node name="Background" type="ColorRect" parent="MarginContainer" unique_id=578065915]
 layout_mode = 2
 color = Color(0.93333334, 0.93333334, 0.93333334, 1)
 
-[node name="Friend" type="HBoxContainer" parent="MarginContainer"]
+[node name="Friend" type="HBoxContainer" parent="MarginContainer" unique_id=1124801798]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 
-[node name="Picture" type="TextureRect" parent="MarginContainer/Friend"]
+[node name="Picture" type="TextureRect" parent="MarginContainer/Friend" unique_id=1038535270]
 layout_mode = 2
-texture = ExtResource("1_tcjj2")
+texture = ExtResource("2_sk6xv")
 expand_mode = 3
 
-[node name="Name" type="Label" parent="MarginContainer/Friend"]
+[node name="Name" type="Label" parent="MarginContainer/Friend" unique_id=2124566590]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Friend A"

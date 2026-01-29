@@ -21,8 +21,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Characters="*res://loader/characters.tscn"
 Config="*res://loader/config.tscn"
+Characters="*res://loader/characters.tscn"
 Content="*res://loader/content.tscn"
 WindowManager="*res://window_management/window_manager.tscn"
 TextFiles="*res://loader/text_files.tscn"

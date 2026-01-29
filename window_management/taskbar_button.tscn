@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://b80w2bf2slyre"]
 
-[ext_resource type="Texture2D" uid="uid://024s1ubrd8k7" path="res://images/icon_mod.png" id="1_j0fii"]
+[ext_resource type="Texture2D" uid="uid://brwyw8uamhp6b" path="res://images/Notepad-Icon.png" id="1_j0fii"]
 [ext_resource type="Script" uid="uid://bm1xcl0xjm75i" path="res://window_management/taskbar_button.gd" id="2_4ufmo"]
 
-[node name="TaskbarButton" type="Button" unique_id=2105849298 node_paths=PackedStringArray("menu", "timer")]
+[node name="TaskbarButton" type="Button" unique_id=2105849298 node_paths=PackedStringArray("timer")]
 clip_contents = true
 custom_minimum_size = Vector2(80, 80)
 size_flags_horizontal = 0
@@ -14,7 +14,6 @@ icon = ExtResource("1_j0fii")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_4ufmo")
-menu = NodePath("")
 timer = NodePath("Time")
 
 [node name="Time" type="Timer" parent="." unique_id=92998945]

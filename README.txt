@@ -86,7 +86,7 @@ In der characters.csv werden die Charaktere für die verschiedenen Apps definier
 	Definiert den Namen der in den Apps für den Charakter angezeigt werden soll. Wenn das Feld leer ist, wird stattdessen die CID in den Apps angezeigt.
 	
 	PIC
-	Hier kann eine Bild-Datei im "content"-Ordner für den Charakter definiert werden. Dieses wird dann ggf. in der App geladen und als Avatar-Bild angezeigt. Wenn das Feld leer ist oder die Datei nicht gefunden oder geladen werden kann, wird stattdessen der Standard-Avatar angezeigt.
+	Hier kann eine Bild-Datei im "content"-Ordner für den Charakter definiert werden. Es muss sich dabei um eine Bild im png-Format handeln. Dieses wird dann ggf. in der App geladen und als Avatar-Bild angezeigt. Wenn das Feld leer ist oder die Datei nicht gefunden oder geladen werden kann, wird stattdessen der Standard-Avatar angezeigt.
 
 
 

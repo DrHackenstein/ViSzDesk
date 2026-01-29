@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://2sf0amxbbl2v"]
+[gd_scene format=3 uid="uid://2sf0amxbbl2v"]
 
 [ext_resource type="Script" uid="uid://gfp3bem6tjpc" path="res://modules/chat/chat_window.gd" id="1_sbyjp"]
 [ext_resource type="Script" uid="uid://b4qa2iuq2stv5" path="res://modules/chat/chat_container.gd" id="2_y7uvm"]
 
-[node name="Chat" type="Window" node_paths=PackedStringArray("friendsContainer", "container", "chatContainer")]
+[node name="Chat" type="Window" unique_id=1948978226 node_paths=PackedStringArray("friendsContainer", "container", "chatContainer")]
 oversampling_override = 1.0
 title = "Chat"
 position = Vector2i(1000, 100)
@@ -13,7 +13,7 @@ friendsContainer = NodePath("Container/MarginContainer/FriendsContainer")
 container = NodePath("Container")
 chatContainer = NodePath("Container/ChatContainer")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=1477660462]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,73 +21,73 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.65012825, 0.6501283, 0.65012825, 1)
 
-[node name="Container" type="HBoxContainer" parent="."]
+[node name="Container" type="HBoxContainer" parent="." unique_id=810499295]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Container"]
+[node name="MarginContainer" type="MarginContainer" parent="Container" unique_id=1841709458]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 
-[node name="Background" type="ColorRect" parent="Container/MarginContainer"]
+[node name="Background" type="ColorRect" parent="Container/MarginContainer" unique_id=1113472863]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.84764946, 0.8416522, 0.8416511, 1)
 
-[node name="FriendsContainer" type="VBoxContainer" parent="Container/MarginContainer"]
+[node name="FriendsContainer" type="VBoxContainer" parent="Container/MarginContainer" unique_id=1338315166]
 layout_mode = 2
 
-[node name="ChatContainer" type="VBoxContainer" parent="Container" node_paths=PackedStringArray("messageContainer", "responseContainer")]
+[node name="ChatContainer" type="VBoxContainer" parent="Container" unique_id=1249996407 node_paths=PackedStringArray("messageContainer", "responseContainer")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_y7uvm")
 messageContainer = NodePath("Messages/ScrollContainer/MessagesContainer")
 responseContainer = NodePath("Responses/MarginContainer/ScrollContainer/ResponsesContainer")
 
-[node name="Messages" type="MarginContainer" parent="Container/ChatContainer"]
+[node name="Messages" type="MarginContainer" parent="Container/ChatContainer" unique_id=1260689682]
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 
-[node name="Background" type="ColorRect" parent="Container/ChatContainer/Messages"]
+[node name="Background" type="ColorRect" parent="Container/ChatContainer/Messages" unique_id=725377767]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.9340804, 0.9340805, 0.93408036, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Container/ChatContainer/Messages"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Container/ChatContainer/Messages" unique_id=1512645669]
 layout_mode = 2
 
-[node name="MessagesContainer" type="VBoxContainer" parent="Container/ChatContainer/Messages/ScrollContainer"]
+[node name="MessagesContainer" type="VBoxContainer" parent="Container/ChatContainer/Messages/ScrollContainer" unique_id=1542279703]
 custom_minimum_size = Vector2(0, 450)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 2
 
-[node name="Responses" type="MarginContainer" parent="Container/ChatContainer"]
+[node name="Responses" type="MarginContainer" parent="Container/ChatContainer" unique_id=273401302]
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Background" type="ColorRect" parent="Container/ChatContainer/Responses"]
+[node name="Background" type="ColorRect" parent="Container/ChatContainer/Responses" unique_id=229461845]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.84764946, 0.8416522, 0.8416511, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="Container/ChatContainer/Responses"]
+[node name="MarginContainer" type="MarginContainer" parent="Container/ChatContainer/Responses" unique_id=946941233]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Container/ChatContainer/Responses/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Container/ChatContainer/Responses/MarginContainer" unique_id=87948113]
 layout_mode = 2
 
-[node name="ResponsesContainer" type="VBoxContainer" parent="Container/ChatContainer/Responses/MarginContainer/ScrollContainer"]
+[node name="ResponsesContainer" type="VBoxContainer" parent="Container/ChatContainer/Responses/MarginContainer/ScrollContainer" unique_id=2087616437]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

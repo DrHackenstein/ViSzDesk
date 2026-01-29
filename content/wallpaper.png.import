@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://cdoh648lxa06q"
+path="res://.godot/imported/wallpaper.png-d6d5df7fb771a80387168aa3764df223.image"
+
+[deps]
+
+source_file="res://content/wallpaper.png"
+dest_files=["res://.godot/imported/wallpaper.png-d6d5df7fb771a80387168aa3764df223.image"]
+
+[params]
+

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cflpklrjri2no"]
 
 [ext_resource type="Script" uid="uid://b32evq2o4d5bu" path="res://window_management/desktop_button.gd" id="1_dvhth"]
-[ext_resource type="Texture2D" uid="uid://70jlj1x8fv0d" path="res://images/icon_credits.png" id="2_828b4"]
+[ext_resource type="Texture2D" uid="uid://brwyw8uamhp6b" path="res://images/Notepad-Icon.png" id="2_dvhth"]
 
 [node name="DesktopButton" type="Button" unique_id=1888103121 node_paths=PackedStringArray("filename")]
 custom_minimum_size = Vector2(100, 115)
@@ -28,7 +28,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("2_828b4")
+texture = ExtResource("2_dvhth")
 expand_mode = 3
 stretch_mode = 4
 
