@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bv1xgmgys2pqk"]
 
-[ext_resource type="Texture2D" uid="uid://cdoh648lxa06q" path="res://content/wallpaper.png" id="1_vivmo"]
 [ext_resource type="PackedScene" uid="uid://cflpklrjri2no" path="res://window_management/desktop_button.tscn" id="2_w48qg"]
 [ext_resource type="Script" uid="uid://bm1xcl0xjm75i" path="res://window_management/taskbar_button.gd" id="4_5vw27"]
 [ext_resource type="Script" uid="uid://d1nst51xas082" path="res://scripts/bootup.gd" id="4_7mycd"]
@@ -24,7 +23,6 @@ offset_bottom = 1080.0
 
 [node name="Wallpaper" type="TextureRect" parent="Desktop" unique_id=1570120873]
 layout_mode = 2
-texture = ExtResource("1_vivmo")
 script = ExtResource("4_272bh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Desktop" unique_id=2146799196]
@@ -156,6 +154,7 @@ wait_time = 0.5
 
 [node name="Bootup" type="Popup" parent="." unique_id=1360732565 node_paths=PackedStringArray("background", "progress_spinner", "text", "audio_player")]
 transparent_bg = true
+audio_listener_enable_2d = true
 gui_disable_input = true
 oversampling_override = 1.0
 mode = 3
@@ -214,6 +213,7 @@ text = "Booting..."
 horizontal_alignment = 1
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="Bootup" unique_id=2139613593]
+position = Vector2(946, 535)
 stream = ExtResource("6_5vw27")
 
 [node name="Chat" parent="." unique_id=1955447727 instance=ExtResource("15_074og")]

@@ -6,14 +6,19 @@ extends Popup
 @export var audio_player : AudioStreamPlayer2D
 
 var progress_spinner_animation : Tween
+var os_start_jingle : AudioStream
 
 func _ready() -> void:
 	self.popup_window = false
 	
+	if Config.boot_os_start_sound:
+		os_start_jingle = load("res://sounds/351877__marlonnnnnn__start-computer.wav")
+	
 	if Config.boot_show and not OS.has_feature("editor"):
 		background.color = Color.BLACK
+		show()
 		setup_spinner()
-		setup_audio()
+		play_audio()
 		
 		await get_tree().create_timer(Config.boot_spinner_delay).timeout
 		show_spinner()
@@ -32,7 +37,7 @@ func show_spinner():
 	text.show()
 	progress_spinner.show()
 
-func setup_audio():
+func play_audio():
 	var duration = Config.boot_spinner_delay + Config.boot_idle_time
 	if Config.boot_audio and duration > 0:
 		audio_player.play()
@@ -48,16 +53,17 @@ func close():
 	progress_spinner_animation.stop()
 		
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(background, "color", Color.TRANSPARENT, 0.3)
+	tween.tween_property(background, "color", Color.TRANSPARENT, 0.5)
 	await get_tree().create_timer(1).timeout
+	hide()
 	load_desktop()
 	
 func load_desktop():
-	#%Music_Player.play()
-	#await get_tree().create_timer(1).timeout
-	#%Mod_Window.show()
-	#await get_tree().create_timer(1).timeout
-	#%Guideline.show()
-	#%Content_Manager.start_game()
+	if Config.boot_os_start_sound:
+		print("Play jingle")
+		audio_player.stream = os_start_jingle
+		audio_player.volume_db = 0
+		audio_player.play()
 	
+	await audio_player.finished
 	queue_free()

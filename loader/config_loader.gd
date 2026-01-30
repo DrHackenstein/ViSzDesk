@@ -19,7 +19,9 @@ var boot_audio_id = "play_boot_audio"
 var boot_audio = true
 var boot_idle_time_id = "boot_idle_duration"
 var boot_idle_time = 6
-var boot_configs = [[boot_show_id, "boot_show"],[boot_spinner_delay_id, "boot_spinner_delay"], [boot_audio_id, "boot_audio"], [boot_idle_time_id, "boot_idle_time"] ]
+var boot_os_start_sound_id = "play_os_start_jingle"
+var boot_os_start_sound = true
+var boot_configs = [[boot_show_id, "boot_show"],[boot_spinner_delay_id, "boot_spinner_delay"], [boot_audio_id, "boot_audio"], [boot_idle_time_id, "boot_idle_time"], [boot_os_start_sound_id, "boot_os_start_sound"] ]
 
 var content_section = "content"
 var content_spreadsheet_id = "content"
