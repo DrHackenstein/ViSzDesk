@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsh6hb5nblhy8"
-path="res://.godot/imported/ModTool-Icon.png-5507fb1cf24d5f7b6d6f4634d833e650.ctex"
+uid="uid://3b2bkjlg766f"
+path="res://.godot/imported/mod_taskbar_icon_pressed.png-54bb96867c88818eb62101ea734f4ff2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/ModTool-Icon.png"
-dest_files=["res://.godot/imported/ModTool-Icon.png-5507fb1cf24d5f7b6d6f4634d833e650.ctex"]
+source_file="res://images/mod_taskbar_icon_pressed.png"
+dest_files=["res://.godot/imported/mod_taskbar_icon_pressed.png-54bb96867c88818eb62101ea734f4ff2.ctex"]
 
 [params]
 

@@ -1,11 +1,11 @@
-extends Button
+extends TextureButton
 
 @export var filename : Label
 
 var menu : AppWindow
-var taskbar_button : Button
+var taskbar_button : TextureButton
 
-func setup( window : AppWindow, taskbar : Button, title : String ):
+func setup( window : AppWindow, taskbar : TextureButton, title : String ):
 	menu = window
 	filename.text = title
 	taskbar_button = taskbar

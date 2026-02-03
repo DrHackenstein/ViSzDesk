@@ -1,31 +1,44 @@
 [gd_scene format=3 uid="uid://bv1xgmgys2pqk"]
 
+[ext_resource type="Texture2D" uid="uid://0bwa10cqyidg" path="res://builds/Windows/content/wallpaper.png" id="1_cegan"]
 [ext_resource type="PackedScene" uid="uid://cflpklrjri2no" path="res://window_management/desktop_button.tscn" id="2_w48qg"]
 [ext_resource type="Script" uid="uid://bm1xcl0xjm75i" path="res://window_management/taskbar_button.gd" id="4_5vw27"]
 [ext_resource type="Script" uid="uid://d1nst51xas082" path="res://scripts/bootup.gd" id="4_7mycd"]
 [ext_resource type="Script" uid="uid://cecl4ebjrcd0k" path="res://scripts/wallpaper.gd" id="4_272bh"]
 [ext_resource type="Script" uid="uid://drc28xsrfw788" path="res://scripts/clock.gd" id="4_dg77c"]
-[ext_resource type="Texture2D" uid="uid://uwlrb654yvu3" path="res://images/ChatApp-Icon.png" id="4_w48qg"]
+[ext_resource type="Texture2D" uid="uid://uwlrb654yvu3" path="res://images/chat_taskbar_icon.png" id="5_82xsv"]
 [ext_resource type="Texture2D" uid="uid://drs3hj7licdxu" path="res://images/progress_spinner.png" id="5_272bh"]
 [ext_resource type="AudioStream" uid="uid://cl78imv65ps3k" path="res://sounds/booting.wav" id="6_5vw27"]
-[ext_resource type="Texture2D" uid="uid://dsh6hb5nblhy8" path="res://images/ModTool-Icon.png" id="7_2cqfq"]
-[ext_resource type="Texture2D" uid="uid://bseyowcxuwnam" path="res://images/Windows-Icon.png" id="8_yaehf"]
+[ext_resource type="Texture2D" uid="uid://tp0biue3i5k6" path="res://images/chat_taskbar_icon_pressed.png" id="6_getpj"]
+[ext_resource type="Texture2D" uid="uid://coa17hph7oj01" path="res://images/chat_taskbar_icon_hover.png" id="7_ryguw"]
+[ext_resource type="Texture2D" uid="uid://dsh6hb5nblhy8" path="res://images/mod_taskbar_icon.png" id="9_d13ii"]
+[ext_resource type="Texture2D" uid="uid://3b2bkjlg766f" path="res://images/mod_taskbar_icon_pressed.png" id="10_1u8w0"]
 [ext_resource type="Script" uid="uid://dmn35vfeqjnrn" path="res://window_management/quit_dialog.gd" id="10_4c57u"]
 [ext_resource type="Script" uid="uid://cqrrkoy4chrc2" path="res://window_management/quit_button.gd" id="10_yaehf"]
+[ext_resource type="Texture2D" uid="uid://bdm24qyil37yq" path="res://images/mod_taskbar_icon_hover.png" id="11_0odxb"]
+[ext_resource type="Texture2D" uid="uid://bseyowcxuwnam" path="res://images/quit_taskbar_icon.png" id="12_lswn8"]
 [ext_resource type="PackedScene" uid="uid://2sf0amxbbl2v" path="res://modules/chat/chat_window.tscn" id="15_074og"]
 [ext_resource type="PackedScene" uid="uid://crxdyhmexgxid" path="res://modules/mod/mod_window.tscn" id="17_cegan"]
 
 [node name="Main" type="Node2D" unique_id=603566327]
 
 [node name="Desktop" type="AspectRatioContainer" parent="." unique_id=876809298]
+custom_minimum_size = Vector2(1920, 1080)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_right = 1920.0
 offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Wallpaper" type="TextureRect" parent="Desktop" unique_id=1570120873]
 layout_mode = 2
+texture = ExtResource("1_cegan")
 script = ExtResource("4_272bh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Desktop" unique_id=2146799196]
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Desktop/VBoxContainer" unique_id=1755784905]
@@ -49,107 +62,116 @@ columns = 16
 visible = false
 layout_mode = 2
 
-[node name="Taskbar" type="ColorRect" parent="Desktop/VBoxContainer" unique_id=1613649453]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(1920, 80)
+[node name="MarginContainer2" type="MarginContainer" parent="Desktop/VBoxContainer" unique_id=1949230612]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-size_flags_vertical = 8
+size_flags_vertical = 10
+
+[node name="Taskbar" type="ColorRect" parent="Desktop/VBoxContainer/MarginContainer2" unique_id=1613649453]
+unique_name_in_owner = true
+layout_mode = 2
 color = Color(0.8235294, 0.84705883, 0.90588236, 1)
 
-[node name="Container" type="HBoxContainer" parent="Desktop/VBoxContainer/Taskbar" unique_id=2065977813]
+[node name="Container" type="HBoxContainer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar" unique_id=2065977813]
 custom_minimum_size = Vector2(1920, 0)
 layout_mode = 0
 offset_right = 1920.0
-offset_bottom = 80.0
+offset_bottom = 100.0
 alignment = 2
 
-[node name="Statusbar" type="HBoxContainer" parent="Desktop/VBoxContainer/Taskbar/Container" unique_id=1141356079]
+[node name="Statusbar" type="HBoxContainer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Container" unique_id=1141356079]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="Clock" type="HBoxContainer" parent="Desktop/VBoxContainer/Taskbar/Container" unique_id=818173469 node_paths=PackedStringArray("timer", "label")]
+[node name="Clock" type="HBoxContainer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Container" unique_id=818173469 node_paths=PackedStringArray("timer", "label")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 script = ExtResource("4_dg77c")
-timer = NodePath("Timer")
-label = NodePath("MarginContainer/Label")
+timer = NodePath("CenterContainer/MarginContainer/Timer")
+label = NodePath("CenterContainer/MarginContainer/Label")
 
-[node name="Timer" type="Timer" parent="Desktop/VBoxContainer/Taskbar/Container/Clock" unique_id=1453154819]
+[node name="CenterContainer" type="CenterContainer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Container/Clock" unique_id=1844150444]
+layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Desktop/VBoxContainer/Taskbar/Container/Clock" unique_id=937866417]
+[node name="MarginContainer" type="MarginContainer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Container/Clock/CenterContainer" unique_id=937866417]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="Label" type="Label" parent="Desktop/VBoxContainer/Taskbar/Container/Clock/MarginContainer" unique_id=222653916]
+[node name="Timer" type="Timer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Container/Clock/CenterContainer/MarginContainer" unique_id=1453154819]
+
+[node name="Label" type="Label" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Container/Clock/CenterContainer/MarginContainer" unique_id=222653916]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "23:45"
 
-[node name="Appsbar" type="HBoxContainer" parent="Desktop/VBoxContainer/Taskbar" unique_id=658973520]
+[node name="Appsbar" type="HBoxContainer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar" unique_id=658973520]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(1920, 80)
+custom_minimum_size = Vector2(1920, 0)
 layout_mode = 0
-offset_right = 1712.0
-offset_bottom = 80.0
+offset_right = 1920.0
+offset_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 8
 alignment = 1
 
-[node name="Chat" type="Button" parent="Desktop/VBoxContainer/Taskbar/Appsbar" unique_id=1290937189 node_paths=PackedStringArray("menu", "timer")]
-clip_contents = true
-custom_minimum_size = Vector2(80, 80)
+[node name="CenterContainer" type="CenterContainer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Appsbar" unique_id=1623912568]
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+
+[node name="Chat" type="TextureButton" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Appsbar/CenterContainer" unique_id=181767907 node_paths=PackedStringArray("menu", "timer")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_type_variation = &"FlatButton"
-theme_override_font_sizes/font_size = 24
-icon = ExtResource("4_w48qg")
-icon_alignment = 1
-expand_icon = true
+texture_normal = ExtResource("5_82xsv")
+texture_pressed = ExtResource("6_getpj")
+texture_hover = ExtResource("7_ryguw")
 script = ExtResource("4_5vw27")
-menu = NodePath("../../../../../Chat")
+menu = NodePath("../../../../../../../Chat")
 timer = NodePath("Time")
 
-[node name="Time" type="Timer" parent="Desktop/VBoxContainer/Taskbar/Appsbar/Chat" unique_id=165521792]
+[node name="Time" type="Timer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Appsbar/CenterContainer/Chat" unique_id=165521792]
 wait_time = 0.5
 
-[node name="Mod" type="Button" parent="Desktop/VBoxContainer/Taskbar/Appsbar" unique_id=1250849645 node_paths=PackedStringArray("menu", "timer")]
-clip_contents = true
-custom_minimum_size = Vector2(80, 80)
+[node name="CenterContainer2" type="CenterContainer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Appsbar" unique_id=1469988547]
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+
+[node name="Mod" type="TextureButton" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Appsbar/CenterContainer2" unique_id=581880390 node_paths=PackedStringArray("menu", "timer")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_type_variation = &"FlatButton"
-theme_override_font_sizes/font_size = 24
-icon = ExtResource("7_2cqfq")
-icon_alignment = 1
-expand_icon = true
+texture_normal = ExtResource("9_d13ii")
+texture_pressed = ExtResource("10_1u8w0")
+texture_hover = ExtResource("11_0odxb")
 script = ExtResource("4_5vw27")
-menu = NodePath("../../../../../Mod")
+menu = NodePath("../../../../../../../Mod")
 timer = NodePath("Time")
 
-[node name="Time" type="Timer" parent="Desktop/VBoxContainer/Taskbar/Appsbar/Mod" unique_id=349008193]
+[node name="Time" type="Timer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Appsbar/CenterContainer2/Mod" unique_id=349008193]
 wait_time = 0.5
 
-[node name="Quit" type="Button" parent="Desktop/VBoxContainer/Taskbar/Appsbar" unique_id=1179994461 node_paths=PackedStringArray("menu")]
-clip_contents = true
-custom_minimum_size = Vector2(80, 80)
+[node name="CenterContainer3" type="CenterContainer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Appsbar" unique_id=645994414]
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+
+[node name="Quit" type="TextureButton" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Appsbar/CenterContainer3" unique_id=459155117 node_paths=PackedStringArray("menu")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_type_variation = &"FlatButton"
-theme_override_font_sizes/font_size = 24
-icon = ExtResource("8_yaehf")
-icon_alignment = 1
-expand_icon = true
+texture_normal = ExtResource("12_lswn8")
+texture_pressed = ExtResource("12_lswn8")
+texture_hover = ExtResource("12_lswn8")
 script = ExtResource("10_yaehf")
-menu = NodePath("../../../../../Quit Dialog")
+menu = NodePath("../../../../../../../Quit Dialog")
 
-[node name="Timer" type="Timer" parent="Desktop/VBoxContainer/Taskbar/Appsbar/Quit" unique_id=1220959107]
+[node name="Timer" type="Timer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Appsbar/CenterContainer3/Quit" unique_id=1220959107]
 wait_time = 0.5
 
 [node name="Bootup" type="Popup" parent="." unique_id=1360732565 node_paths=PackedStringArray("background", "progress_spinner", "text", "audio_player")]

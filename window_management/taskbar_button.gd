@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 
 @export var menu : AppWindow
 
@@ -52,10 +52,10 @@ func notify():
 func set_notification(notifyed : bool):
 	if notifyed:
 		start_blinking()
-		set_button_icon(icon_notification)
+		#set_button_icon(icon_notification)
 	else:
 		stop_blinking()
-		set_button_icon(icon_normal)
+		#set_button_icon(icon_normal)
 
 func start_blinking():
 	blink_button()
