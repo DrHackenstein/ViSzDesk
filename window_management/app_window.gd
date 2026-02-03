@@ -1,7 +1,7 @@
 extends Window
 class_name AppWindow
 
-var button : Button
+var button : TextureButton
 
 func _ready() -> void:
 	visibility_changed.connect(on_visibility_change)

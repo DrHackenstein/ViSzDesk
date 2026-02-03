@@ -3,16 +3,19 @@
 [ext_resource type="Texture2D" uid="uid://brwyw8uamhp6b" path="res://images/Notepad-Icon.png" id="1_j0fii"]
 [ext_resource type="Script" uid="uid://bm1xcl0xjm75i" path="res://window_management/taskbar_button.gd" id="2_4ufmo"]
 
-[node name="TaskbarButton" type="Button" unique_id=2105849298 node_paths=PackedStringArray("timer")]
+[node name="TaskbarButton" type="TextureButton" unique_id=281355998 node_paths=PackedStringArray("timer")]
 clip_contents = true
 custom_minimum_size = Vector2(80, 80)
+offset_right = 80.0
+offset_bottom = 80.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_type_variation = &"FlatButton"
-theme_override_font_sizes/font_size = 24
-icon = ExtResource("1_j0fii")
-icon_alignment = 1
-expand_icon = true
+texture_normal = ExtResource("1_j0fii")
+texture_pressed = ExtResource("1_j0fii")
+texture_hover = ExtResource("1_j0fii")
+ignore_texture_size = true
+stretch_mode = 4
 script = ExtResource("2_4ufmo")
 timer = NodePath("Time")
 
