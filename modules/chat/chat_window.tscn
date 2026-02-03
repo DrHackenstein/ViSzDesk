@@ -4,9 +4,10 @@
 [ext_resource type="Script" uid="uid://b4qa2iuq2stv5" path="res://modules/chat/chat_container.gd" id="2_y7uvm"]
 
 [node name="Chat" type="Window" unique_id=1948978226 node_paths=PackedStringArray("friendsContainer", "container", "chatContainer")]
+audio_listener_enable_2d = true
 oversampling_override = 1.0
 title = "Chat"
-position = Vector2i(1000, 100)
+position = Vector2i(17, 36)
 size = Vector2i(600, 700)
 script = ExtResource("1_sbyjp")
 friendsContainer = NodePath("Container/MarginContainer/FriendsContainer")
@@ -62,7 +63,7 @@ color = Color(0.9340804, 0.9340805, 0.93408036, 1)
 layout_mode = 2
 
 [node name="MessagesContainer" type="VBoxContainer" parent="Container/ChatContainer/Messages/ScrollContainer" unique_id=1542279703]
-custom_minimum_size = Vector2(0, 450)
+custom_minimum_size = Vector2(410, 450)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

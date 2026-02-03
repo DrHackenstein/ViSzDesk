@@ -48,8 +48,10 @@ func load_content_file():
 		line += 1
 		
 		# Catch empty lines
-		if data == null or data.size() < 7:
-			push_warning("Couldn't read line " + str(line) + ": ".join(data) + " (Size:" + str(data.size()) +")")
+		if data == null:
+			push_warning("Couldn't read line " + str(line) + ": No content (null)")
+		elif data.size() < 7:
+			push_warning("Couldn't read line " + str(line) + ": Need 7 columns (" + str(data.size()) +")")
 			continue
 		
 		# Read Headers
@@ -113,8 +115,12 @@ func read_line( data : Array, lineNumber : int ):
 	content.set(line.id, line)
 
 func load_first():
-	print("Start Szenario with " + start_id)
-	process_content_line(start_id, "")
+	if start_id == null:
+		push_error("No Start ID found! Can't start scenario.")
+		return
+	else:
+		print("Start Szenario with " + start_id)
+		process_content_line(start_id, "")
 	
 func process_content_line( id : String, parent : String ):
 	# Get line

@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://da5vqdhlj1l7y"]
+[gd_scene format=3 uid="uid://da5vqdhlj1l7y"]
 
 [ext_resource type="Script" uid="uid://dqw2f0vcnh63s" path="res://modules/chat/chat_message.gd" id="1_r3c5q"]
+[ext_resource type="Script" uid="uid://8bpp725newvg" path="res://modules/chat/video_player.gd" id="2_blni2"]
+[ext_resource type="Texture2D" uid="uid://ccnhoqdvny2et" path="res://images/icon_play.png" id="3_4y43m"]
+[ext_resource type="Script" uid="uid://ywn33to868bs" path="res://modules/chat/audio_player.gd" id="5_db4ea"]
+[ext_resource type="Texture2D" uid="uid://chptt2sky7f5y" path="res://images/icon_pause.png" id="6_hcorv"]
 
-[node name="FriendMessage" type="MarginContainer" node_paths=PackedStringArray("label")]
+[node name="FriendMessage" type="MarginContainer" unique_id=1662543321 node_paths=PackedStringArray("label", "image", "video", "audio")]
 custom_minimum_size = Vector2(200, 0)
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
@@ -10,25 +14,116 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 10
 script = ExtResource("1_r3c5q")
-label = NodePath("MarginContainer/RichTextLabel")
+label = NodePath("MarginContainer/VBoxContainer/RichTextLabel2")
+image = NodePath("MarginContainer/VBoxContainer/TextureRect")
+video = NodePath("MarginContainer/VBoxContainer/VideoPlayer")
+audio = NodePath("MarginContainer/VBoxContainer/AudioPlayer")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=1460160883]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.33560684, 0.81628156, 0.55421805, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2079203717]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=552744840]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1192475178]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+expand_mode = 4
+stretch_mode = 5
+
+[node name="VideoPlayer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1053332224 node_paths=PackedStringArray("video", "button_play", "button_pause", "progress")]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+script = ExtResource("2_blni2")
+video = NodePath("MarginContainer/VideoStreamPlayer")
+button_play = NodePath("MarginContainer/CenterContainer/PlayButton")
+button_pause = NodePath("MarginContainer/CenterContainer/PauseButton")
+progress = NodePath("MarginContainer2/ProgressBar")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VideoPlayer" unique_id=1994155892]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="MarginContainer/VBoxContainer/VideoPlayer/MarginContainer" unique_id=126370607]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 2
+mouse_filter = 1
+volume_db = -10.0
+expand = true
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/VideoPlayer/MarginContainer" unique_id=1768568946]
+layout_mode = 2
+
+[node name="PlayButton" type="TextureButton" parent="MarginContainer/VBoxContainer/VideoPlayer/MarginContainer/CenterContainer" unique_id=66388818]
+layout_mode = 2
+mouse_filter = 1
+texture_normal = ExtResource("3_4y43m")
+
+[node name="PauseButton" type="TextureButton" parent="MarginContainer/VBoxContainer/VideoPlayer/MarginContainer/CenterContainer" unique_id=1439619911]
+visible = false
+layout_mode = 2
+mouse_filter = 1
+texture_normal = ExtResource("6_hcorv")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/VideoPlayer" unique_id=1563066235]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/VideoPlayer/MarginContainer2" unique_id=163895064]
+layout_mode = 2
+size_flags_horizontal = 3
+show_percentage = false
+
+[node name="AudioPlayer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=2112520657 node_paths=PackedStringArray("audio", "button_play", "button_pause", "progress")]
+visible = false
+layout_mode = 2
+script = ExtResource("5_db4ea")
+audio = NodePath("CenterContainer2/ProgressBar/AudioStreamPlayer2D")
+button_play = NodePath("CenterContainer/PlayButton")
+button_pause = NodePath("CenterContainer/PauseButton")
+progress = NodePath("CenterContainer2/ProgressBar")
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/AudioPlayer" unique_id=79954147]
+layout_mode = 2
+
+[node name="PlayButton" type="TextureButton" parent="MarginContainer/VBoxContainer/AudioPlayer/CenterContainer" unique_id=1654081887]
+layout_mode = 2
+texture_normal = ExtResource("3_4y43m")
+
+[node name="PauseButton" type="TextureButton" parent="MarginContainer/VBoxContainer/AudioPlayer/CenterContainer" unique_id=515392630]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("6_hcorv")
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer/AudioPlayer" unique_id=1643352824]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/AudioPlayer/CenterContainer2" unique_id=953414106]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+show_percentage = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MarginContainer/VBoxContainer/AudioPlayer/CenterContainer2/ProgressBar" unique_id=1212057598]
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=2051931342]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "Hey, this is an incoming chat message! I scales to it's content! 
+text = "Hey, this is an incoming chat message! It scales to its content! 
 
 Neat, huh?"
 fit_content = true

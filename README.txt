@@ -60,8 +60,13 @@ Im Folgenden werden die Spalten und ihre Bedeutung für alle Apps erklärt:
 	Definiert eine Verzögerung des jeweiligen Inhalts in Sekunden. D.h. wenn der Inhalt ausgelöst wird, wird die angegebene Anzahl Sekunden gewartet, bis er ausgeführt wird. Weitere Verzögerungen, wie die Eingabe-Verzögerung der Chat-App, kommen hierbei noch dazu. Wenn die Zeile leer ist, wird auch nicht verzögert.
 
 	CONTENT
-	Der jeweilige Inhalt der in der App angezeigt werden soll. In der Regel ein Text-String (Beispiel: "Hallo, i bims!"). Es können aber auch Bilder, Videos und Audio-Dateien aus dem "content"-Ordner geladen, wenn statt einem Text der Pfad zur jeweiligen Datei in eckigen Klammern eingetragen wird (Beispiel: "[bild.png]", "[audio/lied1.mp3]")	Unterstützte werden die Formate TBD.
-	Wenn die Content-Zelle leer gelassen wird, werden nur die entsprechenden Parameter und Trigger abgearbeitet aber Inhalt in der jeweiligen App angezeigt.
+	Der jeweilige Inhalt der in der App angezeigt werden soll. In der Regel ein Text-String (Beispiel: "Hallo, i bims!"). Es können aber auch zusätzlich Bilder, Videos und Audio-Dateien aus dem "content"-Ordner geladen, wenn in dem Text der Pfad zur jeweiligen Datei in doppelt eckigen Klammern eingetragen wird (Beispiel: "[[bild.png]]", "[[audio/lied1.mp3]]"). Wenn die Content-Zelle leer gelassen wird, werden nur die entsprechenden Parameter und Trigger abgearbeitet aber Inhalt in der jeweiligen App angezeigt.
+	
+	Unterstützte werden folgende Formate: 
+		Bilder: .png, .jpg, .ktx, .svg, .tga, .webp
+		Audio: .mp3, .ogg, .wav
+		Video: .ogv
+	
 	
 	TRIGGERS
 	Über die Trigger werden mögliche Folge-Inhalte als Komma-getrennte Liste definiert. Wenn die Zeile leer ist oder "-" eingetragen ist, werden keine Folge-Inhalte ausgelöst.
