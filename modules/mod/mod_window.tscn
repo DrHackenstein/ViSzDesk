@@ -5,7 +5,7 @@
 [node name="Mod" type="Window" unique_id=178669147 node_paths=PackedStringArray("empty_container", "content_container", "avatar", "content", "delete_button", "allow_button")]
 oversampling_override = 1.0
 title = "Mod"
-position = Vector2i(100, 100)
+position = Vector2i(100, 36)
 size = Vector2i(500, 500)
 script = ExtResource("1_cp01s")
 empty_container = NodePath("MarginContainer/VBoxContainer/Empty")
@@ -16,12 +16,13 @@ delete_button = NodePath("MarginContainer/VBoxContainer/Controls/MarginContainer
 allow_button = NodePath("MarginContainer/VBoxContainer/Controls/MarginContainer2/HBoxContainer/AllowButton")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1430767907]
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 495.0
-offset_bottom = 595.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=252277098]
 anchors_preset = 15
@@ -109,11 +110,11 @@ theme_override_constants/separation = 100
 alignment = 1
 
 [node name="DeleteButton" type="Button" parent="MarginContainer/VBoxContainer/Controls/MarginContainer2/HBoxContainer" unique_id=776633789]
-custom_minimum_size = Vector2(120, 40)
+custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 text = "Delete"
 
 [node name="AllowButton" type="Button" parent="MarginContainer/VBoxContainer/Controls/MarginContainer2/HBoxContainer" unique_id=1939501202]
-custom_minimum_size = Vector2(120, 40)
+custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 text = "No Violation"

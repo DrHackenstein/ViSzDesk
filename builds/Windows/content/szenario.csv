@@ -1,5 +1,5 @@
 ID,APP,CID,PARAMETERS,DELAY,CONTENT,TRIGGERS
-1,Chat,Basti,msg,0,"Heey, hat alles geklappt?[[example.ogv]]",2
+1,Chat,Basti,msg,0,"Heey, hat alles geklappt?",2
 2,Chat,Basti,rsp,,"Ja, bin drin. Sehe aber noch keine Aufträge",3
 3,Chat,Basti,msg,,"Aaaah right, ich muss dich noch freischalten.",4
 4,Chat,Basti,rsp,,ok,"5,6"
