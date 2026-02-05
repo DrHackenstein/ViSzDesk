@@ -1,6 +1,7 @@
 extends Node
 
 var default_character_pic = "default_character.png"
+var internal_pic_path = "res://images/avatars/"
 var headers = []
 var characters = {}
 
@@ -56,21 +57,7 @@ func load_content_file():
 			var character = Character.new()
 			character.character_id = data[cid_index]
 			character.character_name = data[name_index]
-			
-			# Try to load image, if there is none use default
-			var image : Image
-			if not FileAccess.file_exists(Config.content_path + "/" + data[pic_index]):
-				if not FileAccess.file_exists(Config.content_path + "/" + default_character_pic):
-					print("Loading Error: Couldn't find character pic " + Config.content_path + "/" + data[pic_index] + ". Created default pic to use instead.")
-					image = load(Config.content_path_default + "/" + default_character_pic)
-					image.save_png(Config.content_path + "/" + default_character_pic)
-				else:
-					print("Loading Error: Couldn't find character pic " + Config.content_path + "/" + data[pic_index] + ". Using default pic instead.")
-					image = load(Config.content_path_default + "/" + default_character_pic)
-				character.character_image = image
-			else:
-				character.character_image = Image.load_from_file(Config.content_path + "/" + data[pic_index])
-			
+			load_avatar(character, data[pic_index])
 			characters.set(character.character_id, character)
 	
 	file.close()
@@ -89,6 +76,31 @@ func read_headers( data : Array ):
 		
 		headers.append(field)
 		index += 1
+
+func load_avatar( character : Character, filename : String ):
+	# Try load internal character pic
+	var start = filename.find("[")
+	var end = filename.find("]")
+	if start > -1 and end > -1:
+		var internal_filename = filename.substr(start + 1, end - start - 1) + ".png"
+		if internal_filename.is_valid_filename() and ResourceLoader.exists(internal_pic_path + internal_filename):
+			character.character_image = load(internal_pic_path + internal_filename)
+		else:
+			push_warning("Couldn't load character pic " + filename + ": Not a valid internal character pic.")
+	
+	# Try to load image, if there is none use default
+	elif not FileAccess.file_exists(Config.content_path + "/" + filename):
+		var image : Image
+		if not FileAccess.file_exists(Config.content_path + "/" + default_character_pic):
+			print("Loading Error: Couldn't find character pic " + Config.content_path + "/" + filename + ". Created default pic to use instead.")
+			image = load(Config.content_path_default + "/" + default_character_pic)
+			image.save_png(Config.content_path + "/" + default_character_pic)
+		else:
+			print("Loading Error: Couldn't find character pic " + Config.content_path + "/" + filename + ". Using default pic instead.")
+			image = load(Config.content_path_default + "/" + default_character_pic)
+		character.character_image = image
+	else:
+		character.character_image = Image.load_from_file(Config.content_path + "/" + filename)
 
 func get_character( id : String ) -> Character:
 	if characters.has(id):
