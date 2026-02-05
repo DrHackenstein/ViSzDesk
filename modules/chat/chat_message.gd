@@ -13,7 +13,7 @@ func setup( line : ContentLine ):
 	var start = text.find("[[")
 	var end = text.find("]]")
 	var filename = ""
-	if start > 0 and end > 0:
+	if start > -1 and end > -1:
 		filename = text.substr(start + 2, end - start - 2)
 		if filename.is_valid_filename() and FileAccess.file_exists(Config.content_path + "/" + filename):
 			load_file(filename)
