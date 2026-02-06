@@ -17,7 +17,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="Mod" type="Window" unique_id=178669147 node_paths=PackedStringArray("empty_container", "content_container", "avatar", "content", "delete_button", "allow_button")]
+[node name="Mod" type="Window" unique_id=178669147 node_paths=PackedStringArray("empty_container", "content_container", "avatar", "character_name", "content", "delete_button", "allow_button")]
 oversampling_override = 1.0
 title = "Mod"
 position = Vector2i(200, 200)
@@ -27,6 +27,7 @@ script = ExtResource("1_cp01s")
 empty_container = NodePath("MarginContainer/VBoxContainer/Empty")
 content_container = NodePath("MarginContainer/VBoxContainer/Content")
 avatar = NodePath("MarginContainer/VBoxContainer/Content/MarginContainer/HBoxContainer/MarginContainer/Avatar")
+character_name = NodePath("MarginContainer/VBoxContainer/Content/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Name")
 content = NodePath("MarginContainer/VBoxContainer/Content/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Content")
 delete_button = NodePath("MarginContainer/VBoxContainer/VBoxContainer/Controls/MarginContainer2/HBoxContainer/DeleteButton")
 allow_button = NodePath("MarginContainer/VBoxContainer/VBoxContainer/Controls/MarginContainer2/HBoxContainer/AllowButton")
