@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bbv6gswi3omlf"]
 
 [ext_resource type="Script" uid="uid://dqw2f0vcnh63s" path="res://modules/chat/chat_message.gd" id="1_ds7pf"]
+[ext_resource type="StyleBox" uid="uid://d145eqcv25wsk" path="res://modules/chat/player_message.tres" id="2_6rb14"]
 
 [node name="PlayerMessage" type="MarginContainer" unique_id=483437410 node_paths=PackedStringArray("label", "image", "video", "audio")]
 custom_minimum_size = Vector2(200, 0)
@@ -15,18 +16,16 @@ image = NodePath("MarginContainer/VBoxContainer/TextureRect")
 video = NodePath("MarginContainer/VBoxContainer/VideoStreamPlayer")
 audio = NodePath("MarginContainer/VBoxContainer/AudioStreamPlayer2D")
 
-[node name="Background" type="ColorRect" parent="." unique_id=28947763]
+[node name="Panel" type="Panel" parent="." unique_id=35185766]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color(0.8119367, 0.82, 0.33620003, 1)
+theme_override_styles/panel = ExtResource("2_6rb14")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1907588283]
 layout_mode = 2
 theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 5
+theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=428331177]
 layout_mode = 2

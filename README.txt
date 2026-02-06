@@ -10,8 +10,11 @@ Im Folgenden werden die Konfigurations-Dateien erklärt.
 // CONFIG.CFG \\
 Über die config.cfg können generelle Einstellungen getätigt werden, wie einzelne Apps an und aus geschaltet werden. Die neu generierte config.cfg enthält alle möglichen Einstellungsmöglichkeiten mit ihren Standard-Werten. Sie sind größtenteils selbsterklärend.
 
-	Textfiles
-	TBD
+	text_files
+	In der text_files Variable können Text-Dateien (.txt), die sind im Content-Ordner befinden angegeben werden. Standardmäßig wird hier eine credits.txt geladen, die die Beteiligten des Projekts auflistet. Es können beliebig viele solche Dateien mit Komma getrennt angegeben werden. Sie tauchen als Desktop-Dateien auf, die Spieler*innen einsehen, aber nicht verändern können. Um die anzuzeigenden Texte visuell ansprechender zu formatieren kann BBCode verwendet werden.
+	Zu Infos zu BBCode siehe: https://docs.godotengine.org/en/stable/engine_details/class_reference/index.html#doc-class-reference-bbcode
+	
+	Weiteres: TBD
 
 
 
@@ -93,8 +96,3 @@ In der characters.csv werden die Charaktere für die verschiedenen Apps definier
 	PIC
 	Hier kann eine Bild-Datei im "content"-Ordner für den Charakter definiert werden. Es muss sich dabei um eine Bild im png-Format handeln. Dieses wird dann ggf. in der App geladen und als Avatar-Bild angezeigt. Wenn das Feld leer ist oder die Datei nicht gefunden oder geladen werden kann, wird stattdessen der Standard-Avatar angezeigt.
 	Zusätzlich kann eines der 20 integrierten Charakter-Bilder verwendet werden. Um auf diese Zuzugreifen muss lediglich statt einem Bild der Name des Bildes in eckigen Klammern angegeben werden. Beispiel: [char_001], [char_015], [char_020]
-
-
-
-// CREDITS.TXT \\
-	Die credits.txt ist eine einfache Textdatei, die auf dem Desktop von Spieler*inne eingesehen werden kann. Sie hat keine weiteren Funktionen und dient einfach der korrekten Akkreditierung der an dem Projekt beteiligten Personen.

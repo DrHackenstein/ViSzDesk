@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b32evq2o4d5bu" path="res://window_management/desktop_button.gd" id="1_dvhth"]
 [ext_resource type="Texture2D" uid="uid://brwyw8uamhp6b" path="res://images/Notepad-Icon.png" id="2_dvhth"]
+[ext_resource type="FontFile" uid="uid://7x3tltga6cfr" path="res://fonts/SEGUIEMJ.TTF" id="3_828b4"]
 
 [node name="DesktopButton" type="TextureButton" unique_id=1932899157 node_paths=PackedStringArray("filename")]
 custom_minimum_size = Vector2(100, 115)
@@ -33,6 +34,8 @@ stretch_mode = 4
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_828b4")
+theme_override_font_sizes/font_size = 19
 text = "Credits.txt"
 horizontal_alignment = 1
 text_overrun_behavior = 3

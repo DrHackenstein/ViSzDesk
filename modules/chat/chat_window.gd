@@ -3,7 +3,7 @@ class_name ChatWindow
 
 @export var friendsContainer : Node
 @export var container : Node
-@export var chatContainer : Node
+@export var chatContainer : ChatContainer
  
 var friend_button
 var friend_message
@@ -29,7 +29,6 @@ func load_module():
 	player_response = preload("res://modules/chat/player_response.tscn")
 
 func trigger_content( line : ContentLine ):
-	print("Trigger chat line " + line.id)
 	# Add new friend
 	if not friends.has(line.character_id):
 		add_friend(line.get_character())
@@ -38,16 +37,20 @@ func trigger_content( line : ContentLine ):
 	friends.get(line.character_id).add_line(line)
 
 func add_friend( character : Character ):
-	print("Add new friend " + character.character_id)
 	# Create new friend button
 	var friendButton = friend_button.instantiate()
 	friendsContainer.add_child(friendButton)
 	
 	# Create new message container
 	var new = chatContainer.duplicate()
+	new.setup(character)
 	new.hide()
 	container.add_child(new)
 	
 	# Setup friend button and add to friends
 	friendButton.setup(character, new, self)
 	friends.set(character.character_id, friendButton)
+	
+	# Show first friend chat added
+	if friends.size() == 1:
+		friendButton.on_pressed()

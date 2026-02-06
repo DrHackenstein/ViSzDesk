@@ -1,37 +1,84 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdc20d28aly2a"]
+[gd_scene format=3 uid="uid://cdc20d28aly2a"]
 
 [ext_resource type="Script" uid="uid://ci2usw1s00oee" path="res://modules/chat/player_response.gd" id="1_tufge"]
+[ext_resource type="StyleBox" uid="uid://cnm3q1ncqq2r" path="res://modules/chat/player_response_normal.tres" id="2_ueayp"]
+[ext_resource type="StyleBox" uid="uid://cqoxemhjmjufs" path="res://modules/chat/player_response_hover.tres" id="3_cp2ta"]
+[ext_resource type="Texture2D" uid="uid://bsj3s507d1fkt" path="res://images/chat_send_response.png" id="4_2m3c2"]
 
-[node name="PlayerResponse" type="MarginContainer" node_paths=PackedStringArray("label", "button")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q378m"]
+bg_color = Color(0.9882353, 0.92941177, 0.8509804, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[node name="PlayerResponse" type="MarginContainer" unique_id=31779390 node_paths=PackedStringArray("label", "button", "bg", "send_icon")]
 custom_minimum_size = Vector2(200, 0)
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 50
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 script = ExtResource("1_tufge")
-label = NodePath("MarginContainer/RichTextLabel")
+label = NodePath("MarginContainer/HBoxContainer/RichTextLabel")
 button = NodePath("Button")
+bg = NodePath("Panel")
+bg_normal = ExtResource("2_ueayp")
+bg_hover = ExtResource("3_cp2ta")
+send_icon = NodePath("MarginContainer/HBoxContainer/MarginContainer/Send Icon")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1743800382]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color(0.8119367, 0.82, 0.33620003, 1)
+theme_override_styles/panel = ExtResource("2_ueayp")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2039443980]
 layout_mode = 2
 theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 5
+theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_bottom = 10
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1721994412]
 layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer" unique_id=1470844554]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Yeah, great."
 fit_content = true
 scroll_active = false
+vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=1247463903]
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
+
+[node name="Send Icon" type="Panel" parent="MarginContainer/HBoxContainer/MarginContainer" unique_id=109011633]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q378m")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/MarginContainer/Send Icon" unique_id=867695317]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer/MarginContainer/Send Icon/MarginContainer" unique_id=1998174732]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/MarginContainer/Send Icon/MarginContainer/CenterContainer" unique_id=598276129]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("4_2m3c2")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="." unique_id=722630696]
+layout_mode = 2
+flat = true

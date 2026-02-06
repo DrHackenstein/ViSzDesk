@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://drc28xsrfw788" path="res://scripts/clock.gd" id="4_dg77c"]
 [ext_resource type="Texture2D" uid="uid://uwlrb654yvu3" path="res://images/chat_taskbar_icon.png" id="5_82xsv"]
 [ext_resource type="Texture2D" uid="uid://drs3hj7licdxu" path="res://images/progress_spinner.png" id="5_272bh"]
+[ext_resource type="FontFile" uid="uid://7x3tltga6cfr" path="res://fonts/SEGUIEMJ.TTF" id="5_getpj"]
 [ext_resource type="AudioStream" uid="uid://cl78imv65ps3k" path="res://sounds/booting.wav" id="6_5vw27"]
 [ext_resource type="Texture2D" uid="uid://tp0biue3i5k6" path="res://images/chat_taskbar_icon_pressed.png" id="6_getpj"]
 [ext_resource type="Texture2D" uid="uid://coa17hph7oj01" path="res://images/chat_taskbar_icon_hover.png" id="7_ryguw"]
@@ -19,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bseyowcxuwnam" path="res://images/quit_taskbar_icon.png" id="12_lswn8"]
 [ext_resource type="PackedScene" uid="uid://2sf0amxbbl2v" path="res://modules/chat/chat_window.tscn" id="15_074og"]
 [ext_resource type="PackedScene" uid="uid://crxdyhmexgxid" path="res://modules/mod/mod_window.tscn" id="17_cegan"]
+[ext_resource type="Theme" uid="uid://pp6e43vkakg3" path="res://modules/base_theme.tres" id="19_82xsv"]
 
 [node name="Main" type="Node2D" unique_id=603566327]
 
@@ -105,6 +107,7 @@ theme_override_constants/margin_right = 10
 [node name="Label" type="Label" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Container/Clock/CenterContainer/MarginContainer" unique_id=222653916]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_getpj")
 theme_override_font_sizes/font_size = 24
 text = "23:45"
 
@@ -259,6 +262,7 @@ title = "Runterfahren?"
 initial_position = 1
 size = Vector2i(500, 150)
 always_on_top = true
+theme = ExtResource("19_82xsv")
 ok_button_text = "  Runterfahren  "
 cancel_button_text = "       Zurück       "
 script = ExtResource("10_4c57u")
@@ -268,7 +272,7 @@ BackgroundDim = NodePath("../Quit Background Dim")
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 492.0
-offset_bottom = 101.0
+offset_bottom = 96.0
 text = "Möchtest du wirklich runterfahren?"
 horizontal_alignment = 1
 vertical_alignment = 1

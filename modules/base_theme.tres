@@ -1,0 +1,12 @@
+[gd_resource type="Theme" format=3 uid="uid://pp6e43vkakg3"]
+
+[ext_resource type="FontFile" uid="uid://m0suye6uy04u" path="res://fonts/SPACEGROTESK-SEMIBOLD.OTF" id="1_s7k8c"]
+[ext_resource type="FontFile" uid="uid://7x3tltga6cfr" path="res://fonts/SEGUIEMJ.TTF" id="2_kyphf"]
+
+[resource]
+default_font = ExtResource("2_kyphf")
+default_font_size = 20
+Button/font_sizes/font_size = 21
+Button/fonts/font = ExtResource("1_s7k8c")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/fonts/font = ExtResource("1_s7k8c")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqw2f0vcnh63s" path="res://modules/chat/chat_message.gd" id="1_r3c5q"]
 [ext_resource type="Script" uid="uid://8bpp725newvg" path="res://modules/chat/video_player.gd" id="2_blni2"]
+[ext_resource type="StyleBox" uid="uid://derl4paghhkwy" path="res://modules/chat/friend_message.tres" id="2_hcorv"]
 [ext_resource type="Texture2D" uid="uid://ccnhoqdvny2et" path="res://images/icon_play.png" id="3_4y43m"]
 [ext_resource type="Script" uid="uid://ywn33to868bs" path="res://modules/chat/audio_player.gd" id="5_db4ea"]
 [ext_resource type="Texture2D" uid="uid://chptt2sky7f5y" path="res://images/icon_pause.png" id="6_hcorv"]
@@ -19,18 +20,16 @@ image = NodePath("MarginContainer/VBoxContainer/TextureRect")
 video = NodePath("MarginContainer/VBoxContainer/VideoPlayer")
 audio = NodePath("MarginContainer/VBoxContainer/AudioPlayer")
 
-[node name="Background" type="ColorRect" parent="." unique_id=1460160883]
+[node name="Panel" type="Panel" parent="." unique_id=1062325544]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color(0.33560684, 0.81628156, 0.55421805, 1)
+theme_override_styles/panel = ExtResource("2_hcorv")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2079203717]
 layout_mode = 2
 theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 5
+theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=552744840]
 layout_mode = 2

@@ -3,24 +3,33 @@ class_name FriendButton
 
 @export var friend_name : Label
 @export var friend_pic : TextureRect
+@export var bg : Panel
 
 var chat : ChatWindow
-var chatContainer : Node
+var chatContainer : ChatContainer
 var current : ContentLine
 
 func _ready():
 	button_down.connect(on_pressed)
 	
 func on_pressed():	
-	# Hide other containers
+	# Hide chat containers
 	for node in chatContainer.get_parent().get_children():
 		if node is VBoxContainer:
 			node.hide()
 	
-	# Show this one
+	# Show this chat container
 	chatContainer.show()
+	
+	# Hide backgrounds of friend buttons
+	for button in chat.friendsContainer.get_children():
+		if button is FriendButton:
+			button.bg.hide()
+	
+	# Show this background
+	bg.show()
 
-func setup( character : Character, container : Node, chatWindow : ChatWindow ):
+func setup( character : Character, container : ChatContainer, chatWindow : ChatWindow ):
 	print("Setup friend_button for " + character.character_name)
 	friend_name.text = character.character_name
 	friend_pic.texture = ImageTexture.create_from_image(character.character_image)
