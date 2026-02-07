@@ -4,10 +4,13 @@ class_name FriendButton
 @export var friend_name : Label
 @export var friend_pic : TextureRect
 @export var bg : Panel
+@export var notification_display : Node
+@export var notification_counter : Label
 
 var chat : ChatWindow
 var chatContainer : ChatContainer
 var current : ContentLine
+var unread_messages : int
 
 func _ready():
 	button_down.connect(on_pressed)
@@ -28,6 +31,12 @@ func on_pressed():
 	
 	# Show this background
 	bg.show()
+	
+	# Update chat reference
+	chat.active_friend = self
+	
+	# Update Notifications
+	reset_notifications()
 
 func setup( character : Character, container : ChatContainer, chatWindow : ChatWindow ):
 	print("Setup friend_button for " + character.character_name)
@@ -90,6 +99,10 @@ func add_message():
 	chatContainer.messageContainer.add_child(msg)
 	msg.setup(current)
 	
+	# Handle Notification
+	if not chat.is_focused() or not chat.active_friend == self:
+		increase_notifications()
+	
 	# Handle Triggers
 	handle_triggers(current)
 	
@@ -112,3 +125,22 @@ func handle_triggers( line : ContentLine ):
 		if not id == null:
 			print("Chat line " + current.id + "(" +friend_name.text+ ") tiggers line " + id)
 			Content.process_content_line(id, line.id)
+
+func increase_notifications():
+	# Update Taskbar button
+	chat.button.increase_notifications()
+	
+	# Update own notification display
+	unread_messages += 1
+	notification_display.show()
+	notification_counter.show()
+	notification_counter.text = str(unread_messages)
+
+func reset_notifications():
+	# Update Taskbar button
+	chat.button.decrease_notifications(unread_messages)
+	
+	# Reset own notification display
+	unread_messages = 0
+	notification_display.hide()
+	notification_counter.hide()

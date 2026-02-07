@@ -8,10 +8,6 @@ func _ready() -> void:
 	close_requested.connect(hide_dialog)
 	focus_entered.connect(on_focus_gained)
 	focus_exited.connect(on_focus_lost)
-	ready()
-
-func ready():
-	pass
 
 func hide_dialog():
 	hide()
@@ -31,6 +27,9 @@ func on_focus_gained():
 func on_focus_lost():
 	print("Focus Lost: " + name)
 	#WindowManager.lose_focus(self)
+	
+func is_focused() -> bool:
+	return WindowManager.has_focus(self)
 
 func trigger_content( line : ContentLine ):
 	print("AppWindow.trigger_content was called with " + line.id + ". App " + line.app + " needs to implement this function!")

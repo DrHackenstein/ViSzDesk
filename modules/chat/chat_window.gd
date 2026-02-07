@@ -12,8 +12,10 @@ var player_message
 var player_response
 
 var friends = {}
+var active_friend : FriendButton
 
-func ready():
+func _ready():
+	super._ready()
 	# Hide if App is disabled in config
 	if not Config.modules_chat:
 		button.hide()
@@ -33,7 +35,7 @@ func trigger_content( line : ContentLine ):
 	if not friends.has(line.character_id):
 		add_friend(line.get_character())
 	
-	# Hand of line to friend button
+	# Hand over line to friend button
 	friends.get(line.character_id).add_line(line)
 
 func add_friend( character : Character ):
@@ -54,3 +56,8 @@ func add_friend( character : Character ):
 	# Show first friend chat added
 	if friends.size() == 1:
 		friendButton.on_pressed()
+
+func on_focus_gained():
+	super.on_focus_gained()
+	if not active_friend == null:
+		active_friend.reset_notifications()

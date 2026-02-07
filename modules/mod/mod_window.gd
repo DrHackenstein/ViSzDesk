@@ -11,7 +11,8 @@ extends AppWindow
 var backlog = []
 var current : ContentLine = null
 
-func ready():
+func _ready():
+	super._ready()
 	# Hide if App is disabled in config
 	if not Config.modules_moderation:
 		button.hide()
@@ -32,6 +33,9 @@ func trigger_content( line : ContentLine ):
 	
 	if current == null:
 		show_next_post()
+
+		if not is_focused():
+			button.increase_notifications()
 
 func show_next_post():
 	# Catch empty backlog or already open post
@@ -75,9 +79,11 @@ func handle_delete():
 	handle_mod(1)
 
 func handle_mod( moderated : int ):
-	# Cache trigger & id
-	var trigger = current.triggers.get(moderated)
+	# Cache id & trigger
 	var id = current.id
+	var trigger = null
+	if moderated < current.triggers.size():
+		trigger = current.triggers.get(moderated)
 	
 	# Reset everything
 	reset()
@@ -96,3 +102,7 @@ func reset():
 	content_container.hide()
 	allow_button.disabled = true
 	delete_button.disabled = true
+
+func on_focus_gained():
+	super.on_focus_gained()
+	button.reset_notifications()

@@ -28,7 +28,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("2_dvhth")
 expand_mode = 3
-stretch_mode = 4
+stretch_mode = 5
 
 [node name="Filename" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1626729422]
 layout_mode = 2
