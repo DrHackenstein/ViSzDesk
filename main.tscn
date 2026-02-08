@@ -2,14 +2,17 @@
 
 [ext_resource type="Texture2D" uid="uid://0bwa10cqyidg" path="res://builds/Windows/content/wallpaper.png" id="1_cegan"]
 [ext_resource type="PackedScene" uid="uid://cflpklrjri2no" path="res://window_management/desktop_button.tscn" id="2_w48qg"]
+[ext_resource type="Texture2D" uid="uid://cikpjmy3g0g51" path="res://images/audio_default_normal.png" id="4_0odxb"]
 [ext_resource type="Script" uid="uid://d1nst51xas082" path="res://scripts/bootup.gd" id="4_7mycd"]
 [ext_resource type="Script" uid="uid://cecl4ebjrcd0k" path="res://scripts/wallpaper.gd" id="4_272bh"]
 [ext_resource type="Script" uid="uid://drc28xsrfw788" path="res://scripts/clock.gd" id="4_dg77c"]
 [ext_resource type="Texture2D" uid="uid://uwlrb654yvu3" path="res://images/chat_taskbar_icon.png" id="5_82xsv"]
 [ext_resource type="Texture2D" uid="uid://drs3hj7licdxu" path="res://images/progress_spinner.png" id="5_272bh"]
 [ext_resource type="FontFile" uid="uid://7x3tltga6cfr" path="res://fonts/SEGUIEMJ.TTF" id="5_getpj"]
+[ext_resource type="Script" uid="uid://xdmhwrkd38pw" path="res://scripts/mute_button.gd" id="5_lswn8"]
 [ext_resource type="AudioStream" uid="uid://cl78imv65ps3k" path="res://sounds/booting.wav" id="6_5vw27"]
 [ext_resource type="Texture2D" uid="uid://tp0biue3i5k6" path="res://images/chat_taskbar_icon_pressed.png" id="6_getpj"]
+[ext_resource type="Texture2D" uid="uid://cc4oc6xnkyslp" path="res://images/audio_muted_normal.png" id="6_lswn8"]
 [ext_resource type="PackedScene" uid="uid://b80w2bf2slyre" path="res://window_management/taskbar_button.tscn" id="6_ryguw"]
 [ext_resource type="Texture2D" uid="uid://coa17hph7oj01" path="res://images/chat_taskbar_icon_hover.png" id="7_ryguw"]
 [ext_resource type="Texture2D" uid="uid://dsh6hb5nblhy8" path="res://images/mod_taskbar_icon.png" id="9_d13ii"]
@@ -88,6 +91,29 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
+[node name="CenterContainer" type="CenterContainer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Container/Statusbar" unique_id=1591604581]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Container/Statusbar/CenterContainer" unique_id=1703291437]
+layout_mode = 2
+
+[node name="MuteButton" type="TextureButton" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Container/Statusbar/CenterContainer/MarginContainer" unique_id=1862859597]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("4_0odxb")
+texture_pressed = ExtResource("4_0odxb")
+texture_hover = ExtResource("4_0odxb")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("5_lswn8")
+texture_default_normal = ExtResource("4_0odxb")
+texture_default_pressed = ExtResource("4_0odxb")
+texture_default_hover = ExtResource("4_0odxb")
+texture_muted_normal = ExtResource("6_lswn8")
+texture_muted_pressed = ExtResource("6_lswn8")
+texture_muted_hover = ExtResource("6_lswn8")
+
 [node name="Clock" type="HBoxContainer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Container" unique_id=818173469 node_paths=PackedStringArray("timer", "label")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(140, 0)
@@ -125,6 +151,7 @@ offset_right = 1920.0
 offset_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 8
+mouse_filter = 2
 alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Appsbar" unique_id=1623912568]
