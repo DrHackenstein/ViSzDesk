@@ -38,9 +38,13 @@ var content_textfiles = "credits.txt"
 var content_textfiles_default = "credits.txt"
 var content_time_id = "clock_start_time"
 var content_time = "22:01"
+var content_show_date_id = "clock_show_date"
+var content_show_date = true
+var content_date_id = "clock_start_date"
+var content_date = "08.02.2026"
 var content_debug_id = "debug_mode"
 var content_debug = false
-var content_configs = [[content_spreadsheet_id,"content_spreadsheet"],[content_characters_id,"content_characters"], [content_wallpaper_id,"content_wallpaper"], [content_textfiles_id, "content_textfiles"], [content_time_id,"content_time"], [content_debug_id,"content_debug"]]
+var content_configs = [[content_spreadsheet_id,"content_spreadsheet"],[content_characters_id,"content_characters"], [content_wallpaper_id,"content_wallpaper"], [content_textfiles_id, "content_textfiles"], [content_time_id,"content_time"], [content_date_id,"content_date"], [content_show_date_id,"content_show_date"], [content_debug_id,"content_debug"]]
 
 var modules_section = "modules"
 var modules_chat_id = "chat"

@@ -13,6 +13,16 @@ Im Folgenden werden die Konfigurations-Dateien erklärt.
 	text_files
 	In der text_files Variable können Text-Dateien (.txt), die sind im Content-Ordner befinden angegeben werden. Standardmäßig wird hier eine credits.txt geladen, die die Beteiligten des Projekts auflistet. Es können beliebig viele solche Dateien mit Komma getrennt angegeben werden. Sie tauchen als Desktop-Dateien auf, die Spieler*innen einsehen, aber nicht verändern können. Um die anzuzeigenden Texte visuell ansprechender zu formatieren kann BBCode verwendet werden.
 	Zu Infos zu BBCode siehe: https://docs.godotengine.org/en/stable/engine_details/class_reference/index.html#doc-class-reference-bbcode
+
+	clock_start_time
+	Definiert die Start-Zeit die in der Taskleiste angezeigt wird. Sie muss im Format "HH:MM" angegeben werden. Wenn die Variable nicht definiert ist oder nicht geladen werden kann, wird die System-Zeit der Spieler*in verwendet.
+	
+	clock_show_date
+	Definiert ob das Datum unter der Uhrzeit in der Taskleiste angezeigt werden soll.
+	
+	clock_start_date
+	Definiert das Start-Datum die in der Taskleiste angezeigt wird. Das Datum muss in dem Format "DD.MM.YYYY" angegeben werden. Wenn die Variable nicht definiert ist oder nicht geladen werden kann, wird die System-Zeit der Spieler*in verwendet.
+	HINWEIS: Um 0 Uhr wird der Tag eins hochgezählt, Monat und Jahr bleiben jedoch stets unangetastet. Es können also unrealistische Daten entstehen.
 	
 	chat_notification_beep_sound & chat_notification_beep_sound
 	Über diese Variablen können individuelle Notifizierungs-Beeps definiert werden. Sie müssen sich im Content-Ordner befinden und in einem der unterstützten Formate (.mp3, .ogg, .wav) sein. Wenn die Variablen leer gelassen werden oder die angegebenen Dateien nicht geladen werden können, werden stattdessen die Standard-Sounds verwendet.
