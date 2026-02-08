@@ -14,6 +14,9 @@ Im Folgenden werden die Konfigurations-Dateien erklärt.
 	In der text_files Variable können Text-Dateien (.txt), die sind im Content-Ordner befinden angegeben werden. Standardmäßig wird hier eine credits.txt geladen, die die Beteiligten des Projekts auflistet. Es können beliebig viele solche Dateien mit Komma getrennt angegeben werden. Sie tauchen als Desktop-Dateien auf, die Spieler*innen einsehen, aber nicht verändern können. Um die anzuzeigenden Texte visuell ansprechender zu formatieren kann BBCode verwendet werden.
 	Zu Infos zu BBCode siehe: https://docs.godotengine.org/en/stable/engine_details/class_reference/index.html#doc-class-reference-bbcode
 	
+	chat_notification_beep_sound & chat_notification_beep_sound
+	Über diese Variablen können individuelle Notifizierungs-Beeps definiert werden. Sie müssen sich im Content-Ordner befinden und in einem der unterstützten Formate (.mp3, .ogg, .wav) sein. Wenn die Variablen leer gelassen werden oder die angegebenen Dateien nicht geladen werden können, werden stattdessen die Standard-Sounds verwendet.
+	
 	Weiteres: TBD
 
 

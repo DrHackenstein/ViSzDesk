@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Helper="*uid://drkru3pccpeoc"
 Config="*res://loader/config.tscn"
 Characters="*res://loader/characters.tscn"
 Content="*res://loader/content.tscn"

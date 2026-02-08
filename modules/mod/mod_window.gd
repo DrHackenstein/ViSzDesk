@@ -13,10 +13,20 @@ var current : ContentLine = null
 
 func _ready():
 	super._ready()
-	# Hide if App is disabled in config
+	
+	# Hide if app is disabled in config
 	if not Config.modules_moderation:
 		button.hide()
 		return
+	
+	# Setup notification beep
+	if not Config.modules_mod_beep:
+		button.audio = null
+	elif not Config.modules_mod_beep_sound == "":
+		if Helper.is_supported_audio_format(Config.content_path + Config.modules_mod_beep_sound):
+			button.audio.stream = Helper.load_audio_file(Config.content_path + Config.modules_mod_beep_sound)
+		else:
+			push_warning("Loading Error: Couldn't load chat notification sound " + Config.modules_mod_beep_sound + ". Format not supported!")
 	
 	# Setup buttons
 	allow_button.button_up.connect(handle_allow)

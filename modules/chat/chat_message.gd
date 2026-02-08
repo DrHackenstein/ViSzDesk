@@ -32,17 +32,16 @@ func setup( line : ContentLine ):
 	scrolldown()
 	
 func load_file( filename : String ):
-	var file = filename.to_lower()
-	if file.ends_with(".png") or file.ends_with(".jpg") or file.ends_with(".ktx") or file.ends_with(".svg") or file.ends_with(".tga") or file.ends_with(".webp"):
-		load_png(filename)
-	elif video.supports_format(file):
+	if Helper.is_supported_image_format(filename):
+		load_image(filename)
+	elif Helper.is_supported_video_format(filename):
 		load_video(filename)
-	elif audio.supports_format(file):
+	elif Helper.is_supported_audio_format(filename):
 		load_audio(filename)
 	else:
-		push_warning("Couldn't load " + filename + ": Format not supported!")
+		push_warning("Loading Error: Couldn't load " + filename + ". Format not supported!")
 	
-func load_png( filename : String ):
+func load_image( filename : String ):
 	var img = Image.load_from_file(Config.content_path + "/" + filename)
 	image.texture = ImageTexture.create_from_image(img)
 	image.show()

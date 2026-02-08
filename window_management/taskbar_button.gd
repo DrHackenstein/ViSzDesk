@@ -1,13 +1,18 @@
 extends TextureButton
 
 @export var menu : AppWindow
+@export var audio : AudioStreamPlayer2D
 @export var notification_display : Node
 @export var notification_counter : Label
+@export var notification_sound : AudioStream
 var notifications : int
 
 func _ready():
 	if menu:
 		menu.button = self
+	
+	if not audio == null and not notification_sound == null:
+		audio.stream = notification_sound
 	
 	pressed.connect(open_menu)
 
@@ -27,6 +32,9 @@ func increase_notifications():
 	notification_display.show()
 	notification_counter.show()
 	notification_counter.text = str(notifications)
+	
+	if not audio == null and not notification_sound == null and not audio.playing:
+		audio.play()
 
 func decrease_notifications( decrease : int ):
 	if notifications <= decrease:

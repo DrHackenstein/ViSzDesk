@@ -18,13 +18,6 @@ func setup( filepath : String ):
 	vid.file = filepath
 	video.stream = vid
 	progress.max_value = video.get_stream_length()
-
-func supports_format( filename : String ) -> bool:
-	var file = filename.to_lower()
-	if file.ends_with(".ogv"):
-		return true
-	else:
-		return false
 	
 func on_mouse_enter():
 	show_button()
