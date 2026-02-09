@@ -11,6 +11,7 @@ var chat : ChatWindow
 var chatContainer : ChatContainer
 var current : ContentLine
 var unread_messages : int
+var last_message
 
 func _ready():
 	button_down.connect(on_pressed)
@@ -37,6 +38,10 @@ func on_pressed():
 	
 	# Update Notifications
 	reset_notifications()
+	
+	# Scrolldown to last message
+	if not last_message == null:
+		last_message.scrolldown()
 
 func setup( character : Character, container : ChatContainer, chatWindow : ChatWindow ):
 	print("Setup friend_button for " + character.character_name)
@@ -98,6 +103,7 @@ func add_message():
 	var msg = chat.friend_message.instantiate()
 	chatContainer.messageContainer.add_child(msg)
 	msg.setup(current)
+	last_message = msg
 	
 	# Handle Notification
 	if not chat.is_focused() or not chat.active_friend == self:
@@ -116,6 +122,7 @@ func add_player_message( line : ContentLine ):
 	var msg = chat.player_message.instantiate()
 	chatContainer.messageContainer.add_child(msg)
 	msg.setup(line)
+	last_message = msg
 	
 	# Handle Triggers
 	handle_triggers(line)
