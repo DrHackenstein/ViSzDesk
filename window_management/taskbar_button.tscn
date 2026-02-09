@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://b80w2bf2slyre"]
 
-[ext_resource type="Texture2D" uid="uid://brwyw8uamhp6b" path="res://images/Notepad-Icon.png" id="1_j0fii"]
+[ext_resource type="Texture2D" uid="uid://d2v8c307qj4or" path="res://images/notepad_taskbar_icon.png" id="1_p8yiu"]
 [ext_resource type="Script" uid="uid://bm1xcl0xjm75i" path="res://window_management/taskbar_button.gd" id="2_4ufmo"]
+[ext_resource type="Texture2D" uid="uid://dwq1cocs0s3eu" path="res://images/notepad_taskbar_icon_hover.png" id="2_kyuyf"]
 [ext_resource type="FontFile" uid="uid://m0suye6uy04u" path="res://fonts/SPACEGROTESK-SEMIBOLD.OTF" id="3_4ufmo"]
+[ext_resource type="Texture2D" uid="uid://bnui0acsy00m4" path="res://images/notepad_taskbar_icon_pressed.png" id="3_um0si"]
+[ext_resource type="Texture2D" uid="uid://cft8411xgekt2" path="res://images/taskbar_focus_marker.png" id="6_kyuyf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xgjjg"]
 bg_color = Color(0.7254902, 0.33333334, 0.33333334, 1)
@@ -11,20 +14,21 @@ corner_radius_top_right = 100
 corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 
-[node name="TaskbarButton" type="TextureButton" unique_id=281355998 node_paths=PackedStringArray("audio", "notification_display", "notification_counter")]
+[node name="TaskbarButton" type="TextureButton" unique_id=281355998 node_paths=PackedStringArray("focus_icon", "audio", "notification_display", "notification_counter")]
 clip_contents = true
-custom_minimum_size = Vector2(80, 80)
-offset_right = 80.0
-offset_bottom = 80.0
+custom_minimum_size = Vector2(66, 66)
+offset_right = 66.0
+offset_bottom = 66.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_type_variation = &"FlatButton"
-texture_normal = ExtResource("1_j0fii")
-texture_pressed = ExtResource("1_j0fii")
-texture_hover = ExtResource("1_j0fii")
+texture_normal = ExtResource("1_p8yiu")
+texture_pressed = ExtResource("2_kyuyf")
+texture_hover = ExtResource("3_um0si")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_4ufmo")
+focus_icon = NodePath("TextureRect")
 audio = NodePath("AudioStreamPlayer2D")
 notification_display = NodePath("Notification Icon")
 notification_counter = NodePath("Notification Icon/Counter")
@@ -52,5 +56,12 @@ theme_override_fonts/font = ExtResource("3_4ufmo")
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=162456510]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_kyuyf")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1052086817]

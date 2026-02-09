@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cflpklrjri2no"]
 
 [ext_resource type="Script" uid="uid://b32evq2o4d5bu" path="res://window_management/desktop_button.gd" id="1_dvhth"]
-[ext_resource type="Texture2D" uid="uid://brwyw8uamhp6b" path="res://images/Notepad-Icon.png" id="2_dvhth"]
+[ext_resource type="Texture2D" uid="uid://bfldduhiy11d8" path="res://images/notepad_desktop_icon.png" id="2_828b4"]
 [ext_resource type="FontFile" uid="uid://7x3tltga6cfr" path="res://fonts/SEGUIEMJ.TTF" id="3_828b4"]
 
 [node name="DesktopButton" type="TextureButton" unique_id=1932899157 node_paths=PackedStringArray("filename")]
@@ -23,10 +23,10 @@ custom_minimum_size = Vector2(100, 110)
 layout_mode = 2
 
 [node name="Icon" type="TextureRect" parent="CenterContainer/VBoxContainer" unique_id=381440290]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(80, 90)
 layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("2_dvhth")
+size_flags_vertical = 3
+texture = ExtResource("2_828b4")
 expand_mode = 3
 stretch_mode = 5
 
