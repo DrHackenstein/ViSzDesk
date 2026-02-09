@@ -26,6 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://2sf0amxbbl2v" path="res://modules/chat/chat_window.tscn" id="15_074og"]
 [ext_resource type="PackedScene" uid="uid://crxdyhmexgxid" path="res://modules/mod/mod_window.tscn" id="17_cegan"]
 [ext_resource type="Theme" uid="uid://pp6e43vkakg3" path="res://modules/base_theme.tres" id="19_82xsv"]
+[ext_resource type="Texture2D" uid="uid://cl0qvni37l70s" path="res://images/quit_taskbar_icon_pressed.png" id="19_xuqvo"]
+[ext_resource type="Texture2D" uid="uid://c2siwkgkhs5vi" path="res://images/quit_taskbar_icon_hover.png" id="20_qsp4k"]
 
 [node name="Main" type="Node2D" unique_id=603566327]
 
@@ -185,8 +187,8 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_type_variation = &"FlatButton"
 texture_normal = ExtResource("12_lswn8")
-texture_pressed = ExtResource("12_lswn8")
-texture_hover = ExtResource("12_lswn8")
+texture_pressed = ExtResource("19_xuqvo")
+texture_hover = ExtResource("20_qsp4k")
 script = ExtResource("10_yaehf")
 menu = NodePath("../../../../../../../Quit Dialog")
 
