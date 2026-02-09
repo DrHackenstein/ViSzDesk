@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://c2cu80vkipfkn"]
 
 [ext_resource type="StyleBox" uid="uid://derl4paghhkwy" path="res://modules/chat/friend_message.tres" id="1_mrgid"]
+[ext_resource type="Script" uid="uid://cj0c2qf05g6gi" path="res://modules/chat/friend_typing_message.gd" id="1_w8wg3"]
 
-[node name="TypingIndicator" type="MarginContainer" unique_id=2080789388]
+[node name="TypingIndicator" type="MarginContainer" unique_id=2080789388 node_paths=PackedStringArray("label", "timer")]
 custom_minimum_size = Vector2(150, 0)
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -10,6 +11,9 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 10
+script = ExtResource("1_w8wg3")
+label = NodePath("MarginContainer/RichTextLabel")
+timer = NodePath("Timer")
 
 [node name="Panel" type="Panel" parent="." unique_id=1406260027]
 layout_mode = 2
@@ -17,7 +21,7 @@ theme_override_styles/panel = ExtResource("1_mrgid")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1749362766]
 layout_mode = 2
-theme_override_constants/margin_left = 15
+theme_override_constants/margin_left = 35
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 10
@@ -25,7 +29,10 @@ theme_override_constants/margin_bottom = 10
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=1441814281]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "..."
+text = "."
 fit_content = true
 scroll_active = false
-horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=1113146635]
+wait_time = 0.33
+autostart = true
