@@ -70,7 +70,7 @@ visible = false
 layout_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="Desktop/VBoxContainer" unique_id=1949230612]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_vertical = 10
 
@@ -83,7 +83,7 @@ color = Color(0.8235294, 0.84705883, 0.90588236, 1)
 custom_minimum_size = Vector2(1920, 0)
 layout_mode = 0
 offset_right = 1920.0
-offset_bottom = 100.0
+offset_bottom = 80.0
 alignment = 2
 
 [node name="Statusbar" type="HBoxContainer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Container" unique_id=1141356079]
@@ -148,14 +148,13 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(1920, 0)
 layout_mode = 0
 offset_right = 1920.0
-offset_bottom = 100.0
+offset_bottom = 80.0
 size_flags_horizontal = 3
 size_flags_vertical = 8
 mouse_filter = 2
 alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Appsbar" unique_id=1623912568]
-custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 
 [node name="Chat" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Appsbar/CenterContainer" unique_id=281355998 node_paths=PackedStringArray("menu") instance=ExtResource("6_ryguw")]
@@ -167,7 +166,6 @@ menu = NodePath("../../../../../../../Chat")
 notification_sound = ExtResource("10_d13ii")
 
 [node name="CenterContainer2" type="CenterContainer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Appsbar" unique_id=1469988547]
-custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 
 [node name="Mod" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Appsbar/CenterContainer2" unique_id=1725744915 node_paths=PackedStringArray("menu") instance=ExtResource("6_ryguw")]
@@ -179,7 +177,6 @@ menu = NodePath("../../../../../../../Mod")
 notification_sound = ExtResource("14_1u8w0")
 
 [node name="CenterContainer3" type="CenterContainer" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Appsbar" unique_id=645994414]
-custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 
 [node name="Quit" type="TextureButton" parent="Desktop/VBoxContainer/MarginContainer2/Taskbar/Appsbar/CenterContainer3" unique_id=459155117 node_paths=PackedStringArray("menu")]

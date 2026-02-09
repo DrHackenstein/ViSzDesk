@@ -1,6 +1,7 @@
 extends TextureButton
 
 @export var menu : AppWindow
+@export var focus_icon : TextureRect
 @export var audio : AudioStreamPlayer2D
 @export var notification_display : Node
 @export var notification_counter : Label

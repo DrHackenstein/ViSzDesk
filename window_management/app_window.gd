@@ -23,10 +23,12 @@ func on_visibility_change():
 func on_focus_gained():
 	print("Focus Gained: " + name)
 	WindowManager.gain_focus(self)
+	button.focus_icon.show()
 	
 func on_focus_lost():
 	print("Focus Lost: " + name)
 	#WindowManager.lose_focus(self)
+	button.focus_icon.hide()
 	
 func is_focused() -> bool:
 	return WindowManager.has_focus(self)
