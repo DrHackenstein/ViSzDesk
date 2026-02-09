@@ -22,6 +22,7 @@ oversampling_override = 1.0
 title = "Mod"
 position = Vector2i(200, 200)
 size = Vector2i(535, 620)
+unresizable = true
 theme = ExtResource("1_ia1kn")
 script = ExtResource("1_cp01s")
 empty_container = NodePath("MarginContainer/VBoxContainer/Empty")

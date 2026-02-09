@@ -9,8 +9,9 @@
 audio_listener_enable_2d = true
 oversampling_override = 1.0
 title = "Chat"
-position = Vector2i(800, 50)
+position = Vector2i(800, 36)
 size = Vector2i(715, 885)
+unresizable = true
 theme = ExtResource("1_47kgf")
 script = ExtResource("1_sbyjp")
 friendsContainer = NodePath("Container/MarginContainer/FriendsContainer")

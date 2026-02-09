@@ -8,6 +8,7 @@ oversampling_override = 1.0
 title = "Credits"
 position = Vector2i(50, 50)
 size = Vector2i(500, 600)
+unresizable = true
 theme = ExtResource("1_8kip2")
 script = ExtResource("1_nvgjn")
 text = NodePath("MarginContainer/RichTextLabel")
