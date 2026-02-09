@@ -4,7 +4,7 @@
 [ext_resource type="StyleBox" uid="uid://d145eqcv25wsk" path="res://modules/chat/player_message.tres" id="2_6rb14"]
 
 [node name="PlayerMessage" type="MarginContainer" unique_id=483437410 node_paths=PackedStringArray("label", "image", "video", "audio")]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(200, 65)
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 10
@@ -49,8 +49,10 @@ loop = true
 visible = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=336684856]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "Yeah, great."
+text = "Äh..."
 fit_content = true
 scroll_active = false
+vertical_alignment = 1
