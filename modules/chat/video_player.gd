@@ -5,6 +5,7 @@ class_name VideoPlayer
 @export var button_play : TextureButton
 @export var button_pause : TextureButton
 @export var progress : ProgressBar
+var video_width = 371
 
 func _ready() -> void:
 	mouse_entered.connect(on_mouse_enter)
@@ -17,6 +18,9 @@ func setup( filepath : String ):
 	var vid = VideoStreamTheora.new()
 	vid.file = filepath
 	video.stream = vid
+	
+	var ratio = video.get_video_texture().get_width() / float(video.get_video_texture().get_height())
+	video.custom_minimum_size = Vector2(video_width, video_width / ratio)
 	progress.max_value = video.get_stream_length()
 	
 func on_mouse_enter():
@@ -38,7 +42,6 @@ func on_click():
 		video.paused = true
 		button_play.show()
 		button_pause.hide()
-	
 
 func show_button():
 	if video.is_playing() and not video.paused:
