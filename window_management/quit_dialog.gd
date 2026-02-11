@@ -1,10 +1,12 @@
-extends ConfirmationDialog
+extends Window
 
 @export var BackgroundDim : ColorRect
+@export var quit_button : Button
+@export var cancel_button : Button
 
 func _ready() -> void:
-	get_ok_button().pressed.connect(quit_game)
-	get_cancel_button().pressed.connect(hide_dialog)
+	quit_button.pressed.connect(quit_game)
+	cancel_button.pressed.connect(hide_dialog)
 	close_requested.connect(hide_dialog)
 	visibility_changed.connect(handle_hide_show)
 

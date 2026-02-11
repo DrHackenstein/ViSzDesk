@@ -5,7 +5,7 @@ class_name VideoPlayer
 @export var button_play : TextureButton
 @export var button_pause : TextureButton
 @export var progress : ProgressBar
-var video_width = 371
+var video_width = 334
 
 func _ready() -> void:
 	mouse_entered.connect(on_mouse_enter)

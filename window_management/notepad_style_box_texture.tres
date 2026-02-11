@@ -1,0 +1,14 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://diea6ovye41ui"]
+
+[ext_resource type="Texture2D" uid="uid://bh6fa0jo1sdea" path="res://images/notepad_window_border_focused.png" id="1_fcptd"]
+
+[resource]
+texture = ExtResource("1_fcptd")
+texture_margin_left = 46.02068
+texture_margin_top = 77.043976
+texture_margin_right = 60.034622
+texture_margin_bottom = 59.97007
+expand_margin_left = 46.0
+expand_margin_top = 77.0
+expand_margin_right = 60.0
+expand_margin_bottom = 60.0

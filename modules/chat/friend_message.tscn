@@ -9,6 +9,8 @@
 
 [node name="FriendMessage" type="MarginContainer" unique_id=1662543321 node_paths=PackedStringArray("label", "image", "video", "audio")]
 custom_minimum_size = Vector2(200, 0)
+offset_right = 424.0
+offset_bottom = 224.0
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
@@ -43,7 +45,6 @@ expand_mode = 4
 stretch_mode = 5
 
 [node name="VideoPlayer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1053332224 node_paths=PackedStringArray("video", "button_play", "button_pause", "progress")]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0

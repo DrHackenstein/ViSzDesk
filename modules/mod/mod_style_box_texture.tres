@@ -1,0 +1,14 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://dkjvipuxaq2se"]
+
+[ext_resource type="Texture2D" uid="uid://61swevbn7rwq" path="res://images/mod_window_border_focused.png" id="1_3jjdl"]
+
+[resource]
+texture = ExtResource("1_3jjdl")
+texture_margin_left = 48.05364
+texture_margin_top = 77.0629
+texture_margin_right = 60.953125
+texture_margin_bottom = 60.04958
+expand_margin_left = 48.0
+expand_margin_top = 77.0
+expand_margin_right = 61.0
+expand_margin_bottom = 60.0
