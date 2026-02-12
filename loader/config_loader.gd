@@ -27,6 +27,8 @@ var content_section = "content"
 var content_spreadsheet_id = "content"
 var content_spreadsheet = "szenario.csv"
 var content_spreadsheet_default = "szenario.csv"
+var content_spreadsheet_start_id = "szenario_start_id"
+var content_spreadsheet_start = null
 var content_characters_id = "characters"
 var content_characters = "characters.csv"
 var content_characters_default = "characters.csv"
@@ -44,7 +46,7 @@ var content_date_id = "clock_start_date"
 var content_date = "08.02.2026"
 var content_debug_id = "debug_mode"
 var content_debug = false
-var content_configs = [[content_spreadsheet_id,"content_spreadsheet"],[content_characters_id,"content_characters"], [content_wallpaper_id,"content_wallpaper"], [content_textfiles_id, "content_textfiles"], [content_time_id,"content_time"], [content_date_id,"content_date"], [content_show_date_id,"content_show_date"], [content_debug_id,"content_debug"]]
+var content_configs = [[content_spreadsheet_id,"content_spreadsheet"],[content_spreadsheet_start_id,"content_spreadsheet_start"],[content_characters_id,"content_characters"], [content_wallpaper_id,"content_wallpaper"], [content_textfiles_id, "content_textfiles"], [content_time_id,"content_time"], [content_date_id,"content_date"], [content_show_date_id,"content_show_date"], [content_debug_id,"content_debug"]]
 
 var modules_section = "modules"
 var modules_chat_id = "chat"

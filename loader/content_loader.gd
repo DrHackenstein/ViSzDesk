@@ -14,7 +14,14 @@ var content_index = 5
 var triggers_index = 6
 
 func _ready():
+	#Load Start_id from config
+	if not Config.content_spreadsheet_start == null:
+		start_id = str(Config.content_spreadsheet_start)
+	
+	# Load config
 	load_content_file()
+	
+	# Start Szenario, when everything else is finished loading
 	self.call_deferred("load_first")
 
 func load_content_file():

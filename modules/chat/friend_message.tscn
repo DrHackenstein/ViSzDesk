@@ -45,6 +45,7 @@ expand_mode = 4
 stretch_mode = 5
 
 [node name="VideoPlayer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1053332224 node_paths=PackedStringArray("video", "button_play", "button_pause", "progress")]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
