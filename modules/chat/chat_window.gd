@@ -17,6 +17,9 @@ var active_friend : FriendButton
 func _ready():
 	super._ready()
 	
+	# Set Window Name
+	title = Config.modules_chat_name
+	
 	# Hide if App is disabled in config
 	if not Config.modules_chat:
 		button.hide()

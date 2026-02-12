@@ -51,17 +51,21 @@ var content_configs = [[content_spreadsheet_id,"content_spreadsheet"],[content_s
 var modules_section = "modules"
 var modules_chat_id = "chat"
 var modules_chat = true
+var modules_chat_name_id = "chat_name"
+var modules_chat_name = "Chat"
 var modules_chat_beep_id = "play_chat_notification_beep"
 var modules_chat_beep = true
 var modules_chat_beep_sound_id = "chat_notification_beep_sound"
 var modules_chat_beep_sound = ""
 var modules_moderation_id = "moderation"
 var modules_moderation = true
+var modules_moderation_name_id = "moderation_name"
+var modules_moderation_name = "Moderation"
 var modules_mod_beep_id = "play_mod_notification_beep"
 var modules_mod_beep = true
 var modules_mod_beep_sound_id = "mod_notification_beep_sound"
 var modules_mod_beep_sound = ""
-var modules_configs = [[modules_chat_id, "modules_chat"],[modules_chat_beep_id, "modules_chat_beep"],[modules_chat_beep_sound_id, "modules_chat_beep_sound"], [modules_moderation_id, "modules_moderation"], [modules_mod_beep_id, "modules_mod_beep"], [modules_mod_beep_sound_id, "modules_mod_beep_sound"]]
+var modules_configs = [[modules_chat_id, "modules_chat"],[modules_chat_name_id, "modules_chat_name"],[modules_chat_beep_id, "modules_chat_beep"],[modules_chat_beep_sound_id, "modules_chat_beep_sound"], [modules_moderation_id, "modules_moderation"], [modules_moderation_name_id, "modules_moderation_name"], [modules_mod_beep_id, "modules_mod_beep"], [modules_mod_beep_sound_id, "modules_mod_beep_sound"]]
 
 func _ready() -> void:
 	if not OS.has_feature("editor"):

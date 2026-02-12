@@ -14,6 +14,9 @@ var current : ContentLine = null
 func _ready():
 	super._ready()
 	
+	# Set Window Name
+	title = Config.modules_moderation_name
+	
 	# Hide if app is disabled in config
 	if not Config.modules_moderation:
 		button.hide()
