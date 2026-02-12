@@ -1,0 +1,14 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://r3ovybmgrqmu"]
+
+[ext_resource type="Texture2D" uid="uid://cfjas38qd6gsr" path="res://images/chat_window_border_unfocused.png" id="1_u1dot"]
+
+[resource]
+texture = ExtResource("1_u1dot")
+texture_margin_left = 47.98322
+texture_margin_top = 78.0
+texture_margin_right = 63.0
+texture_margin_bottom = 62.989353
+expand_margin_left = 48.0
+expand_margin_top = 78.0
+expand_margin_right = 63.0
+expand_margin_bottom = 63.0
