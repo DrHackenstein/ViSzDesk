@@ -132,7 +132,8 @@ func process_content_line( id : String, parent : String ):
 		line.parent = parent
 	
 	# Handle Delay
-	await get_tree().create_timer(line.delay).timeout
+	if not Config.content_debug:
+		await get_tree().create_timer(line.delay).timeout
 	
 	## Pass on to App
 	var app = line.app.remove_chars(" ").to_lower()
