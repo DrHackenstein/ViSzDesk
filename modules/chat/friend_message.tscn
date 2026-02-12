@@ -36,7 +36,7 @@ theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 10
 script = ExtResource("1_r3c5q")
 label = NodePath("MarginContainer/VBoxContainer/MarginContainer/RichTextLabel2")
-image = NodePath("MarginContainer/VBoxContainer/TextureRect")
+image = NodePath("MarginContainer/VBoxContainer/Image")
 video = NodePath("MarginContainer/VBoxContainer/VideoPlayer")
 audio = NodePath("MarginContainer/VBoxContainer/AudioPlayer")
 audio_icon = NodePath("MarginContainer/VBoxContainer/AudioPlayer/HBoxContainer/MarginContainer/Picture")
@@ -56,7 +56,7 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1192475178]
+[node name="Image" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1192475178]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3

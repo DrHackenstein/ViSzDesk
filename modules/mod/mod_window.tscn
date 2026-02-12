@@ -13,7 +13,13 @@
 [ext_resource type="StyleBox" uid="uid://dw06003lie6ub" path="res://modules/mod/button_disabled.tres" id="6_50o8a"]
 [ext_resource type="StyleBox" uid="uid://cg0j7r0e68rg5" path="res://modules/mod/button_allow_normal.tres" id="7_0fdov"]
 [ext_resource type="StyleBox" uid="uid://baos1aunaehhd" path="res://modules/mod/button_allow_pressed.tres" id="8_aohuj"]
+[ext_resource type="Script" uid="uid://dqw2f0vcnh63s" path="res://modules/chat/chat_message.gd" id="8_hi6x7"]
 [ext_resource type="StyleBox" uid="uid://bxevsg3byqxpo" path="res://modules/mod/button_allow_hover.tres" id="9_1gppt"]
+[ext_resource type="Script" uid="uid://8bpp725newvg" path="res://modules/chat/video_player.gd" id="9_x4nbf"]
+[ext_resource type="Texture2D" uid="uid://ccnhoqdvny2et" path="res://images/icon_play.png" id="10_qgqhm"]
+[ext_resource type="Texture2D" uid="uid://chptt2sky7f5y" path="res://images/icon_pause.png" id="11_bxe5r"]
+[ext_resource type="FontFile" uid="uid://7x3tltga6cfr" path="res://fonts/SEGUIEMJ.TTF" id="12_owmg0"]
+[ext_resource type="Script" uid="uid://ywn33to868bs" path="res://modules/chat/audio_player.gd" id="13_tv0nt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhi6q"]
 bg_color = Color(0.85490197, 0.8509804, 0.84705883, 1)
@@ -21,7 +27,22 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t42ar"]
+bg_color = Color(0.85490197, 0.8509804, 0.84705883, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxm7x"]
+bg_color = Color(0.13333334, 0.12941177, 0.12156863, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
 [node name="Mod" type="Window" unique_id=178669147 node_paths=PackedStringArray("empty_container", "content_container", "avatar", "character_name", "content", "delete_button", "allow_button")]
+audio_listener_enable_2d = true
 oversampling_override = 1.0
 title = "Mod"
 position = Vector2i(200, 200)
@@ -37,9 +58,9 @@ theme_override_styles/embedded_unfocused_border = ExtResource("5_1gppt")
 script = ExtResource("1_cp01s")
 empty_container = NodePath("MarginContainer/VBoxContainer/Empty")
 content_container = NodePath("MarginContainer/VBoxContainer/Content")
-avatar = NodePath("MarginContainer/VBoxContainer/Content/MarginContainer/HBoxContainer/MarginContainer/Avatar")
-character_name = NodePath("MarginContainer/VBoxContainer/Content/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Name")
-content = NodePath("MarginContainer/VBoxContainer/Content/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Content")
+avatar = NodePath("MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer/Avatar")
+character_name = NodePath("MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Name")
+content = NodePath("MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message")
 delete_button = NodePath("MarginContainer/VBoxContainer/VBoxContainer/Controls/MarginContainer2/HBoxContainer/DeleteButton")
 allow_button = NodePath("MarginContainer/VBoxContainer/VBoxContainer/Controls/MarginContainer2/HBoxContainer/AllowButton")
 
@@ -52,18 +73,12 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=252277098]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1755864937]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1201743074]
 layout_mode = 2
@@ -86,30 +101,31 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Content" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1033205493]
+[node name="Content" type="CenterContainer" parent="MarginContainer/VBoxContainer" unique_id=2015988794]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 150
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 150
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Content" unique_id=1504363816]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content" unique_id=1033205493]
+custom_minimum_size = Vector2(411, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Content/MarginContainer" unique_id=1504363816]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dhi6q")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content" unique_id=530543440]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer" unique_id=530543440]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer" unique_id=76392122]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer" unique_id=76392122]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/HBoxContainer" unique_id=24793863]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer" unique_id=24793863]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -118,14 +134,14 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Avatar" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/MarginContainer/HBoxContainer/MarginContainer" unique_id=121411725]
+[node name="Avatar" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer" unique_id=121411725]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("2_cp01s")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/HBoxContainer" unique_id=1544625295]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer" unique_id=1544625295]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
@@ -133,17 +149,179 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/HBoxContainer/MarginContainer2" unique_id=395285042]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2" unique_id=395285042]
 layout_mode = 2
 
-[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/Content/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=537902534]
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=537902534]
 layout_mode = 2
 text = "Name"
 
-[node name="Content" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Content/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=460066124]
+[node name="Message" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=246461103 node_paths=PackedStringArray("label", "image", "video", "audio", "audio_icon")]
+layout_mode = 2
+theme_override_constants/separation = 8
+script = ExtResource("8_hi6x7")
+label = NodePath("MarginContainer/RichTextLabel2")
+image = NodePath("Image")
+video = NodePath("VideoPlayer")
+audio = NodePath("AudioPlayer")
+audio_icon = NodePath("AudioPlayer/HBoxContainer/MarginContainer/Picture")
+prevent_scroll = true
+
+[node name="Image" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message" unique_id=75714466]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+expand_mode = 4
+stretch_mode = 5
+
+[node name="VideoPlayer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message" unique_id=223244568 node_paths=PackedStringArray("video", "button_play", "button_pause", "progress", "duration")]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+script = ExtResource("9_x4nbf")
+video = NodePath("MarginContainer/VideoStreamPlayer")
+button_play = NodePath("MarginContainer2/VBoxContainer/HBoxContainer/CenterContainer/PlayButton")
+button_pause = NodePath("MarginContainer2/VBoxContainer/HBoxContainer/CenterContainer/PauseButton")
+progress = NodePath("MarginContainer2/VBoxContainer/HBoxContainer/CenterContainer2/MarginContainer/ProgressBar")
+duration = NodePath("MarginContainer2/VBoxContainer/Duration")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/VideoPlayer" unique_id=589484742]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/VideoPlayer/MarginContainer" unique_id=283847819]
+layout_mode = 2
+color = Color(0.8235294, 0.84705883, 0.90588236, 1)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/VideoPlayer/MarginContainer" unique_id=616509792]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 2
+mouse_filter = 1
+volume_db = -10.0
+expand = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/VideoPlayer" unique_id=98525963]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/VideoPlayer/MarginContainer2" unique_id=1894957108]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/VideoPlayer/MarginContainer2/VBoxContainer" unique_id=875770607]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/VideoPlayer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=300530947]
+layout_mode = 2
+
+[node name="PlayButton" type="TextureButton" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/VideoPlayer/MarginContainer2/VBoxContainer/HBoxContainer/CenterContainer" unique_id=1035157]
+layout_mode = 2
+texture_normal = ExtResource("10_qgqhm")
+
+[node name="PauseButton" type="TextureButton" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/VideoPlayer/MarginContainer2/VBoxContainer/HBoxContainer/CenterContainer" unique_id=361971803]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("11_bxe5r")
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/VideoPlayer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=283166804]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/VideoPlayer/MarginContainer2/VBoxContainer/HBoxContainer/CenterContainer2" unique_id=1042916695]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/VideoPlayer/MarginContainer2/VBoxContainer/HBoxContainer/CenterContainer2/MarginContainer" unique_id=1718130350]
+custom_minimum_size = Vector2(250, 6)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_t42ar")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kxm7x")
+show_percentage = false
+
+[node name="Duration" type="Label" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/VideoPlayer/MarginContainer2/VBoxContainer" unique_id=329066034]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_owmg0")
+theme_override_font_sizes/font_size = 14
+text = "2:06"
+horizontal_alignment = 1
+
+[node name="AudioPlayer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message" unique_id=696296399 node_paths=PackedStringArray("audio", "button_play", "button_pause", "progress", "time_label")]
+visible = false
+layout_mode = 2
+script = ExtResource("13_tv0nt")
+audio = NodePath("HBoxContainer/CenterContainer2/MarginContainer/ProgressBar/AudioStreamPlayer2D")
+button_play = NodePath("HBoxContainer/CenterContainer/PlayButton")
+button_pause = NodePath("HBoxContainer/CenterContainer/PauseButton")
+progress = NodePath("HBoxContainer/CenterContainer2/MarginContainer/ProgressBar")
+time_label = NodePath("Duration")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/AudioPlayer" unique_id=597376392]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/AudioPlayer/HBoxContainer" unique_id=1002778542]
+layout_mode = 2
+
+[node name="PlayButton" type="TextureButton" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/AudioPlayer/HBoxContainer/CenterContainer" unique_id=307187056]
+layout_mode = 2
+texture_normal = ExtResource("10_qgqhm")
+
+[node name="PauseButton" type="TextureButton" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/AudioPlayer/HBoxContainer/CenterContainer" unique_id=876813756]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("11_bxe5r")
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/AudioPlayer/HBoxContainer" unique_id=582513032]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/AudioPlayer/HBoxContainer/CenterContainer2" unique_id=723160649]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/AudioPlayer/HBoxContainer/CenterContainer2/MarginContainer" unique_id=1296884828]
+custom_minimum_size = Vector2(220, 6)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_t42ar")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kxm7x")
+show_percentage = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/AudioPlayer/HBoxContainer/CenterContainer2/MarginContainer/ProgressBar" unique_id=1484487133]
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/AudioPlayer/HBoxContainer" unique_id=793622492]
+layout_mode = 2
+
+[node name="Picture" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/AudioPlayer/HBoxContainer/MarginContainer" unique_id=557419604]
+layout_mode = 2
+texture = ExtResource("2_cp01s")
+expand_mode = 3
+flip_h = true
+
+[node name="Duration" type="Label" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/AudioPlayer" unique_id=301719107]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("12_owmg0")
+theme_override_font_sizes/font_size = 14
+text = "2:06"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message" unique_id=1458778370]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message/MarginContainer" unique_id=433766839]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "Hey, this is an incoming chat message! I scales to it's content! 
+text = "Hey, this is an incoming chat message! It scales to its content! 
 
 Neat, huh?"
 fit_content = true

@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Node
 class_name ChatMessage
 
 @export var label : RichTextLabel
@@ -6,6 +6,7 @@ class_name ChatMessage
 @export var video : VideoPlayer
 @export var audio : AudioPlayer
 @export var audio_icon : TextureRect
+@export var prevent_scroll : bool
 
 var line
 
@@ -60,6 +61,9 @@ func load_audio( filename : String ):
 	audio_icon.texture = ImageTexture.create_from_image(line.get_character().character_image)
 	
 func scrolldown():
+	if prevent_scroll:
+		return
+
 	await get_tree().process_frame
 	await get_tree().process_frame
 	var scrollcontainer = get_parent().get_parent()

@@ -4,7 +4,7 @@ extends AppWindow
 @export var content_container : Node
 @export var avatar : TextureRect
 @export var character_name : Label
-@export var content : RichTextLabel
+@export var content : ChatMessage
 @export var delete_button : Button
 @export var allow_button : Button
 
@@ -51,16 +51,19 @@ func show_next_post():
 	# Catch empty backlog or already open post
 	if backlog.size() == 0 or not current == null:
 		return
-		
+	
+	# Reset Content
+	content.image.hide()
+	content.video.video.stop()
+	content.video.hide()
+	content.audio.audio.stop()
+	content.audio.hide()
+	
 	# Show Post
 	current = backlog.pop_front()
 	avatar.texture = ImageTexture.create_from_image(current.get_character().character_image)
 	character_name.text = current.get_character().character_name
-	
-	if Config.content_debug:
-		content.text = current.id + ": " + current.content + " (Trigger: " + ",".join(current.triggers) +")"
-	else:
-		content.text = current.content
+	content.setup( current )
 	
 	empty_container.hide()
 	content_container.show()
