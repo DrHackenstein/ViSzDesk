@@ -5,14 +5,13 @@ class_name VideoPlayer
 @export var button_play : TextureButton
 @export var button_pause : TextureButton
 @export var progress : ProgressBar
+@export var duration : Label
 var video_width = 334
 
 func _ready() -> void:
-	mouse_entered.connect(on_mouse_enter)
-	mouse_exited.connect(on_mouse_exit)
 	button_play.button_up.connect(on_click)
 	button_pause.button_up.connect(on_click)
-	video.finished.connect(show_button)
+	video.finished.connect(handle_finished)
 
 func setup( filepath : String ):
 	var vid = VideoStreamTheora.new()
@@ -22,37 +21,33 @@ func setup( filepath : String ):
 	var ratio = video.get_video_texture().get_width() / float(video.get_video_texture().get_height())
 	video.custom_minimum_size = Vector2(video_width, video_width / ratio)
 	progress.max_value = video.get_stream_length()
-	
-func on_mouse_enter():
-	show_button()
-	
-func on_mouse_exit():
-	hide_button()
+	duration.text = Helper.seconds_to_time_string(video.get_stream_length())
 
 func on_click():
-	if not video.is_playing():
-		video.play()
-		button_play.hide()
-		button_pause.show()
-	elif video.paused:
-		video.paused = false
-		button_play.hide()
-		button_pause.show()
+	if not video.is_playing() or video.paused:
+		play()
 	else:
-		video.paused = true
-		button_play.show()
-		button_pause.hide()
+		stop()
 
-func show_button():
-	if video.is_playing() and not video.paused:
-		button_pause.show()
+func play():
+	if video.paused:
+		video.paused = false
 	else:
-		button_play.show()
-		
-func hide_button():
-		button_pause.hide()
-		button_play.hide()
+		video.play()
+	button_play.hide()
+	button_pause.show()
+
+func stop():
+	video.paused = true
+	button_pause.hide()
+	button_play.show()
+
+func handle_finished():
+	button_pause.hide()
+	button_play.show()
+	duration.text = Helper.seconds_to_time_string(video.get_stream_length())
 
 func _process(delta: float) -> void:
 	if video.is_playing() and not video.paused:
 		progress.value = video.stream_position
+		duration.text = Helper.seconds_to_time_string(video.stream_position)

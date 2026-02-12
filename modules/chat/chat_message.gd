@@ -5,8 +5,12 @@ class_name ChatMessage
 @export var image : TextureRect
 @export var video : VideoPlayer
 @export var audio : AudioPlayer
+@export var audio_icon : TextureRect
 
-func setup( line : ContentLine ):
+var line
+
+func setup( content_line : ContentLine ):
+	line = content_line
 	var text = line.content
 	
 	# Handle loading files
@@ -53,6 +57,7 @@ func load_video( filename : String ):
 func load_audio( filename : String ):
 	audio.setup(Config.content_path + "/" + filename)
 	audio.show()
+	audio_icon.texture = ImageTexture.create_from_image(line.get_character().character_image)
 	
 func scrolldown():
 	await get_tree().process_frame

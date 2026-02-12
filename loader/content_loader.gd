@@ -15,7 +15,7 @@ var triggers_index = 6
 
 func _ready():
 	#Load Start_id from config
-	if not Config.content_spreadsheet_start == null:
+	if not Config.content_spreadsheet_start == "":
 		start_id = str(Config.content_spreadsheet_start)
 	
 	# Load config
