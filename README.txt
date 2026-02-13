@@ -8,7 +8,7 @@ Im Folgenden werden die Konfigurations-Dateien erklärt.
 
 
 // CONFIG.CFG \\
-Über die config.cfg können generelle Einstellungen getätigt werden, wie einzelne Apps an und aus geschaltet werden. Die neu generierte config.cfg enthält alle möglichen Einstellungsmöglichkeiten mit ihren Standard-Werten. Sie sind größtenteils selbsterklärend.
+Über die config.cfg können generelle Einstellungen getätigt werden, wie einzelne Apps an und aus geschaltet werden. Die neu generierte config.cfg enthält alle möglichen Einstellungsmöglichkeiten mit ihren Standard-Werten. Sie sind größtenteils selbsterklärend. Im Folgenden sind ein paar der Einstellungsmöglichkeiten, die vielleicht nicht gleich ersichtlich sind, erläutert:
 
 	text_files
 	In der text_files Variable können Text-Dateien (.txt), die sind im Content-Ordner befinden angegeben werden. Standardmäßig wird hier eine credits.txt geladen, die die Beteiligten des Projekts auflistet. Es können beliebig viele solche Dateien mit Komma getrennt angegeben werden. Sie tauchen als Desktop-Dateien auf, die Spieler*innen einsehen, aber nicht verändern können. Um die anzuzeigenden Texte visuell ansprechender zu formatieren kann BBCode verwendet werden.
@@ -26,8 +26,6 @@ Im Folgenden werden die Konfigurations-Dateien erklärt.
 	
 	chat_notification_beep_sound & chat_notification_beep_sound
 	Über diese Variablen können individuelle Notifizierungs-Beeps definiert werden. Sie müssen sich im Content-Ordner befinden und in einem der unterstützten Formate (.mp3, .ogg, .wav) sein. Wenn die Variablen leer gelassen werden oder die angegebenen Dateien nicht geladen werden können, werden stattdessen die Standard-Sounds verwendet.
-	
-	Weiteres: TBD
 
 
 
@@ -41,13 +39,9 @@ Im Folgenden werden die Spalten und ihre Bedeutung für alle Apps erklärt:
 	Die ID ist eine eindeutige Identifikations-Zeichenfolge über die, die jeweiligen Inhalte angesteuert werden können. Wenn die ID-Zelle leer ist oder bereits eine Zeile mit der selben ID eingelesen wurde, wird die Zeile nicht eingelesen. Es wird dazu eine Warnung in die Debug-Konsole ausgegeben.
 
 	APP
-	Hier wird definiert welche APP den Inhalt verarbeiten soll. Wenn keine passende APP gefunden wird, wird der Inhalt ignoriert und nur die angegebenen Trigger ausgelöst. Im Folgenden werden die implementierten Apps und wie diese angesteuert werden erklärt:
-		
-		Chat-App (App-ID: "chat")
-		TBD
-		
-		Moderations-App (App-ID: "mod")
-		TBD (Backlog)
+	Hier wird definiert welche APP den Inhalt verarbeiten soll. Wenn keine passende APP gefunden wird, wird der Inhalt ignoriert und nur die angegebenen Trigger ausgelöst. Die implementierten Apps können wie folgt angesteuert werden:
+		Chat-App: "chat"
+		Moderations-App: "mod"
 	
 	CID
 	Über die CID wird der jeweilige Charakter definiert zu dem der Inhalt gehört. Wenn kein passender Charakter in der characters.csv gefunden wird, wird stattdessen die CID und ggf. ein Standard-Bild angezeigt. Achtung: Auch wenn es sich um eine Spieler*innen-Antwort auf eine Chat-Nachricht handelt, muss die CID des Charakters, auf den geantwortet werden soll, angegeben werden.
