@@ -171,8 +171,7 @@ prevent_scroll = true
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
-expand_mode = 4
-stretch_mode = 5
+expand_mode = 5
 
 [node name="VideoPlayer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/MarginContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/Message" unique_id=223244568 node_paths=PackedStringArray("video", "button_play", "button_pause", "progress", "duration")]
 visible = false
