@@ -10,6 +10,10 @@ Im Folgenden werden die Konfigurations-Dateien erklärt.
 // CONFIG.CFG \\
 Über die config.cfg können generelle Einstellungen getätigt werden, wie einzelne Apps an und aus geschaltet werden. Die neu generierte config.cfg enthält alle möglichen Einstellungsmöglichkeiten mit ihren Standard-Werten. Sie sind größtenteils selbsterklärend. Im Folgenden sind ein paar der Einstellungsmöglichkeiten, die vielleicht nicht gleich ersichtlich sind, erläutert:
 
+	autostart_apps
+	Erlaubt es sowohl Apps als auch ins geladene Textdateien direkt zum Start auf dem Desktop zu öffnen. Dafür muss die jeweilige in der Config definierte App-Id bzw. der exakte Name der Textdatei angegeben werden. Es können hier mehrere Einträge durch Kommas getrennt angegeben werden. Die Einträge müssen in Anführungszeichen stehen, da sie als ein String geladen werden.
+	Beispiel: autostart_apps="chat,credits.txt,mod"
+	
 	text_files
 	In der text_files Variable können Text-Dateien (.txt), die sind im Content-Ordner befinden angegeben werden. Standardmäßig wird hier eine credits.txt geladen, die die Beteiligten des Projekts auflistet. Es können beliebig viele solche Dateien mit Komma getrennt angegeben werden. Sie tauchen als Desktop-Dateien auf, die Spieler*innen einsehen, aber nicht verändern können. Um die anzuzeigenden Texte visuell ansprechender zu formatieren kann BBCode verwendet werden.
 	Zu Infos zu BBCode siehe: https://docs.godotengine.org/en/stable/engine_details/class_reference/index.html#doc-class-reference-bbcode

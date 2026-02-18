@@ -48,9 +48,12 @@ func load_file( content : String, filename : String ):
 	appsbar.add_child(taskbar)
 	appsbar.move_child(taskbar, appsbar.get_child_count() - 2)
 	taskbar.menu = window
-	taskbar.hide()
 	
 	# Setup Window
 	get_node("/root/Main/").add_child(window)
 	window.setup(content, taskbar, filename)
-	window.hide()
+	
+	# Hide window if it isn't in autostart
+	if not Config.boot_autostart.remove_chars(" ").split(",").has(filename):
+		taskbar.hide()
+		window.hide()

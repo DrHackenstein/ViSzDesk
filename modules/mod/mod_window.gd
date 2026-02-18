@@ -36,6 +36,10 @@ func _ready():
 	allow_button.disabled = true
 	delete_button.button_up.connect(handle_delete)
 	delete_button.disabled = true
+	
+	# Show if app is in autostart
+	if Config.boot_autostart.remove_chars(" ").split(",").has(Config.modules_moderation_id):
+		button.open_menu()
 
 func trigger_content( line : ContentLine ):
 	if is_override(line):

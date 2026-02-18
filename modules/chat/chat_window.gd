@@ -35,6 +35,10 @@ func _ready():
 			push_warning("Loading Error: Couldn't load chat notification sound " + Config.modules_chat_beep_sound + ". Format not supported!")
 	
 	load_module()
+	
+	# Show if app is in autostart
+	if Config.boot_autostart.remove_chars(" ").split(",").has(Config.modules_chat_id):
+		button.open_menu()
 
 func load_module():
 	friend_button = preload("res://modules/chat/friend_button.tscn")
